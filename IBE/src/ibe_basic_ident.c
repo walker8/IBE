@@ -1,7 +1,7 @@
 /**
  Boneh-Franklin Identity-Based Encryption from the Weil Pairing
 
- (1)Setup:Take secruity parameter K(QBITS,RBITS),return the system parameter ans master
+ (1)Setup:Take secruity parameter K(QBITS,RBITS),return the system parameter and master
  key of the PKG.The system parameters include a description of a finite message space M,
  and a dscription of a finite ciphertext space C. The system parameters will be publicly
  known,while the master-key will be known only to the PKG.
