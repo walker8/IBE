@@ -1,0 +1,1812 @@
+Podrcznik uytkownika Claws Mail
+
+Autorzy Claws Mail
+
+   Copyright © 2006-2014 Autorzy Claws Mail.
+     __________________________________________________________
+
+   Table of Contents
+   1. Wstp
+
+        1.1. Czym jest Claws Mail?
+        1.2. Czym Claws Mail nie jest
+        1.3. Podstawowe funkcje
+        1.4. Historia Claws Mail
+        1.5. Przydatne strony WWW
+
+   2. Pierwsze uruchomienia Claws Mail
+
+        2.1. Pocztkowy kreator
+        2.2. Odbieranie poczty
+        2.3. Czytanie twojej poczty
+        2.4. Tworzenie twojej pierwszej wiadomoci
+        2.5. Wysyanie twojej pierwszej wiadomoci
+
+   3. Podstawowe przetwarzanie poczty
+
+        3.1. Katalogi pocztowe
+        3.2. Organizacja katalogw
+        3.3. Filtrowanie
+        3.4. Przeszukiwanie
+
+   4. Ustawienia konta
+
+        4.1. Podstawowe opcje
+        4.2. Typy kont
+
+              4.2.1. POP3
+              4.2.2. IMAP
+              4.2.3. Grupy dyskusyjne
+              4.2.4. Konto lokalne
+              4.2.5. Tylko SMTP
+
+        4.3. Wiele kont
+        4.4. Zaawansowane filtrowanie
+
+   5. Ksika adresowa
+
+        5.1. Podstawowe zarzdzanie
+        5.2. Eksportowanie i importowanie adresw
+        5.3. Zaawansowane opcje
+
+              5.3.1. Uywanie serwerw LDAP
+              5.3.2. Integracja z jPilot
+              5.3.3. Wsparcie dla vCard
+
+   6. Zaawansowane opcje
+
+        6.1. Akcje
+        6.2. Szablony
+        6.3. Przetwarzanie
+        6.4. Etykiety kolorw
+        6.5. Obsuga list dyskusyjnych
+        6.6. Wtyczki
+        6.7. Wdraanie Claws Mail
+        6.8. Ukryte opcje
+
+   7. Rozszerzanie Claws Mail
+
+        7.1. Udostpnione wtyczki
+        7.2. Wicej wtyczek
+        7.3. Dostp do sieci z poziomu niektrych wtyczek
+
+   A. Claws Mail FAQ
+
+        A.1. Jakie s rnice pomidzy Claws Mail i Sylpheed?
+        A.2. Czy Claws Mail obsuguje pisanie wiadomoci w HTML?
+        A.3. W jaki sposb mog zaproponowa poprawki, zgosi bdy i
+                podyskutowa o Claws Mail z innymi uytkownikami?
+
+        A.4. Czy Claws Mail posiada ochron anty spamow?
+        A.5. Czy Claws Mail wspiera potwierdzanie dostarczenia?
+        A.6. W jaki sposb Claws Mail powiadamia o przybyciu nowej
+                poczty?
+
+        A.7. Dlaczego znaki specjalne (np. umlauty) s wywietlane
+                niepoprawnie?
+
+        A.8. Czy mog zacytowa jedynie cz oryginalnej wiadomoci
+                kiedy odpowiadam na email?
+
+        A.9. Gdzie mog znale wicej odpowiedzi na czsto zadawane
+                pytania o Claws Mail?
+
+   B. Domylne skrty klawiszowe
+
+        B.1. Motywacja i oglne konwencje
+        B.2. Okno gwne
+        B.3. Okno tworzenia wiadomoci
+
+   C. Podzikowania
+   D. Sownik poj
+   E. Gnu General Public License
+     __________________________________________________________
+
+1. Wstp
+
+1.1. Czym jest Claws Mail?
+
+   Claws Mail jest programem pocztowym majcym na celu szybko, atwo
+   obsugi oraz potn funkcjonalno. Jest on waciwie niezaleny od
+   uywanego rodowiska graficznego, lecz ma na celu integracj z
+   danym rodowiskiem jak najlepiej jest to moliwe. Autorzy Claws
+   Mail bardzo staraj si by zuywa jak najmniej zasobw, wic
+   powinien on dziaa bez problemu na komputerach z ma iloci pamici
+   i o sabych procesorach.
+     __________________________________________________________
+
+1.2. Czym Claws Mail nie jest
+
+   Claws Mail nie jest penym programem zarzdzania informacj
+   osobist jak Evolution czy Outlook ale jego wtyczki dodaj tak
+   funkcjonalno. Claws Mail nie umoliwi ci tworzenia i wysyania
+   email w formacie HTML lub na inne denerwujce rzeczy, dlatego te
+   nie jest to oprogramowanie odpowiednie dla pewnych rodowisk
+   biznesowych.
+     __________________________________________________________
+
+1.3. Podstawowe funkcje
+
+   Claws Mail obsuguje prawie wszystko co powinien mie doskonay
+   klient email. Pobieranie poczty przy pomocy protokow POP3,
+   IMAP, lokalne skrzynki, obsuga SSL, obsuga rnych metod
+   autentykacji. Posiada wiele kont i skrzynek, potny mechanizm
+   filtrowania i poszukiwania, moliwoci importu/eksportu z wielu
+   rnych formatw, obsug GnuPGP (cyfrowe podpisy i szyfrowanie).
+   Posiada wtyczki, mono konfiguracji paskw narzdziowych,
+   sprawdzanie pisowni, kilka mechanizmw chronicych przed utrat
+   danych, opcje specyficzne dla katalogw i wiele wicej. Kompletna
+   lista znajduje si na http://www.claws-mail.org/features.php.
+     __________________________________________________________
+
+1.4. Historia Claws Mail
+
+   Claws Mail istnieje od kwietnia 2001. Pierwotnym celem Claws
+   Mail byo testowanie nowych, potencjalnych funkcji programu
+   Sylpheed (http://sylpheed.sraoss.jp/en/), tak aby nowe funkcje
+   byy przetestowane, eby nie zagrozi stabilnoci programu
+   Sylpheed. Autorzy Claws Mail regularnie synchronizowali kod
+   rdowy z kodem Sylpheed i autor Sylpheed Hiroyuki Yamamoto,
+   pobiera z powrotem nowe funkcje kiedy byy one ju stabilne.
+
+   Oryginalnie obie programy Sylpheed i Claws Mail byy oparte na
+   GTK1. Prace na wersjami opartymi na GTK2 rozpoczy si wczesnym
+   2003, pierwsza wersja oparta na GTK2 Claws Mail zostaa wydana w
+   marcu 2005. Od tego czasu cele Sylpheed i Claws Mail zaczy si
+   coraz bardziej rozmija i w pewnym momencie Claws Mail sta si
+   oddzielnym projektem.
+     __________________________________________________________
+
+1.5. Przydatne strony WWW
+
+   Strona projektu: http://www.claws-mail.org/
+
+   Najnowsze wiadomoci: http://www.claws-mail.org/news.php
+
+   Dodatkowe wtyczki: http://www.claws-mail.org/plugins.php
+
+   Tematy ikon: http://www.claws-mail.org/themes.php
+
+   Narzdzia: http://www.claws-mail.org/tools.php
+
+   Lista dyskusyjne: http://www.claws-mail.org/MLs.php
+
+   Baza bdw programu:
+   http://www.thewildbeast.co.uk/sylpheed-claws/bugzilla/
+
+   Projekt: http://sourceforge.net/projects/claws-mail/
+     __________________________________________________________
+
+2. Pierwsze uruchomienia Claws Mail
+
+2.1. Pocztkowy kreator
+
+   Gdy uruchomisz Claws Mail po raz pierwszy zostanie zadanie ci
+   kilka pyta w celu zaoenia konta. Te pytania s stosunkowo proste
+   i pogrupowane na kilku krtkich stronach.
+
+   Po pierwsze zostaniesz zapytany o twoje imi i nazwisko
+   (najczciej uzyskiwane z systemu operacyjnego), twj adres email.
+   nazw twojej organizacji (opcjonalne).
+
+   Nastpna strona wymaga wpisanie szczegw opisujcych sposb
+   pobierania poczty. Wygld strony uzaleniony jest od "typu
+   serwera":
+
+   POP3
+          Jeli wybrae POP3 bdziesz musia poda adres serwera, nazw
+          uytkownika i haso. Haso nie jest konieczne, jeli nie
+          podasz go tutaj zostaniesz o nie poproszony pniej za
+          kadym razem kiedy bdzie potrzebne.
+
+   IMAP
+          Jeli wybrae IMAP bdziesz musia poda adres serwera, nazw
+          uytkownika, haso i katalog na serwerze IMAP. Haso nie
+          jest konieczne, jeli nie podasz go tutaj zostaniesz o
+          nie poproszony pniej za kadym razem kiedy bdzie
+          potrzebne. Katalog na serwerze IMAP te jest opcjonalny,
+          w wikszoci przypadkw moe pozosta pusty.
+
+   Lokalna skrzynka mbox
+          Jeli wybierzesz lokaln skrzynk mbox wymagane jest
+          podanie lokacji pliku zawierajcego poczt.
+
+   Na nastpnej stronie potrzebne jest podanie adresu twojego
+   serwera SMTP (czasami nazywanego "serwerem wychodzcym").
+   Zostaniesz rwnie zapytany czy serwer wymaga autentykacji przy
+   wysyaniu poczty; jest to czsto nieuywane gdy czysz si z
+   internetem za pomoc dostawcy internetu, czsto jest to uywane w
+   konfiguracji profesjonalnych kont.
+
+   Jeli wybrae POP3 albo lokaln skrzynk na nastpnej stronie
+   znajdziesz pytanie o miejsce zapisywania odebranej poczty na
+   dysku twardym. Domylnie jest to "Mail" i najczciej to
+   ustawienie jest dobre, zapisuje ono poczt w podkatalogu "Mail"
+   w twoim katalogu domowym.
+
+   Jeli Claws Mail zosta skompilowany z obsug OpenSSL, zobaczysz
+   stron "Bezpieczestwo", tutaj bdziesz mg zadecydowa o uywaniu
+   szyfrowania SSL przy wysyaniu i odbieraniu poczty. Wikszo
+   dostawcw internetu nie zezwala na to, lecz wiele firm tego
+   wymaga, jeli nie jeste pewien moesz zostawi te opcje wyczone.
+
+   Teraz moesz nacisn przycisk Zapisz i zacz cieszy si z uywania
+   Claws Mail.
+     __________________________________________________________
+
+2.2. Odbieranie poczty
+
+   Odbiera poczt mona za pomoc przycisku "Get mail" na pasku
+   narzdziowym lub z opcji "Odbieranie" w menu "Wiadomo".
+
+   Jeli chcesz aby Claws Mail pobiera twoj poczt automatycznie w
+   regularnych odstpach czasu moesz to ustawi na stronie "Obsuga
+   poczty: Odbieranie", ktr znajdziesz za pomoc menu
+   "Konfiguracja/Ustawienia". Wybierz opcj "Automatyczne
+   sprawdzanie skrzynek pocztowych co" i ustaw interwa czasu
+   pomidzy kolejnymi sprawdzeniami.
+     __________________________________________________________
+
+2.3. Czytanie twojej poczty
+
+   Kiedy ju pobrae swoje emaile, bd one znajdoway si w katalogu
+   Przychodzca. Liczba wszystkich emaili w katalogu jest
+   wywietlana po prawej stronie jego nazwy razem z liczbami
+   nieprzeczytanych i nowych emaili w tym katalogu. eby je zobaczy
+   kliknij na ten katalog w widoku katalogw i w widoku
+   podsumowania ukae si lista emaili w tym katalogu. Moesz wtedy
+   wybra interesujcy ci email myszk lub uywajc klawiszy strzaek w
+   gr i w d lub klawisz spacji aby wywietla i przewija widok
+   wiadomoci. Moliwe jest te poruszanie si po lici wiadomoci za
+   pomoc klawiszy P i N (poprzednia i nastpna).
+     __________________________________________________________
+
+2.4. Tworzenie twojej pierwszej wiadomoci
+
+   Naciskajc przycisk "Tworzenie" na pasku narzdziowym uruchomisz
+   okno tworzenia nowej wiadomoci. To okno zawiera kilka rnych pl,
+   ktre powinny by proste do rozpoznania: jeli masz wiele kont,
+   pole Od daje moliwo wybrania konta do napisania danej
+   wiadomoci; pole Do oznacza odbiorc wiadomoci. Gdy je ju
+   wypenisz pojawi si drugie pole Do na wypadek gdyby chcia wysa
+   wiadomo do kilku osb jednoczenie. Pole Do mona zmieni na pole
+   Kopia lub inny typ za pomoc rozwijanego menu lub wpisujc nazw
+   pola, ktre potrzebujesz doda. Nastpnie zostaje wpisa temat
+   twojej wiadomoci, potem jej tre.
+
+   Jeszcze jedna maa uwaga dotyczca pola tematu: Claws Mail
+   poprosi ci o potwierdzenie jeli sprbujesz wysa wiadomo z pustym
+   tematem. Dziaanie to spowodowane jest tym, e otrzymywanie
+   wiadomoci bez tematu moe by czasami denerwujce no i na pewno
+   nie uatwia zarzdzania nimi.
+     __________________________________________________________
+
+2.5. Wysyanie twojej pierwszej wiadomoci
+
+   Po skoczeniu pisania swojej pierwszej wiadomoci, moesz wysa
+   swoj wiadomo natychmiast naciskajc przycisk "Wylij" lub doda do
+   kolejki w celu pniejszego wysania naciskajc przycisk "Wylij
+   pniej". Po uyciu "Wylij" okno tworzenia samo si zamknie gdy
+   wiadomo zostanie wysana; zostanie otwarta gdy wystpi bd. W
+   przypadku "Wylij pniej" okno zamknie si od razu i twj email
+   zostanie zapisany w katalogu Kolejka. Zostanie wysany dopiero
+   wtedy, gdy naciniesz przycisk "Wylij" z paska narzdziowego
+   gwnego okna.
+
+   Emaile, ktre wylesz bd zapisywane do katalogu Wysane twojej
+   skrzynki, wic bdziesz mia moliwo przypomnienia sobie co napisae
+   do kogo lub uycia ju wysanego listu jako szablonu do napisania
+   nastpnego.
+     __________________________________________________________
+
+3. Podstawowe przetwarzanie poczty
+
+3.1. Katalogi pocztowe
+
+   Jeli otrzymujesz spor ilo wiadomoci szybko przekonujesz si, e
+   katlog z wiadomociami przychodzcymi urs do rozmiaru, ktry
+   uniemoliwia szybkie odnalezienie email nawet jeli otrzymae go
+   przed kilkoma dniami. Dlatego wanie Claws Mail jak wikszo
+   dobrych programw pocztowych umoliwia organizowanie twojej
+   poczty na wiele sposobw.
+
+   Moesz stworzy tak wiele katalogw i podkatalogw ile
+   potrzebujesz. Na przykad katalog na listy od rodziny, twoich
+   przyjaci, grupy dyskusyjne, katalogi archiwalne na stare
+   emaile, ktrych jeszcze potrzebujesz itd. eby stworzy nowy
+   folder wystarczy klikn prawym przyciskiem myszy na gwny katalog
+   i wybra "Nowy katalog..." z menu. Jeli chcesz na przykad zaoy
+   katalog 'Przyjaciele' w katalogu listw przychodzcych wystarczy
+   klikn prawym przyciskiem myszy na katalog Przychodzce, wybra
+   "Nowy katalog..." i wpisa 'Przyjaciele' w okienku, ktre sie
+   pojawi. Klikn przycisk OK i nowy katalog jest stworzony.
+     __________________________________________________________
+
+3.2. Organizacja katalogw
+
+   Po stworzeniu katalogw moesz je modyfikowa jak rwnie ich
+   zawarto uywajc menu lub poprzez przenoszenie metod drag'n'drop.
+   Na przykad przenoszenie jednego katalogu do drugiego moe by
+   wykonane poprzez kliknicie prawym przyciskiem myszy na
+   katalogu, ktry chcesz przenie, wybraniu z menu "Przenie
+   katalog..." i wybraniu katalogu docelowego. Ta operacja
+   przeniesie katalog wraz z caa poczt, ktr zawiera do podkatalogu
+   wybranego wczeniej katalogu. Inn metod jest przecignicie ikonki
+   katalogu trzymajc prawy przycisk myszki do docelowego katalogu
+   i puszczenie przycisku.
+
+   Jeli chcesz usun katalog i poczt, ktr on zawiera po prostu
+   kliknij prawym klawiszem myszki na ten katalog i wybierz z menu
+   "Usu katalog...". Poniewa jest to operacja inwazyjna (wiadomoci
+   w katalogu zostan usunite bez moliwoci przywrcenia) zostaniesz
+   poproszony o zatwierdzenie tego ruchu.
+
+   W ten sam sposb moesz przenie katalog do innego, wiadomoci z
+   jednego katalogu do drugiego. Metodologia jest ta sama: albo
+   przecignicie wiadomoci do katalogu bd wybranie "Przenie..." po
+   klikniciu prawym klawiszem myszy na wiadomoci. Trzymajc klawisz
+   Shift lub Control podczas klikania na emaile pozwala na
+   zaznaczenie wielu naraz. Moliwe jest rwnie skopiowanie
+   wiadomoci do innego katalogu poprzez nacinicie klawisza Control
+   podczas przecigania albo wybranie z menu kontekstowego
+   wiadomoci "Kopiuj...".
+     __________________________________________________________
+
+3.3. Filtrowanie
+
+   Kiedy masz ju adn, hierarchiczn struktur katalogw, chciaby
+   zapewne aby Claws Mail posortowa twoj przychodzc poczt
+   automatycznie, eby nie musie za kadym razem przenosi rcznie
+   nowoodebranych wiadomoci. Do tego uyteczna jest opcja
+   filtrowania.
+
+   Opcje filtrowania dostpne s poprzez menu "Konfiguracja" i opcj
+   menu "Filtrowanie". Z poziomu tego okna dialogowego moliwe jest
+   deklarowanie nowych reguek filtrowania, modyfikowania lub
+   usuwania istniejcych, ustawiania ich w odpowiedniej kolejnoci i
+   wczania/wyczania ich. Reguki filtrowania definiuj cztery
+   rzeczy: czy jest ona wczona, nazwa, warunek i wykonywana akcja.
+   Wszystkie wyczone reguki s ignorowane.Nazwa jest opcjonalna,
+   pozwala ona na identyfikowanie twoich reguek. Warunek to
+   wyraenie opisujce czego Claws Mail powinien szuka sortujc
+   emaile, na przykad: 'to matchcase claws-mail-users' wyszukuje
+   wiadomoci wysane na adres zawierajcy 'claws-mail-users'. Moesz
+   atwo zdefiniowa warunek klikajc na przycisk "Zdefiniuj..." po
+   prawej stronie pola. Trzeci czci reguki filtrujcej jest akcja,
+   ktra instruuje Claws Mail co ma zrobi z wiadomoci odpowiadajc
+   wyraeniu wanie zdefiniowanemu. Na przykad 'mark as read'
+   zaznaczy email jako przeczytany jak tylko dotrze on do katalogu
+   zwiadomociami przychodzcymi, albo 'move
+   #mh/Mailbox/Przyjaciele' przeniesie list do katalogu
+   'Przyjaciele'. Tutaj rwnie dostpny jest przycisk "Zdefiniuj..."
+   aby pomc ci w atwy sposb zdefiniowa akcj do podjcia.
+
+   Kiedy reguka zostaa ju zdefiniowana. jej dodanie do listy
+   reguek wykonuje si za pomoc przycisku "Dodaj". Nie zapomnij, e
+   ukad reguek jest wany: jeli Claws Mail znajdzie wiadomo
+   speniajc reguk, ktra przenosi lub usuwa t wiadomo to program
+   przestanie sprawdza pozostae reguki dla tego emaila. Dlatego
+   wanie po prawej stronie listy reguek znajduj si cztery
+   przyciski pozwalajce na zmian kolejnoci sprawdzania reguek.
+   Reguki mona poprzestawia rwnie poprzez przeciganie.
+
+   Istnieje rwnie szybka metoda tworzenia nowych reguek
+   filtrowania na podstawie wybranej wiadomoci. Po wybraniu
+   wiadomoci, ktr chcesz sortowa naley wybra "Twrz regu
+   przetwarzania" z menu "Narzdzia" oraz wybra typ z podmenu:
+   "Automatycznie" suy gwnie do filtrowania listy dyskusyjnych, "z
+   'Od:'" tworzy reguk na bazie nadawcy emaila, "z 'Do:'" tworzy
+   reguk na bazie nadawcy i "z 'Temat:'" tworzy reguk na podstawie
+   tematu. Kady z tych typw ma swoje zalety, wszystko zaley od
+   ciebie co uznasz za bardziej praktyczne. Najczciej "z 'Temat:'"
+   jest uyteczne w sortowaniu regularnej korespondencji, podczas
+   gdy "z 'Do:'" bardziej przydaje si w sortowaniu wiadomoci
+   wysyanych na rne konta.
+     __________________________________________________________
+
+3.4. Przeszukiwanie
+
+   Jest kilka metod przeszukiwania twojej poczty.
+
+   Jedn z nich jest waciwie standardowa, znajdujca si w menu
+   "Edycja", jest to opcja "Szukaj". Opcja ta otworzy okienko. w
+   ktrym moesz poda jedno lub kilka pl, ktre chcesz przeszuka: Od,
+   Do, Temat i tre wiadomoci. Po podaniu twojego kryterium
+   poszukiwa, kliknij na przycisk "W ty" lub "Do przodu" aby
+   zobaczy pasujce do wzorca emaile albo nacinij "Znajd wszystkie"
+   eby wybra wszystkie za jednym razem pasujce do wzorca emaile.
+   Musisz by wiadom tego, e szukanie w treci wiadomoci jest
+   znacznie wolniejsze ni szukanie w nagwkach, poniewa treci
+   wiadomoci nie s przechowywane w pamici podrcznej Claws Mail.
+
+   Jeli ogldasz wielki email i chcesz znale pewn jego cz, moesz uy
+   opcji "Znajd w obecnej wiadomoci..." z menu "Edycja". Dziaa to
+   tak samo jak poszukiwanie w dokumencie tekstowym.
+
+   Ostatnim sposobem szukania wiadomoci jest uycie Szybkiego
+   wyszukiwania, ktre moesz wywietli lub ukry uywajc ikonki z maym
+   szkem powikszajcym pod list wiadomoci. Jest ono rwnie dostpne
+   jako opcja "Szybkie wyszukiwanie" z menu "Edycja". Wyszukiwanie
+   szybkie jest bardziej zaawansowanym narzdziem ni zwyke
+   wyszukiwanie, poniewa moe ono szuka w standardowych nagwkach
+   (Od, Do, Temat) albo w trybie "Rozszerzone" uywajc kryterium
+   jakie tylko moesz wymyle. Podczas trybu "Rozszerzone" przycisk
+   "Dostpne symbole" jest widoczny i pozwala on na poznanie skadni
+   poszukiwania. Przycisk "..." jest rwnie dostpny, pozwala on na
+   szybkie utworzenie reguki. Moesz skonfigurowa Szybkie
+   wyszukiwanie aby przeszukiwao katalogi re kursywnie oraz czy
+   powinno czycic wyniki gdy zmieniasz katalogi.
+
+   Kiedy naciniesz klawisz Enter po podaniu warunkw poszukiwa
+   lista wiadomoci zmieni si i bdzie prezentowa tylko pasujce
+   wiadomoci. Jeli poszukiwanie jest re kursywne, kady podkatalog
+   biecego katalogu posiadajcy pasujc wiadomo zmieni swoj ikonk na
+   szko powikszajce. Tym sposobem moliwe jest przeszukiwanie caej
+   skrzynki za jednym razem. Jeli poszukiwanie jest w trybie
+   przyklejony filtr zostanie zastosowany w innym katalogu, do
+   ktrego wejdziesz. To moe by denerwujce na pocztku jak o tym
+   zapomnisz, lecz jest uyteczne w pewnych warunkach, na przykad
+   jeli przeszukujesz tre wiadomoci i nie jeste pewien, ktry
+   katalog zawiera dan wiadomo, re kursywne przeszukiwanie treci
+   wiadomoci w caej skrzynce moe bardzo powolne.
+     __________________________________________________________
+
+4. Ustawienia konta
+
+4.1. Podstawowe opcje
+
+   Pierwsza zakadka ustawie konta, Podstawowe zawiera jak sama
+   nazwa wskazuje podstawowe opcje konta. W tej zakadce moesz poda
+   swoje imi, nazwisko, adres email, organizacj i podstawowe dane
+   dotyczce poczenia. Nazwa konta jest tylko nazw, ktr Claws Mail
+   bdzie uywa odnoszc si do tego konta, np. w ikonce zmiany konta
+   znajdujcej si w prawym dolnym rogu gwnego okna. Informacje o
+   serwerze umoliwiaj ustawienie uywanego do odbierania poczty
+   protokou (nie mona go zmienia w ju istniejcych kontach), nazwy
+   serwera uywanego do odbierania bd wysyania wiadomoci (zazwyczaj
+   pop.dostawca.com i smtp.dostawca.com) oraz twojej nazwy
+   uytkownika na serwerze.
+
+   W zakadce Odbieranie istnieje moliwo zmiany domylnych ustawie
+   Claws Mail. Na przykad, zostawianie wiadomoci na serwerze na
+   jaki czas, zaniechanie cigania listw o za duej wielkoci albo
+   zdecydowanie czy reguki filtrujce powinny by zastosowane w
+   przypadku listw z tego konta. Opcja "Limit iloci pobieranych
+   danych" zapewnia limitowanie czasu powiconego na ciganie duych
+   wiadomoci. Gdy otrzymasz wiadomo wiksz ni ustalony limit
+   zostanie ona czciowo cignita i pniej bdziesz mg zadecydowa czy
+   cign j w caoci czy usun z serwera. Ta moliwo bdzie
+   przedstawiona podczas przegldania poczty.
+
+   Zakadka Wylij zawiera preferencje umoliwiajce dodawanie
+   specjalnych nagwkw pocztowych do wysyanych wiadomoci, jak
+   X-Face(buka) oraz informacji autoryzacyjnych potrzebnych do
+   wysyania emaili. Zazwyczaj dostawca usugi email zezwala swoim
+   uytkownikom na wysyanie wiadomoci poprzez serwer SMTP bez
+   autentykacji, lecz w niektrych konfiguracjach musisz si
+   uwierzytelni przed wysaniem wiadomoci. S trzy moliwoci na
+   wykonanie tego zadania. Gdy jest dostpna najlepsza jest metoda
+   SMTP AUTH. Jeli nie jest ona dostpna uywane jest poczenie
+   POP-przed-SMTP, ktre czy si do serwera POP(wymaga
+   autentykacji), rozcza a nastpnie wysya wiadomo.
+
+   Zakadka Tworzenie zawiera opcje zmieniajce zachowanie okna
+   tworzenia wiadomoci kiedy uywane jest z edytowanym kontem. Mona
+   ustawi automatyczne doczanie sygnaturki, domylne nagwki Cc, Bcc
+   oraz adres, na ktry powinna by przesana odpowied.
+
+   W zakadce Prywatno moesz wybra poziom bezpieczestwa dla twojego
+   konta. Moliwe jest cyfrowe podpisywanie i/lub szyfrowanie
+   wszystkich wychodzcych wiadomoci. Podpisywanie wszystkich
+   wychodzcych wiadomoci, nie tylko wanych, moe zapobiec wysyaniu
+   faszywych wiadomoci przez twoich wsppracownikw w twoim imieniu.
+   To pomaga unika niemiych sytuacji.
+
+   Zakadka SSL te dotyczy bezpieczestwa, tylko tym razem
+   ustawienia dotycz transportu twoich wiadomoci a nie ich
+   zawartoci. Krtko rzecz ujmujc, uywajc SSL szyfrujesz poczenie
+   pomidzy sob a serwerem, co uniemoliwia osobom postronnym
+   podgldanie twojego poczenia i czytania twoich wiadomoci oraz
+   hase. SSL jest zalecane jeli jest moliwo jego uycia.
+
+   Na koniec zakadka Zaawansowane pozwala na podanie numerw portw
+   i domen jeli domylne nie s uywane. W wikszoci wypadkw moesz
+   zostawi je niewypenione. Moliwe jest tutaj rwnie podanie
+   katalogw, w ktrych bd zapisywane wysane, do wysania, kopie
+   robocze i usunite wiadomoci.
+     __________________________________________________________
+
+4.2. Typy kont
+
+   Jak wczeniej widzielimy w zaoonym koncie nie jest ju moliwa
+   zmiana jego typu (protokou). Spowodowane jet to tym, e opcje
+   dla rnych typw kont nie s jednakowe, na przykad wikszo z opcji
+   POP3 jest nieistotna dla kont IMAP.
+     __________________________________________________________
+
+4.2.1. POP3
+
+   POP3 jest jednym z dwch najczciej stosowanych protokow u kadego
+   dostawcy na Ziemi. Jego zalet jest to, e pozwala na cignicie
+   wiadomoci na twj komputer, co oznacza bardzo szybki dostp do
+   twoich wiadomoci gdy znajd si one na twoim dysku twardym. Wad
+   POP3 jest trudno w synchronizacji twojej poczty na wielu
+   komputerach (bdziesz musia zatrzymywa kopie wiadomoci na
+   serwerze przez kilka dni) i niemono atwego okrelenia, ktre
+   wiadomoci s przeczytane albo na ktre wiadomoci zostaa wysana
+   odpowied, itp, gdy uywasz innego komputera.
+
+   Poczta cignita z konta POP3 bdzie przechowywana w skrzynce MH w
+   drzewie katalogw.
+     __________________________________________________________
+
+4.2.2. IMAP
+
+   IMAP jest drugim najczciej uywanym protokoem i jego celem jest
+   wyeliminowanie ogranicze POP3. Uywajc IMAP katalogi i wiadomoci
+   przechowywane s na centralnym serwerze. To spowalnia
+   przegldanie, poniewa kady email musi by cignity na danie, lecz
+   uywajc innego komputera albo klienta poczty twoje wiadomoci bd
+   w takim samym stanie jak je zostawiono wcznie z statusem
+   (przeczytana, nieprzeczytana, wysano odpowied itp).
+
+   Gdy zakadasz konto IMAP, skrzynka IMAP jest tworzona i
+   umieszczana w drzewie katalogw.
+     __________________________________________________________
+
+4.2.3. Grupy dyskusyjne
+
+   Grupy dyskusyjne (NNTP) s protokoem uywanym do wysyania i
+   odbierania artykuw USENET. Wiadomoci s przechowywane na
+   centralnym serwerze i cigane na danie. Nie mog by one usunite
+   przez uytkownika.
+
+   Gdy zakadasz konto grup dyskusyjnych tworzona jest skrzynka
+   News w drzewie katalogw.
+     __________________________________________________________
+
+4.2.4. Konto lokalne
+
+   Twj lokalny plik MBOX moe by rwnie uywany jeli masz uruchomiony
+   serwer SMTP na swoim komputerze i/albo chcesz otrzymywa swoje
+   logi w prosty sposb.
+
+   Poczta pobrana z lokalnego konta jest zapisywana w skrzynce MH
+   w drzewie katalogw.
+     __________________________________________________________
+
+4.2.5. Tylko SMTP
+
+   Konto typu 'aden, (tylko SMTP' jest kontem specjalnym, ktre nie
+   pobiera poczty, ale pozwala na tworzenie rnych tosamoci, ktre
+   na przykad mog by uyte do wysyania wiadomoci z rnych aliasw.
+     __________________________________________________________
+
+4.3. Wiele kont
+
+   Moesz w atwy sposb stworzy wiele kont w Claws Mail. Dla kont
+   POP moliwe jest zapisywanie wszystkich wiadomoci z rnych kont w
+   tym samym katalogu(ach) uywajc zakadki Odbieranie. IMAP i grupy
+   dyskusyjne stworz wasne skrzynki w drzewie katalogw.
+
+   Moliwy jest wybr, ktre konta zostan sprawdzone czy nie ma na
+   nich nowej poczty podczas uycia komendy "Pobierz wszystkie"
+   (albo "Pobierz" na pasku zada) zaznaczajc odpowiednia opcj w
+   zakadce Obieranie lub kolumn G w oknie z list kont.
+     __________________________________________________________
+
+4.4. Zaawansowane filtrowanie
+
+   Reguki filtrowania s globalne. Oznacza to, e wiadomoci z rnych
+   kont mog by przenoszone do katalogu innego konta, na przykad
+   poczta odebrana poprzez POP3 moe by przenoszona do katalogu
+   konta IMAP i vice-versa. To jest uyteczna bd denerwujca moliwo
+   zalenie od celu w jakim jest wykorzystywana. Jeli chcesz tego
+   unikn, lecz nadal automatycznie sortowa twoj przychodzc poczt,
+   najlepszym wyjciem jest wyczenie filtrowania i uycie reguek
+   przetwarzania w rnych katalogach z przychodzcymi wiadomociami,
+   ktre ustawie. Reguki przetwarzania s uruchamiane w momencie
+   wchodzenia do katalogu.
+     __________________________________________________________
+
+5. Ksika adresowa
+
+5.1. Podstawowe zarzdzanie
+
+   Ksika adresowa dostpna jest poprzez menu "Narzdzia/Ksika
+   adresowa". Jest zorganizowana w rne sekcje: sekcje "Ksika
+   adresowa" i jej podsekcje, ktre zawieraj kontakty dodane
+   lokalnie; sekcje vCard, ktre zawieraj zaimportowane karty
+   VCard; i jeeli ich obsuga zostaa wkompilowana w Claws Mail,
+   sekcje LDAP i jPilot zawierajce kontakty z twoich serwerw LDAP
+   lub urzdze przenonych.
+
+   W sekcji "Ksika adresowa" moliwe jest utworzenie wielu ksiek
+   adresowych, kada zawiera moe adresy i/lub katalogi. Pomaga to w
+   zorganizowaniu twoich kontaktw w kategorie. Oprcz tego dostpne
+   s grupy adresw, ktre wykorzystane by mog w oknie tworzenia
+   wiadomoci do wysyania wiadomoci do wielu osb jednoczenie. Menu
+   w ksice adresowej umoliwia wykonywanie wszystkich tych
+   czynnoci. Na przykad moesz storzy katalog Rodzina w ksice
+   adresowej "Adresy prywatne" uywajc menu "Ksika/Nowa ksika"
+   kiedy "Adresy prywatne" jest wybrane albo klikajc prawym
+   przyciskiem myszy na niej. W ten sam sposb dodaje si kontakty
+   do ksiki adresowej lub katalogu uywajc menu "Adres" albo
+   klikajc prawym przyciskiem myszy na dany obiekt na licie w
+   prawej czci okna. Gdy dodawany jest nowy kontakt pojawia si
+   okno, w ktrym podaje si szczegowe dane o kontakcie, w pierwszej
+   zakadce (Wywietlana nazwa, Imi, ...) oraz lista wiadomoci w
+   drugiej zakadce.
+
+   atwiejszym sposobem na zapisywanie kontaktw jest zapisywanie
+   ich podczas czytania jednego z ich emaila, uywajc menu
+   "Narzdzia/Dodaj nadawc do ksiki adresowej" albo poprzez
+   kliknicie prawym przyciskiem myszy na adresie email w widoku
+   wiadomoci.
+     __________________________________________________________
+
+5.2. Eksportowanie i importowanie adresw
+
+   Claws Mail potrafi importowa ksiki adresowe z wielu programw
+   pocztowych. Z poziomu menu "Narzdzia" w ksice adresowej
+   istnieje moliwo importu ksiek adresowych programw Pine i Mutt.
+   Te formaty nie s bardzo rozpowszechnione, moesz jednak rwnie
+   importowa pliki LDIF. LDIF jest szeroko wykorzystywanym
+   formatem, wikszo innych programw pocztowych posiada opcje
+   eksportu ich ksiek adresowych do tego formatu. Importowanie
+   pliku LDIF wykonuje si za pomoc "Narzdzia/Importuj plik LDIF",
+   jest to trzystopniowa operacja: wybierz plik do zaimportowania
+   i nazw ksiki adresowej, sprawd pola, ktre chcesz zaimportowa,
+   jeli ustawienia domylne ci nie zadowalaj wtedy uyj przycisku
+   "Zapisz".
+     __________________________________________________________
+
+5.3. Zaawansowane opcje
+
+5.3.1. Uywanie serwerw LDAP
+
+   Serwery LDAP s uywane to rozpowszechniania ksiek adresowych po
+   sieci. S one czsto dostpne w firmach. Wcznie serwer LDAP w
+   Claws Mail jest bardzo proste. Wybierz "Ksika/Nowy serwer LDAP"
+   w menu "Ksika", nastpnie wybierz nazw dla tego serwera LDAP.
+   Wpisz nazw domeny serwera (np. "ldap.sylpheed.org"), jego port
+   jeli to konieczne (standardowy port to 389). Moesz sam wypeni
+   "Podstawowe dane wyszukiwania" jeli wiesz co uywa lub klikn na
+   "Sprawd serwer" aby Claws Mail sprbowa ustawi to automatycznie.
+   Jeli twj serwer wymaga autentykacji, moesz ustawi odpowiednie
+   dane w zakadce "Rozszerzone". Kiedy zamkniesz okno klikajc "Ok"
+   serwer pojawi si na licie rde ksiki adresowej po lewej stronie.
+   Wybierajc serwer zobaczysz pust lis? kontaktw po prawej stronie
+   co moe by mylce na pocztku. Zapobiega to wykonywaniu penego
+   poszukiwania na serwerze bez wyranego wskazania uytkownika.
+   Teraz moesz szuka nazw uywajc formularza "Sprawd" na dole
+   listy. Jeli chcesz uzyska pen list, wydaj zapytanie "*".
+     __________________________________________________________
+
+5.3.2. Integracja z jPilot
+
+   Claws Mail moe korzysta z adresw zapisanych na urzdzeniach
+   przenonych.
+     __________________________________________________________
+
+5.3.3. Wsparcie dla vCard
+
+   Claws Mail moe importowa wizytwki vCard twoich kontaktw poprzez
+   "Ksika/Nowa wizytwka".
+     __________________________________________________________
+
+6. Zaawansowane opcje
+
+6.1. Akcje
+
+   Akcje pozwalaj na uycie penej mocy linii polece systemu UNIX w
+   twoich emailach. Moliwe jest zdefiniowanie rnych komend
+   pobierajcych parametry takie jak plik biecego emaila, lista
+   wiadomoci, obecnie zaznaczony tekst itd. W ten sposb mona
+   wykonywa rne zadania jak np. edycja rda wiadomoci w twoim
+   edytorze tekstowym, "ukrywanie" co masz na myli uywajc ROT-13,
+   nakadanie atek zawartych w wiadomoci itd. Jedynym limitem jest
+   twoja wyobrania. Konfiguracja akcji przebiega poprzez menu
+   Narzdzia.
+
+   Example 1. Proste "Otwrz z..."
+
+   Nazwa menu: Otwrz w kate Komenda: kate %p
+          Otwiera plik zdekodowanej czci MIME(%p) za pomoc kate -
+          edytora tekstu.
+
+   Example 2. Zarzdzanie spamem za pomoc Bogofilter
+
+   Nazwa menu: Bogofilter/Zaznacz jako nie spam Komenda:
+          bogofilter -n -v -B "%f"
+          Zaznacza wybrane wiadomoci (%f) jako nie spam uywajc
+          Bogofiltera.
+
+   Nazwa menu: Bogofilter/Zaznacz jako spam Komenda: bogofilter -s
+          -v -B "%f"
+          Zaznacza wybrane wiadomoci (%f) jako spam uywajc
+          Bogofiltera.
+
+   Example 3. Wyszukaj w Google uywajc pliku skryptowego
+
+   Nazwa menu: Szukaj/Google Komenda: |/cieka/do/google_search.pl
+          Wyszukuje w Google obecnie zaznaczony tekst (|) uywajc
+          skryptu google_search.pl.
+     __________________________________________________________
+
+6.2. Szablony
+
+   Szablony uywane s w oknie tworzenia wiadomoci i su jako
+   szkielet dla emaila. Mog zawiera zarwno stay tekst jak i czci
+   dynamiczne, jak np. imi i nazwisko nadawcy ("Szanowny %N,
+   ..."), dat itd. Uywajc szablonu dynamiczne pola bd zamienione
+   przez odpowiednie dane. Konfiguracja szablonw odbywa si poprzez
+   menu Narzdzia.
+
+   podczas nakadania szablonu zostanie zadanie pytanie czy uy
+   "Wstaw" albo "Podmie", rnice pomidzy podmian a wstawianiem
+   dotycz jedynie treci wiadomoci. "Podmie" zamieni zawarto
+   wiadomoci na t zdefiniowan w szablonie, czyszczc j gdy szablon
+   jest pusty. "Wstaw" wstawi tre szablonu na aktualnej pozycji
+   kursora jeli jest ustawiona.
+
+   Bez wzgldu na to czy wykonywana jest czynno wstawiania czy
+   podmiany kade pole To, CC lub Bcc, ktre jest zdefiniowane w
+   szablonie zostanie doczone do listy odbiorcw w oknie tworzenia
+   wiadomoci. Jeli szablon definiuje temat, zastpi on temat w
+   oknie tworzenia wiadomoci.
+
+   Symbole mog by uywane w kadej czci szablonu, zostan one
+   zamienione na ich dynamiczne odpowiedniki jeli to tylko moliwe,
+   w innym przypadku nie zostanie podmieniona adna warto. Takie
+   zachowanie ma sens w przypadku opowiadania lub przekazywania.
+   Nie ma restrykcji co do tego, ktre symbole mog by uyte w
+   poszczeglnych czciach szablonu, nawet jeli wstawianie treci
+   wiadomoci (%M albo %Q) nie ma wikszego sensu w wikszoci
+   przypadkw.
+
+   Nakadanie szablonu najpierw przetwarza tre wiadomoci a nastpnie
+   nagwki To, Cc, Bcc oraz temat.
+
+   Wicej informacji i przykadw uycia mona znale w FAQ tworzonym
+   przez uytkownikw na stronie Claws Mail
+   http://www.claws-mail.org/faq/
+     __________________________________________________________
+
+6.3. Przetwarzanie
+
+   Reguki przetwarzania s takie same jak reguki filtrowania, z
+   wyjtkiem tego, e s one uruchamiane podczas wchodzenia do danego
+   katalogu i dotycz one tylko niego. Moesz uywa przetwarzania do
+   automatycznego przenoszenia starych wiadomoci do katalogu
+   archiwalnego albo do usuwania takich wiadomoci i do wielu
+   innych rzeczy. Ustawianie reguek przetwarzania kadego katalogu
+   odbywa si poprzez kliknicie na niego prawym przyciskiem myszy.
+
+   Reguki przetwarzania dopeniane s przez reguki przetwarzania
+   wstpnego i kocowego. Podobnie jak one wykonywane s tylko przy
+   otwieraniu danego katalogu, lecz tak samo jak reguki filtrujce
+   s jednakowe dla wszystkich katalogw. Ich konfiguracja odbywa si
+   za pomoc menu Narzdzia. Reguki przetwarzania wstpnego
+   wykonywane s przed specyficznymi dla katalogu regukami
+   przetwarzania, natomiast reguki przetwarzania kocowego
+   wykonywane s po.
+     __________________________________________________________
+
+6.4. Etykiety kolorw
+
+   Etykiety kolorw mog by uyte do podkrelenia wagi danej
+   wiadomoci. Aby oznaczy dan wiadomo naley klikn na ni prawym
+   przyciskiem myszy w widoku wiadomoci i wybra menu "Kolor
+   podwietlenia".
+
+   Etykiety kolorw s konfigurowalne. Zarwno kolor jak i etykieta
+   mog zosta zmienione przez uytkownika. Te preferencje mona znale
+   w zakadce "Konfiguracja/Ustawienia/Wywietlanie/Kolory".
+     __________________________________________________________
+
+6.5. Obsuga list dyskusyjnych
+
+   Claws Mail oferuje wsparcie dla list dyskusyjnych w menu
+   "Wiadomo/Mailing-List". Gdy zostanie wybrana wiadomo z grupy
+   dyskusyjnej to menu pozwala na szybkie zapisywanie,
+   wypisywanie, pisanie wiadomoci, otrzymanie pomocy, kontakt z
+   wacicielem listy i przegldanie archiwum listy; poprzez otwarcie
+   okna tworzenia wiadomoci z ju wypenionym adresem lub otworzenie
+   odpowiedniego adresu w twojej przegldarce internetowej.
+     __________________________________________________________
+
+6.6. Wtyczki
+
+   Mechanizm wtyczek suy do rozszerzania moliwoci oferowanych
+   przez Claws Mail. Na przykad zamy, e chciaby przechowywa swoje
+   emaile w zdalnej bazie SQL. W wikszoci klientw pocztowych byoby
+   to niemoliwe bez zmian w gwnym programie. Z Claws Mail moesz
+   napisa wtyczk, ktra wykona takie zadanie.
+
+   To jest tylko przykad moliwoci. Wiele wtyczek zostao ju
+   napisanych dla Claws Mail i wicej bdzie w przyszoci. Rozdzia
+   Rozszerzanie moliwoci Claws Mail opisuje je dokadnie.
+     __________________________________________________________
+
+6.7. Wdraanie Claws Mail
+
+   Pocztkowy kreator prbuje stworzy konfiguracj uywajc danych
+   zgromadzonych z systemu operacyjnego, jak np. haso uytkownika,
+   domen itd. Jako e jest on zorientowany na prost konfiguracj
+   niektre domylne wartoci czsto musz by zmodyfikowane. Jednake
+   wystpuje moliwo konfiguracji kreatora, zaprojektowana w ten
+   sposb aby umoliwi administratorom w atwy sposb wdroenie Claws
+   Mail dla wielu uytkownikw na jednym komputerze lub wielu za
+   pomoc jakiego narzdzia replikacyjnego.
+
+   Pierwsza cz zawiera tworzenie szablonu kreatora
+   konfiguracyjnego i ustawienia rnych domylnych parametrw nowej
+   instalacji Claws Mail.
+
+     * Zacznij jako nowy uytkownik, ktry nie posiada zaoonego
+       katalogu ~/.claws-mail.
+     * Uruchom Claws Mail i przejd przez kreatora. Wartoci do
+       wypenienia nie bd istotne dla pniejszego wdroenia, wic
+       moesz wcisn nastpne-nastpne-nastpne.
+     * Kiedy kreator si zakoczy i masz przed sob gwne okno Claws
+       Mail skonfiguruj wszystkie domylne opcje, ktre znajd si w
+       kopii pierwotnej. Moesz zaadowa wtyczki, doda kontakty i
+       serwery LDAP, utworzy reguki filtrowania itd.
+     * Jeli jest to niezbdne i wdroony Claws Mail bdzie uywa
+       skrzynek MH stwrz odpowiednie katalogi w skrzynce.
+     * Wycz Claws Mail.
+     * Nastpnie zmodyfikuj nowopowstay plik szablonu kreatora
+       ~/.claws-mail/accountrc.tmpl. W tym pliku znajduj si rne
+       zmienne, ktre odpowiadaj polom w kreatorze. Moesz zostawi
+       je jako komentarz, w tym przypadku zostan uyte domylne
+       wartoci lub poda ich wartoci. Nie wszystkie pola s
+       zmiennymi, np. smtpauth, smtpssl i recvssl s wartociami
+       binarnymi, 0 albo 1, oraz recvtype jest typem liczbowym.
+       Inne pola jak name, email, lub recvuser, s przetwarzane
+       przez kreatora i zmienne, ktre zawieraj s zmieniane na
+       odpowiednie wartoci. Pozwala to na ustawienie wszystkiego
+       dla twoich zastosowa, nawet jeli s to dziwne nazwy serwerw
+       lub uytkownikw.
+     * Zapisz ten plik i usu ~/.claws-mail/accountrc, (zawiera
+       faszywe konto) i ~/.claws-mail/folderlist.xml (eby drzewo
+       katalogw zostao odtworzone dla nowych uytkownikw).
+       Rekursywnie skopiuj katalog .claws-mail do /etc/skel/; jeli
+       wdroony Claws Mail bdzie uywa skrzynek MH skopiuj rwnie
+       katalog Mail. Zmie prawa dostpu (chown) do wszystkich plikw
+       w /etc/skel/.claws-mail i /etc/skel/Mail na root:root ze
+       wzgldu na bezpieczestwo.
+     * Przetestuj! Stwrz nowego uytkownika, zaloguj si, uruchom
+       Claws Mail. Jeli wszystko jest wypenione tak jak chciae ten
+       uytkownik powinien tylko wpisa swoje hasa.
+     * Teraz jeli stworzye konfiguracj pierwotn dla jednego
+       systemu moesz kontynuowa na innych. Jeli to byo tylko dla
+       jednego komputera, skoczye!
+
+   Ustawienia zawarte w pliku accountrc.tmpl:
+
+   domain
+          Nazwa twojej domeny (example.com). Jeli nie zostaa
+          ustawiona zostanie pobrana z nazwy twojego komputera.
+
+   name
+          Nazwa uytkownika. Jeli nieustawiona zostanie pobrana z
+          informacji systemowych UNIX, co zwykle jest poprawne.
+
+   email
+          Email uytkownika. Jeli nieustawiony zostanie pobrany ze
+          zmiennych $name i $domain.
+
+   organization
+          Twoja organizacja. Pusta jeli nie zostanie podana.
+
+   smtpserver
+          Serwer SMTP. Domylnie smtp.$domain
+
+   smtpauth
+          0 lub 1. Czy serwer SMTP wymaga autentykacji. Domylnie
+          0.
+
+   smtpuser
+          Nazwa uytkownika na serwerze SMTP. Jeli nieustawiona
+          zostanie pusta (ta sama nazwa co przy odbiorze)
+
+   smtppass
+          Haso na serwerze SMTP. Jeli nieustawione zostanie puste
+          (jeeli smtppass bdzie puste lecz smtpuser nie, uytkownik
+          zostanie poproszony o haso).
+
+   recvtype
+          Typ serwera do pobierania poczty.. 0 dla POP3, 3 dla
+          IMAP4, 5 dla lokalnej skrzynki MBOX. Domylnie 0 (POP3).
+
+   recvserver
+          Serwer odbiorczy. Jeli nieustawiony, domylnie
+          (pop|imap).$domain, zalenie od zmiennej $recvtype.
+
+   recvuser
+          Nazwa uytkownika na serwerze odbiorczym. Jeli
+          nieustawiona bdzie pobrana z danych systemowych UNIX.
+
+   recvpass
+          Haso na serwerze odbiorczym. Domylnie puste (uytkownik
+          bdzie o nie proszony jednokrotnie na sesj).
+
+   imapdir
+          Katalog IMAP. Domylnie pusty, co w wikszoci przypadkw
+          jest wystarczajce.
+
+   mboxfile
+          Plik skrzynki MBOX w przypadku gdy $recvtype ustawione
+          na 5. Domylnie /var/mail/$LOGIN.
+
+   mailbox
+          Skrzynka MH do przechowywania poczty (gdy $recvtype 0
+          lub 5). Domylnie "Mail".
+
+   smtpssl
+          0 lub 1. Czy uywa SSLa do wysyania poczty. Domylnie 0.
+
+   recvssl
+          0 lub 1. czy uywa SSLa do odbierania poczty. Domylnie 0.
+
+   Rne zmienne, ktre mog by uyte w opcjach domain, name, email,
+   organization, smtpserver, smtpuser, smtppass, recvserver,
+   recvuser, recvpass, imapdir, mboxfile i mailbox:
+
+   $DEFAULTDOMAIN
+          Nazwa domeny pobrana z pliku domeny systemu Unix. Czsto
+          nieprawidowa.
+
+   $DOMAIN
+          Nazwa domeny ustawiona w opcji domain, pierwszej w pliku
+          szablonu.
+
+   $USERNAME
+          Imi i nazwisko uytkownika.
+
+   $LOGIN
+          Nazwa uytkownika w systemie Unix.
+
+   $NAME_MAIL
+          Imi i nazwisko uytkownika ustawione w szablonie, maymi
+          literami ze spacjami zamienionymi na kropki. "Colin
+          Leroy" zamienia si na "colin.leroy".
+
+   $EMAIL
+          Adres email ustawiony w pliku szablonu.
+
+   Dopilnuj aby nie uywa zmiennej przed jej zdefiniowaniem.
+     __________________________________________________________
+
+6.8. Ukryte opcje
+
+   Jest w Claws Mail kilka ukrytych opcji, bez ktrych uytkownicy
+   nie mogli si obej, lecz w opinii autorw nie pasoway do
+   graficznego interfejsu. Moesz je znale i zmieni w
+   ~/.claws-mail/sylpheedrc podczas gdy Claws Mail nie jest
+   uruchomiony.
+
+   bold_unread
+          poka nieprzeczytane wiadomoci na licie uywajc grubej
+          czcionki
+
+   cache_max_mem_usage
+          maksymalna ilo pamici uywanej do przechowywania
+          wiadomoci, w kB.
+
+   cache_min_keep_time
+          minimalny czas trzymania pamici podrcznej, w minutach.
+          Pamici podrczne modsze ni to ustawienie nie bd
+          zwalniane, nawet jeli zuycie pamici bdzie za due.
+
+   compose_no_markup
+          zakaz uywania tekstu pogrubionego i kursywy w oknie
+          tworzenia wiadomoci
+
+   enable_hscrollbar
+          wczenie poziomego paska przewijania w licie wiadomoci
+
+   use_stripes_everywhere
+          wczenie alternatywnych linii w GtkTreeViews
+
+   enable_swap_from
+          wywietlanie adresu email nadawcy zamiast odbiorcy w
+          kolumnie To w katalogu Wysane
+
+   folderview_vscrollbar_policy
+          rodzaj zachowania pionowego paska przewijania w widoku
+          katalogw
+
+   hover_timeout
+          czas w milisekundach, po ktrym drzewa katalogu rozwin si
+          przy przenoszeniu metod drag'n'drop
+
+   log_error_color, log_in_color, log_msg_color, log_out_color,
+          log_warn_color
+          kolory uywane w oknie dziennika
+
+   statusbar_update_step
+          interwa odwieania paskw postpu
+
+   textview_cursor_visible
+          wywietlanie kursora w widoku wiadomoci
+
+   thread_by_subject_max_age
+          liczba dni, w ktrej wiadomo bdzie wtkowana w przypadku
+          uywania opcji 'Uywanie tematu jak i standardowych
+          informacji z nagwka do grupowania wiadomoci w wtki'
+
+   toolbar_detachable
+          ukryj przyciski umoliwiajce przenoszenie paskw
+          narzdziowych
+
+   utf8_instead_of_locale_for_broken_mail
+          uywanie kodowania UTF-8 zamiast lokalnego w przypadku
+          niepoprawnie zakodowanych wiadomoci
+
+   warn_dnd
+          wywietlaj komunikat potwierdzajcy przenoszenie metod
+          drag'n'drop
+     __________________________________________________________
+
+7. Rozszerzanie Claws Mail
+
+7.1. Udostpnione wtyczki
+
+   Moliwoci Claws Mail s rozszerzane poprzez wtyczki. Wtyczki
+   dostarczane z nim s opisane poniej, wszystkie one s kompilowane
+   automatycznie jeli wymagane biblioteki s dostpne.
+
+   Wtyczki s instalowane w $PREFIX/lib/claws-mail/plugins/ i maj
+   rozszerzenie ".so". Aby zaadowa wtyczk wejd w menu
+   "Konfiguracja/Wtyczki" i kliknij na przycisk "Zaaduj wtyczk".
+   Wybierz wtyczk, ktr chcesz uy i nacinij OK.
+
+   Jeli nie moesz znale wtyczki, ktrej poszukujesz jest cakiem
+   moliwe, e twoja dystrybucja GNU/Linux oferuje j jako oddzieln
+   paczk. W tym przypadku poszukaj wtyczki w swoim menaderze
+   paczek.
+
+   Przegldarka HTML Dillo
+          Pozwala na wywietlanie wiadomoci w formacie HTML uywajc
+          przy tym przegldarki Dillo, w wersji 0.7.0 lub nowszej.
+          Domylnie uywa opcji --local przegldarki Dillo w celu
+          bezpiecznego surfowania. Ustawienia znajduj si w
+          "/Konfiguracja/Ustawienia/Wtyczki/Dillo Browser". Dillo
+          mona pobra z http://www.dillo.org/.
+
+   PGP/Core, PGP/Inline i PGP/MIME
+          Obsuguje podpisane i/lub zaszyfrowane wiadomoci PGP.
+          Pozwala na odszyfrowanie wiadomoci, weryfikacj podpisu
+          lub podpisywanie swoich wasnych wiadomoci. Korzysta z
+          GnuPG/GPGME, ftp://ftp.gnupg.org/gcrypt/gpgme/.
+
+   SpamAssassin
+          Wtyczka SpamAssassin ma dwie zasadnicze funkcje:
+
+          Moliwo sprawdzania przychodzcej poczty cignitej z kont
+          POP3, IMAP lub lokalnych przy pomocy SpamAssassin.
+          Opcjonalnie moe usuwa poczt uznan za spam lub zapisywa j
+          do wyznaczonego katalogu. Sprawdzanie poczty moe by
+          wyczone w przypadku gdy jest ona sprawdzana na twoim
+          serwerze.
+
+          Moliwo uczenia SpamAssassin przez uytkownika
+          rozpoznawania spamu lub podanych wiadomoci. Istnieje
+          moliwo wyszkolenia SpamAssassin zaznaczajc pojedyncze
+          wiadomoci jako spam lub dobra wiadomo poprze wskazanie
+          ich z menu kontekstowego lub uywajc przycisku na panelu
+          narzdziowym w gwnym oknie lub oknie tworzenia wiadomoci
+          (zobacz "Konfiguracja/Ustawienia/Paski Narzdzi").
+          Wiadomoci zaznaczone jako spam s opcjonalnie zapisywane
+          do wyznaczonego katalogu.
+
+          Ustawienia wtyczki znajduj si w
+          "Konfiguracja/Ustawienia/Wtyczki/SpamAssassin".
+
+          SpamAssassin mona pobra z
+          http://spamassassin.apache.org/. Wymagana jest wersja
+          3.1.x lub wysza aby monabyo uywa funkcji uczenia poprzez
+          TCP.
+
+   Ikonka
+          umieszcza ikonka w pasku powiadamiania systemowego, ktra
+          wskazuje czy jest nowa poczta. Jej opis wskazuje ilo
+          nowych, nieprzeczytanych i ogln liczb wiadomoci.
+     __________________________________________________________
+
+7.2. Wicej wtyczek
+
+   Stworzono rwnie inne wtyczki, lecz s one dostpne oddzielnie do
+   pobrania. W czasie pisania tego podrcznika uytkownika dostpne s
+   nastpujce wtyczki na stronie
+   http://www.claws-mail.org/plugins.php:
+
+   Acpi Notifier
+          Informuje o nowej poczcie za pomoc diod LED na laptopach
+          takich producentw jak Acer, Asus, Fujitsu czy IBM.
+
+   AttRemover
+          Ta wtyczka usuwa zaczniki z twoich wiadomoci.
+
+   CacheSaver
+          Zapisuje zawarto pamici podrcznej co 60 sekund (albo co
+          zdefiniowany przez uytkownika interwa). Pomaga unika
+          utraty metadanych wiadomoci podczas awarii twojego
+          komputera lub bdu (Claws Mail!).
+
+   etpan! Privacy
+          Obsuguje weryfikacj i deszyfracj wiadomoci w formatach
+          S/MIME, OpenPGP i ascii-armored PGP. Nie obsuguje hase.
+
+   Fetchinfo
+          Dodaje moliwo dodawania nagwkw do emaili zawierajcych
+          informacje dotyczce pobierania jak UIDL, konto Claws
+          Mail, serwer POP, nazw uytkownika i czas pobrania.
+
+   Przegldarka GtkHtml
+          Podobnie jak Dillo, umoliwia wywietlanie wiadomoci w
+          formacie HTML, lecz w lepszej formie(uywa antyaliasingu
+          czcionek).
+
+   Maildir
+          Dodaje obsug skrzynek formatu Maildir++. Za pomoc tej
+          wtyczki moesz wspdzieli swoj skrzynk Maildir++ z innymi
+          klientami pocztowymi lub serwerami IMAP.
+
+   mailMBOX
+          Obsuguje skrzynki pocztowe w formacie mbox.
+
+   Perl
+          Rozszerza moliwoci filtrowania poczty Claws Mail.
+          Oferuje interfejs Perla do mechanizmu filtrujcego Claws
+          Mail, pozwalajc na uycie peni moliwoci Perla filtrach
+          email.
+
+   S/MIME
+          Obsuguje wiadomoci w formacie S/MIME, podpisane i/lub
+          zaszyfrowane. Umoliwia deszyfracj wiadomoci, weryfikacj
+          podpisw i szyfrowanie wasnych emaili. Uywa GnuPG/GPGME i
+          GpgSM, ftp://ftp.gnupg.org/gcrypt/gpgme/.
+
+   SynCE
+          Pomaga w utrzymywaniu ksiki w synchronizacji adresowej
+          urzdze Windows CE (Pocket PC/ iPAQ, Smartphone itp) z
+          ksik adresow Claws Mail, jeli chodzi o adresy email.
+
+   vCalendar
+          Obsuguje wiadomoci formatu vCalendar tworzone przez
+          programy takie jak Evolution czy Outlook oraz subskrypcj
+          Webcal.
+
+   RSSyl
+          Pozwala na czytanie twoich ulubionych wiadomoci RSS w
+          Claws Mail. Obsuguje kanay w formacie RSS 1.0, 2.0 i
+          Atom.
+
+   Jeli jeste programist napisanie wtyczki, eby rozszerzy moliwoci
+   Claws Mail jest chyba najatwiejszym rozwizaniem. Udostpnimy ci
+   miejsce na serwerze dla twojego kodu rdowego oraz bardzo chtnie
+   odpowiemy na twoje pytania za porednictwem listy dyskusyjnej
+   lub kanau IRC, #sylpheed na IRCnet.
+     __________________________________________________________
+
+7.3. Dostp do sieci z poziomu niektrych wtyczek
+
+   Niektre z wtyczek, np. RSSyl, vCalendar i przegldarka GtkHtml
+   wymagaj dostpu do Internetu aby normlanie funkcjonowa (ciganie
+   wiadomoci w przypadku RSSyl czy vCalendar oraz ciganie plikw
+   graficznych w przypadku przegldarki GtkHtml). Te wtyczki uywaj
+   biblioteki Curl. Dlatego te jeli twj dostp do Internetu odbywa
+   si za pomoc proxy, bdziesz zmuszony poinstruowa o tym bibliotek
+   libCurl. Moesz to zrobi ustawiajc zmienn systemow http_proxy.
+   Np, http_proxy=http://user:passwd@myproxy.example.com:8080
+   poinformuje libCurl by poczy si z portem 8080 serwera
+   myproxy.example.com, uywajc nazwy uytkownika "user" i hasa
+   "passwd" aby poczy si z sieci Internet.
+
+   Moesz ustawi t zmienn przed uruchomieniem Claws Mail, np. tak
+   http_proxy=http://user:passwd@myproxy.example.com:8080
+   claws-mail, albo ustwi w swoim pliku ~/.bashrc dodajc nastpujc
+   lini: export
+   http_proxy=http://user:passwd@myproxy.example.com:8080 (bdziesz
+   musia poczy si ponownie, eby to zadziaao).
+     __________________________________________________________
+
+A. Claws Mail FAQ
+
+A.1. Jakie s rnice pomidzy Claws Mail i Sylpheed?
+
+   Claws Mail jest rozszerzon wersj Sylpheed, przekonasz si, e
+   zawiera wszystkie moliwoci Sylpheed a nawet znacznie wicej.
+   Zawiera rwnie zmodyfikowane okna dialogowe w celu uatwienia
+   uytkowania. Wicej informacji na ten temat mona znale na
+   http://www.claws-mail.org/features.php.
+     __________________________________________________________
+
+A.2. Czy Claws Mail obsuguje pisanie wiadomoci w HTML?
+
+   Nie. Dyskusja toczca si na ten temat doprowadzia do decyzji, e
+   poczta w formacie HTML jest zbdna. Jeli jednak chcesz wysya
+   HTML moesz oczywicie doczy j w postaci strony do twojego
+   emaila.
+     __________________________________________________________
+
+A.3. W jaki sposb mog zaproponowa poprawki, zgosi bdy i podyskutowa o
+Claws Mail z innymi uytkownikami?
+
+   atki powinny by zgaszane poprzez SourceForge Patch Tracker na
+   http://sourceforge.net/tracker/?group_id=25528&atid=384600,
+   prosimy jednak o przestrzeganie naszych zasad dotyczcych atek
+   http://www.claws-mail.org/devel.php.
+
+   Zgaszanie bdw odbywa si poprzez system Bugzilla,
+   http://www.thewildbeast.co.uk/sylpheed-claws/bugzilla/.
+
+   eby podyskutowa z innymi uytkownikami mona zapisa si na list
+   dyskusyjn Claws Mail http://www.claws-mail.org/MLs.php.
+     __________________________________________________________
+
+A.4. Czy Claws Mail posiada ochron anty spamow?
+
+   Tak. Posiada wtyczk SpamAssassin. Moesz si o niej dowiedzie
+   wicej w rozdziale Rozszerzanie Claws Mail.
+
+   Uywanie innych filtrw anty spamowych moliwe jest przy pomocy
+   "Filtrowania" i "Akcji", jak np. Bogofiltera. Instrukcje
+   dotyczce uywania Bogofiltera z Claws Mail moesz znale na
+   Bogofilter FAQ.
+     __________________________________________________________
+
+A.5. Czy Claws Mail wspiera potwierdzanie dostarczenia?
+
+   Tak. Aby zada potwierdzenia dostarczenia uyj "Opcje/daj
+   potwierdzenia dostarczenia" w oknie tworzenia wiadomoci. Gdy ty
+   otrzymasz takie danie zostanie ono wywietlone tu nad widokiem
+   wiadomoci. Masz wtedy moliwo "Wylij potwierdzenie" lub jego
+   zignorowanie - potwierdzenia nie s wysyane automatycznie.
+     __________________________________________________________
+
+A.6. W jaki sposb Claws Mail powiadamia o przybyciu nowej poczty?
+
+   Wejd do "Konfiguracja/Ustawienia", w sekcji "Obsuga
+   poczty/Odbieranie" uyj ustawie "Uruchamianie polecenia po
+   otrzymaniu nowej poczty". Innym sposobem jest uycie wtyczki
+   Ikonka.
+     __________________________________________________________
+
+A.7. Dlaczego znaki specjalne (np. umlauty) s wywietlane
+niepoprawnie?
+
+   W wikszoci przypadkw spowodowane jest to uyciem zego kodowania
+   w emailach. Sprbuj ustawi kodowanie uywajc menu
+   "Widok/Kodowanie znakw".
+     __________________________________________________________
+
+A.8. Czy mog zacytowa jedynie cz oryginalnej wiadomoci kiedy
+odpowiadam na email?
+
+   Tak, wybierz myszk cz tekstu wiadomoci i uyj "Odpowiedz".
+     __________________________________________________________
+
+A.9. Gdzie mog znale wicej odpowiedzi na czsto zadawane pytania o
+Claws Mail?
+
+   Wiksz, tworzon przez uytkownikw wersj FAQ mona znale na stronie
+   Claws Mail http://www.claws-mail.org/faq/
+     __________________________________________________________
+
+B. Domylne skrty klawiszowe
+
+B.1. Motywacja i oglne konwencje
+
+   Pomimo tego, e Claws Mail jest graficzn aplikacj i moe by
+   obsugiwana gwnie za pomoc myszki, czasami wymaga rwnie uycia
+   klawiatury. Tworzenie wiadomoci pocztowych jest jednym z
+   powszechnych zada wymagajcym uycia klawiatury. Dla ludzi, ktrzy
+   pisz wiele wiadomoci przenoszenie rk z klawiatury na myszk
+   oznacza spadek produktywnoci, wic Claws Mail dostarcza skrty
+   klawiszowe umoliwiajce szybsz obsug.
+
+   To nie tylko jest uyteczne dla zaawansowanych uytkownikw
+   poprzez oferowanie alternatywnych skrtw klawiszowych ale rwnie
+   pomaga ludziom niepenosprawnym (ktrzy mog mie problemy z obsug
+   urzdzenia wskazujcego) uywa Claws Mail.
+
+   Najbardziej przyjt konwencj jest klawisz Escape. Okna dialogowe
+   lub zwyke okna mog by zamknite za pomoc klawisza Esc.
+
+   S te inne kombinacje domylnie przypisane do opcji menu. Nie bd
+   one tu zawarte, poniewa s one wywietlane po prawej stronie
+   opcji menu co pozwala ci na atw ich nauk, Ponadto jeli dany
+   skrt ci nie odpowiada moesz go zmieni na bieco najedajc myszk
+   na dan opcj i naciskajc podan kombinacj, ale musi ona zawiera
+   klawisze Alt, Ctrl i/lub Shift; pojedyncze klawisze nie mog by
+   ustawione. (To jest standardowe zachowanie programw bazujcych
+   na bibliotece GTK2 jak Claws Mail. To waciwo moe by wyczona w
+   niektrych rodowiskach.)
+
+   W dodatku do tych skrtw klawiszowych s jeszcze inne, ktre rni
+   si jednak w zalenoci od okna, s one podsumowane poniej.
+     __________________________________________________________
+
+B.2. Okno gwne
+
+   Skrt
+   Ctrl+p Drukuj...
+   Ctrl+w Pracuj offline
+   Ctrl+Shift+s Synchronizuj katalogi
+   Ctrl+s Zapisz jako...
+   Ctrl+q Wyjcie
+   Ctrl+c Skopiuj
+   Ctrl+a Wybierz wszystko
+   Ctrl+f Znajd w obecnej wiadomoci...
+   Shift+Ctrl+f Przeszukaj katalog...
+   Ctrl+t Zmie wtkowanie
+   n Przejd do nastpnego listu na licie. Strzaka w d wykonuje t
+   sam operacj.
+   p Przejd do poprzedniego listu. Strzaka w gr wykonuje t sam
+   operacj.
+   Shift+n Przejd do nastpnego nieprzeczytanego listu.
+   Shift+p Przejd do poprzedniego nieprzeczytanego listu.
+   g Przejd do innego katalogu...
+   Ctrl+u Poka rdo wiadomoci
+   Ctrl+h Poka wszystkie nagwki wiadomoci
+   v zmienia widzialno panela wiadomoci. Kiedy jest niewidzialny
+   lista wiadomoci rozszerza si do penej wysokoci okna i widoczne
+   jest wicej linii podsumowania.
+   / Ustawia kursor w polu Szybkie wyszukiwanie i otwiera rwnie
+   panel Szybkiego wyszukiwania jeli jest to konieczne.
+   Ctrl+Alt+u Odwie podsumowanie
+   Ctrl+i Pobierz poczt z aktualnego konta
+   Shift+Ctrl+i Pobierz poczt ze wszystkich kont
+   Ctrl+m Tworzenie nowej wiadomoci
+   Ctrl+r Odpowiedz
+   Shift+Ctrl+r Odpowiedz wszystkim
+   Ctrl+l Odpowiedz do listy dyskusyjnej
+   Ctrl+Alt+f Przeka wiadomo
+   Ctrl+o Przenie...
+   Shift+Ctrl+o Skopiuj...
+   Ctrl+d Przenie do kosza
+   Shift+d Oprnij wszystkie katalogi koszy
+   Shift+* Zaznacz wiadomo
+   u Odznacz wiadomo
+   Shift+! Zaznacz wiadomo jako nieprzeczytan
+   Shift+Ctrl+a Otwrz ksik adresow
+   x Wykonaj
+   Shift+Ctrl+l Otwrz okno logw
+     __________________________________________________________
+
+B.3. Okno tworzenia wiadomoci
+
+       Skrt
+   Ctrl+Return  Wylij
+   Shift+Ctrl+s Wylij pniej
+   Ctrl+m       Docz plik
+   Ctrl+i       Wstaw plik
+   Ctrl+g       Wstaw sygnaturk
+   Ctrl+s       Zapisz
+   Ctrl+w       Zamknij
+   Ctrl+z       Cofnij
+   Ctrl+y       Ponw
+   Ctrl+x       Wytnij
+   Ctrl+c       Skopiuj
+   Ctrl+v       Wklej
+   Ctrl+a       Wybierz wszystko
+   Ctrl+b       Przenie znak do tyu
+   Ctrl+f       Przenie znak do przodu
+   Ctrl+e       Przenie na koniec linii
+   Ctrl+p       Przenie do poprzedniej linii
+   Ctrl+n       Przenie do nastpnej linii
+   Ctrl+h       Usu znak wstecz
+   Ctrl+d       Usu znak w przd
+   Ctrl+u       Usu lini
+   Ctrl+k       Usu do koca linii
+   Ctrl+l       Zawi aktualny paragraf
+   Ctrl+Alt+l   Zawi dugie linie
+   Shift+Ctrl+l Zmie automatyczne zawijanie
+   Shift+Ctrl+x Edytuj za pomoc zewntrznego edytora
+   Shift+Ctrl+a Otwrz ksik adresow
+     __________________________________________________________
+
+C. Podzikowania
+
+   Podrcznik uytkownika Claws Mail zosta napisany przez:
+
+     * Colin Leroy
+     * Paul Mangan
+     * Ricardo Mones
+     * Tristan Chabredier
+
+   Podzikowania dla:
+
+     * Hiroyuki Yamamoto za stworzenie Sylpheed oraz przeszym i
+       obecnym wspautorom.
+     * Caroline, Clo i Silvia za ich cierpliwo podczas dugich
+       sesji programistycznych!
+     * ...
+     __________________________________________________________
+
+D. Sownik poj
+
+   A
+
+   Akcja (reguki filtrowania/przetwarzania)
+          Akcja jest to czynno wykonywana na wiadomoci kiedy
+          odpowiada ona kryteriom reguki. Typow akcj jest
+          przeniesienie wiadomoci do wyznaczonego katalogu. Zobacz
+          rwnie Warunek (reguki filtrowania/przetwarzania) .
+
+   Akcje
+          Akcje s to komendy zdefiniowane przez uytkownika
+          odnoszce sie do wiadomoci lub jej czci uywajc specjalnej
+          skadni.
+
+   ASCII
+          American Standard Code for Information Interchange.
+          Standardowe Kodowanie znakw uywajce 7 bitw. Zdefiniowane
+          jako standard internetowy w RFC 20.
+
+   C
+
+   Certyfikat SSL
+          Certyfikat zainstalowany na serwerze uywany do
+          identyfikacji.
+
+   Cytowanie
+          Odpowiadajc na wiadomo uytkownik zostawia cz oryginalnej
+          wiadomoci w celu zachowania kontekstu. Cytowana sekcja
+          tekstu jest poprzedzona znakiem cytowania, zazwyczaj
+          jest to '>'.
+
+   G
+
+   Grupy dyskusyjne usenet
+          Zbir uporzdkowanych hierarchicznie grup wiadomoci USENET
+          na Serwer News . Protok NNTP pozwala uytkownikowi na
+          subskrypcj jednej lub wielu grup. Nowe wiadomoci w
+          zasubskrybowanych grupach s automatycznie pobierane
+          podczas poczenia.
+
+   H
+
+   HTML
+          Hyper-Text Markup Language (jzyk hipertekstowy) jest
+          standardowym jzykiem do kodowania stron WWW . Niektre
+          programy pocztowe uywaj tego jzyka do zapisywania treci
+          wiadomoci aby doda kilka dodatkowych efektw do tekstu,
+          powoduje to jednak znaczne powikszenie wielkoci
+          wiadomoci. Poczta w formacie HTML uywana jest bardzo
+          czsto przez spamerw do wysyania Spam .
+
+   I
+
+   IMAP4
+          Internet Messaging Access Protocol (wersja 4). Protok
+          dostpu do wiadomoci email na zdalnym serwerze z
+          lokalnego klienta. Wszystkie wiadomoci przechowywane s
+          na zdalnym serwerze.
+
+   K
+
+   Katalog
+          Katalog jest podstawowym pojemnikiem wiadomoci. Katalogi
+          mog by lokalne lub zdalne, ale s zarzdzane przez Claws
+          Mail w taki sam sposb.
+
+   Kodowanie znakw
+          Przyporzdkowanie pisanym symbolom, jak litery i inne
+          symbole wartoci liczbowych reprezentujcych je wewntrz
+          komputera. Najbardziej znanym kodowaniem znakw jest
+          ASCII , lecz zostao one wyparte przez inne, jak np.
+          UTF-8 .
+
+   Kolejka
+          Tymczasowe miejsce przechowywania wiadomoci oczekujcych
+          na wysanie, poniewa nie mogy by wysane ze wzgldu na
+          sieciowy problem lub uytkownik przeznaczy je do
+          pniejszego wysania.
+
+   Konto
+          Konto reprezentuje tosamo w Claws Mail. Jest z nim
+          powizany tylko jeden adres email. Jednake ilo kont, ktre
+          moesz zaoy jest nieograniczona.
+
+   Ksika adresowa
+          Miejsce skadowania nazw, adresw email i innych atrybutw
+          uytkownika. Umoliwia rwnie dostp do serwerw LDAP i plikw
+          vCard .
+
+   L
+
+   LDAP
+          Lightweight Directory Access Protocol. Protok dostpu do
+          informacji katalogowych, takich jak organizacji, osb,
+          numerw telefonw i adresw.
+
+   LDIF
+          LDAP Data Interchange Format. Tekstowy format pliku
+          szeroko uywany do przenoszenia danych pomidzy serwerami
+          LDAP i innymi programami.
+
+   Lista dyskusyjna
+          Elektroniczne listy dyskusyjne s specjalnym uyciem usugi
+          e-mail pozwalajcym na szerokie rozpowszechnianie
+          informacji do wielu uytkownkw sieci Internet. Przybieraj
+          one najczciej form listy dyskusyjnej tak jak np. lista
+          dyskusyjna uytkownikw Claws Mail, ktra wysya wiadomoci
+          do wszystkich jej uytkownikw a oni mog postpi w podobny
+          sposb.
+
+   Lokalna skrzynka mbox
+          Lokalny plik z poczt w formacie MBOX .
+
+   M
+
+   Maildir
+          Format skrzynki pocztowej, w ktrym poczta przechowywana
+          jest w oddzielnych plikach. Maildir++ jest rozszerzeniem
+          formatu maildir.
+
+   MBOX
+          Format skrzynki pocztowej charakteryzujcym si tym, e
+          przechowuje poczt w jednym pliku. Formatem mbox
+          obsugiwanym przez Claws Mail jest mboxrd.
+
+   MH
+          Format skrzynki, w ktrym kada wiadomo jest przechowywana
+          w oddzielnym pliku. To jest domylny format
+          przechowywania poczty uywany przez Claws Mail.
+
+   MIME
+          Multipurpose Internet Mail Extensions. Internetowy
+          standard reprezentacji danych binarnych w postaci
+          tekstowej ASCII treci wiadomoci, kodowania Nagwki i
+          Zacznik .
+
+   N
+
+   Nagwki
+          Odczytywane przez komputery linie tekstu z pierwszej
+          czci wiadomoci. Ich zastosowanie bywa rne. Typowymi
+          nagwkami s Od i Do, ktre wyznaczaj nadawc i odbiorc
+          wiadomoci, inne uywane s przez system poczty. Niektre z
+          nagwkw s wykorzystywane do przekazywania dodatkowych
+          informacji, jak np. X-Face (buka) .
+
+   Natychmiastowe wykonanie
+          Gdy opcja "natychmiastowe wykonanie" jest uyta, operacje
+          przeprowadzane na wiadomociach (jak np. usuwanie czy
+          przenoszenie) s wykonywane od razu. Jeli opcja ta jest
+          wyczona, wszystkie operacje wykonywane s tylko wtedy gdy
+          uytkownika nacinie przycisk "Wykonaj".
+
+   NNTP
+          Network News Transfer Protocol. Protok wykorzystywany do
+          pisania, dystrybuowania i odbierania wiadomoci USENET ,
+          nazywanymi rwnie artykuami news lub wiadomociami usenet.
+
+   O
+
+   Odpowied
+          Wysanie wiadomoci odpowiadajcej na otrzymamy wczeniej
+          email.
+
+   Okno dziennika
+          Specjalne okno, ktre przechowuje informacje o operacjach
+          protokow przeprowadzanych przez Claws Mail. Jest
+          uyteczne narzdzie w usuwaniu bdw w programie.
+
+   P
+
+   Pasek narzdziowy
+          Zbir przyciskw uoonych poziomo uatwiajcych dostp do
+          najczciej uywanych funkcji. Paski narzdziowe w Claws
+          Mail mog by edytowane.
+
+   Podpis cyfrowy (GPG)
+          Porcja danych otrzymana poprzez pocznie wiadomoci i
+          klucz kryptograficznego orzekajca autorstwo, w podobny
+          sposb jak pismo identyfikuje dokumenty pisane odrcznie.
+          Te dane s przesyane razem z wiadomoci dajc moliwo
+          odbiorcy potwierdzenia prawdziwoci.
+
+   PGP Inline
+          Cyfrowa metoda podpisywania charakteryzujca si
+          doklejaniem danych podpisu do treci wiadomoci.
+
+   PGP MIME
+          Cyfrowa metoda podpisywania doczajca dane podpisu jako
+          MIME Zacznik .
+
+   POP3
+          Post Office Protocol (wersja 3). Protok odbierania
+          poczty ze zdalnego serwera. Wiadomoci mog by
+          automatycznie usuwane z serwera po cigniciu.
+
+   Prywatno (GPG)
+          Prywatno dostarcza metody podpisywania i szyfrowania
+          wiadomoci email, ktre wysyasz i rwnie weryfikowania oraz
+          deszyfrowania wiadomoci, ktre otrzymujesz.
+
+   Przekazywanie
+          Przesyanie kopii otrzymanej wiadomoci do innego
+          odbiorcy, ewentualnie doczajc swoj wiadomo.
+
+   Przekierowanie
+          Wysyanie kopii otrzymanej wiadomoci w jej oryginalnej
+          formie.
+
+   Przyklejony (Szybkie Wyszukiwanie)
+          Kiedy ta opcja jest ustawiona w Szybkie wyszukiwanie
+          wyniki wyszukiwania nie s czyszczone przy zmianie
+          katalogw.
+
+   R
+
+   Reguka
+          Logiczna struktura skadajca si z jednego lub kilku
+          warunkw (zobacz Warunek (reguki
+          filtrowania/przetwarzania) ) i jednej lub wicej akcji
+          (zobacz Akcja (reguki filtrowania/przetwarzania) ).
+          Reguki uywane s do filtrowania poczty.
+
+   Reguka filtrowania
+          Reguka uruchamiania na przychodzcych wiadomociach.
+          Reguki filtrowania mog by rwnie uruchamianie rcznie na
+          zawartoci dowolnego katalogu.
+
+   Reguka przetwarzania
+          Reguka lub zbir regu przynalenych do katalogu i
+          wykonywanych po jego otwarciu.
+
+   Rekursywne (Szybkie Wyszukiwanie)
+          Rekursywne Szybkie wyszukiwanie bdzie przeszukiwa take
+          podkatalogi wybranego katalogu.
+
+   S
+
+   Serwer News
+          Serwer oferujcy dostp do wiadomoci USENET w Grupy
+          dyskusyjne usenet poprzez protok NNTP .
+
+   Serwer SMTP
+          Serwer, ktry odbiera poczt od innych komputerw i/lub
+          wysya wiadomoci do innych komputerw uywajc protokou SMTP
+          .
+
+   Skrzynka
+          Gwny katalog w hierarchii katalogw.
+
+   SMTP
+          Simple Mail Transfer Protocol. Protok wysyania wiadomoci
+          na serwery.
+
+   Spam
+          Niechciana poczta, nachalne komercyjne emaile.
+
+   Sprawdzanie pisowni
+          Automatyczna weryfikacja pisowni podczas tworzenia
+          wiadomoci lub po jej zakoczeniu.
+
+   SSL
+          Secure Sockets Layer. Protok uywany do szyfrowania i
+          zabezpieczania danych transmitowanych poprzez sie
+          komputerow.
+
+   STARTTLS
+          STARTTLS (Start Transport Layer Security) - komenda
+          uywana do inicjacji bezpiecznego poczenia pomidzy dwoma
+          serwerami uywajcych SSL .
+
+   Synchronizacja (katalogu)
+          Proces ujednolicania zawartoci lokalnego katalogu z
+          odpowiadajcym mu katalogiem na zdalnym serwerze
+          pocztowym.
+
+   Szybkie wyszukiwanie
+          Zoony sposb poszukiwania wiadomoci wedug najrniejszych
+          kryteriw.
+
+   Szyfrowanie (GPG)
+          Przeksztacenie wiadomoci za pomoc klucza
+          kryptograficznego w taki sposb, e jedynie odbiorca i
+          waciciel hasa do klucza s w stanie odszyfrowa j w celu
+          przeczytania.
+
+   T
+
+   Tematy
+          Zbir ikonek zmieniajcych wygld przyciskw, katalogw i
+          innych graficznych elementw Claws Mail.
+
+   Tworzenie
+          Tworzenie nowej wiadomoci lub odpowiadanie na odebran w
+          oknie tworzenia wiadomoci.
+
+   U
+
+   USENET
+          User's Network. System grup dyskusyjnych Grupy
+          dyskusyjne usenet .
+
+   UTF-8
+          8-bit Unicode Transformation Format. Kodowanie o
+          zmiennej iloci znakw pozwalajce na reprezentacj
+          dowolnego znaku. Internetowy standard zdefiniowany w RFC
+          3629.
+
+   V
+
+   vCard
+          Standard formatu plikw do wymiany wiadomoci osobistych,
+          moe przechowywa takie dane jak adres, numer telefonu
+          itd, podobnie jak karta wizytowa. S czsto doczane do
+          wiadomoci email.
+
+   W
+
+   Warunek (reguki filtrowania/przetwarzania)
+          Zestaw pewnych waciwoci, ktre musi posiada wiadomo aby
+          akcja reguki zostaa wykonana. Zobacz rwnie Akcja (reguki
+          filtrowania/przetwarzania) .
+
+   Wtek (wiadomoci)
+          Zbir wiadomoci w luny sposb powizanych ze sob.
+
+   Wiadomo
+          Wiadomo jest najmniejsz jednostk informacji przetwarzana
+          przez Claws Mail. Wiadomo jest to najczciej wiadomo
+          email, ktra jest przechowywana w formacie MH na dysku.
+          Inne rodzaje wiadomoci i skrzynek s obsugiwane przez
+          Wtyczki .
+
+   Wtyczki
+          Zewntrzne moduy, ktre mog by zaadowane do Claws Mail w
+          celu rozszerzenia jego funkcjonalnoci.
+
+   WWW
+          World Wide Web, poczona linkami sie stron oparta na
+          sieci Internet.
+
+   X
+
+   X-Face (buka)
+          Specjalnie zakodowany biao-czarny obrazek (48x48
+          pikseli) zawarty w nagwkach wiadomoci. Niektre programy
+          pocztowe takie jak np. Claws Mail i inne potrafi
+          zdekodowa i wywietli w obrazek wraz z treci wiadomoci.
+          Mimo e nie s one unikalne na ich podstawie mona atwo
+          zidentyfikowa nadawc.
+
+   Z
+
+   Zacznik
+          Dodatkowy plik(i) doczone do wiadomoci. Niektre zaczniki
+          mog by wywietlane za pomoc Claws Mail, inne wymagaj
+          programwzewntrznych. Wtyczki mog dostarcza dodatkow
+          funkcjonalno dla zacznikw.
+
+   Zawijanie
+          Zmiana struktury tekstu wiadomoci opierajce si na
+          maksymalnej iloci znakw w linijce, zdefiniowanej przez
+          uytkownika. Zawijanie zapewnia to, e paragrafy tekstu s
+          justowane, co oznacza wyrwnywanie do lewego i prawego
+          marginesu.
+
+   Zaznaczenie (wiadomoci)
+          Wasno wiadomoci ustawiana przez uytkownika w celu
+          przycignicia uwagi do tej wiadomoci. Zaznaczenia
+          pokazywane s w specjalnej kolumnie w widoku
+          podsumowania.
+
+   rdo (wiadomoci)
+          Peny tekst wiadomoci email jaki jest przesyany przez
+          sie. W jego skad wchodz nagwki, tre wiadomoci i
+          ewentualnie zakodowanezaczniki.
+     __________________________________________________________
+
+E. Gnu General Public License
+
+   See http://www.gnu.org/licenses/gpl.html.

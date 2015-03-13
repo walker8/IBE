@@ -1,0 +1,6 @@
+notification_la-notification_indicator.lo: notification_indicator.c \
+ ../../../config.h ../../../claws-features.h
+
+../../../config.h:
+
+../../../claws-features.h:

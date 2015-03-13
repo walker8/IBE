@@ -1,0 +1,2210 @@
+Claws Mail - Manuel de l'utilisateur
+
+L'quipe de Claws Mail
+
+   Copyright © 2006-2014 L'quipe de Claws Mail.
+     __________________________________________________________
+
+   Table of Contents
+   1. Introduction
+
+        1.1. Qu'est-ce que Claws Mail?
+        1.2. Ce que Claws Mail n'est pas
+        1.3. Fonctionnalits principales
+        1.4. L'histoire de Claws Mail
+        1.5. Adresses utiles
+
+   2. Commencer avec Claws Mail
+
+        2.1. L'assistant de configuration
+        2.2. Recevoir vos messages
+        2.3. Lire vos messages
+        2.4. crire votre premier message
+        2.5. Envoyer votre premier message
+
+   3. Gestion basique des messages
+
+        3.1. Dossiers
+        3.2. Organisation des dossiers
+        3.3. Filtrage
+        3.4. Recherche
+
+   4. Configuration du compte
+
+        4.1. Prfrences gnrales
+        4.2. Les types de comptes
+
+              4.2.1. POP3
+              4.2.2. IMAP
+              4.2.3. Nouvelles
+              4.2.4. Local
+              4.2.5. SMTP seulement
+
+        4.3. Comptes multiples
+        4.4. Plus de filtrage
+
+   5. Carnet d'adresses
+
+        5.1. Utilisation de base
+        5.2. Exporter et importer des adresses
+        5.3. Filtrage des messages l'aide du carnet d'adressse
+        5.4. Caractristiques avances
+
+              5.4.1. Utilisation de serveurs LDAP
+              5.4.2. Intgration avec jPilot
+              5.4.3. Support vCard
+
+   6. Utilisation avance
+
+        6.1. Actions
+        6.2. Modles
+        6.3. Traitements
+        6.4. Couleurs
+        6.5. Labels
+        6.6. Support des listes de diffusion
+        6.7. Modules
+        6.8. Dployer Claws Mail
+        6.9. Prfrences caches
+        6.10. Autofaces
+
+   7. Etendre les possibilits de Claws Mail
+
+        7.1. Modules
+        7.2. Accs rseau pour les modules
+
+   A. La FAQ Claws Mail
+
+        A.1. Quelles sont les diffrences entre Claws Mail et
+                Sylpheed?
+
+        A.2. Puis-je crire des courriels en HTML avec Claws Mail?
+        A.3. Comment puis-je soumettre des patches, signaler des
+                bogues, et discuter avec d'autres utilisateurs de
+                Claws Mail?
+
+        A.4. Y a-t-il un filtre anti-pourriel dans Claws Mail?
+        A.5. Est-ce que Claws Mail gre les accuss de rception?
+        A.6. Comment Claws Mail peut-il me prvenir lorsque j'ai de
+                nouveaux messages?
+
+        A.7. Pourquoi certains caractres spciaux (accents, ...)
+                sont-ils affichs bizarrement?
+
+        A.8. Puis-je ne citer qu'une partie du message auquel je
+                rponds?
+
+        A.9. O puis-je trouver des rponses d'autres questions
+                frquemment poses sur Claws Mail?
+
+   B. Raccourcis claviers
+
+        B.1. Motivations et conventions gnrales
+        B.2. Fentre principale
+        B.3. Fentre de composition
+
+   C. Remerciements
+   D. Glossaire
+   E. Gnu General Public License
+     __________________________________________________________
+
+1. Introduction
+
+1.1. Qu'est-ce que Claws Mail?
+
+   Claws Mail est un client de courriel qui vise tre rapide,
+   puissant et facile utiliser. Il dpend trs peu de
+   l'environnement de bureau, mais s'y intgre autant que possible.
+   Les dveloppeurs de Claws Mail font tout leur possible pour
+   qu'il reste lger, de manire pouvoir tre utilis sur des
+   ordinateurs peu puissants, dots de peu de mmoire et d'un
+   processeur relativement lent.
+     __________________________________________________________
+
+1.2. Ce que Claws Mail n'est pas
+
+   Claws Mail n'est pas un Gestionnaire d'Informations
+   Personnelles (PIM ou Personal Information Manager) comme
+   Evolution ou Outlook - bien que des modules puissent s'y
+   greffer pour permettre ce genre de fonctionnalits. Claws Mail
+   ne vous permettra pas crire et envoyer de courriels en HTML ou
+   autres choses du mme genre; ce n'est donc peut-tre pas le
+   logiciel dont vous avez besoin dans certains milieux
+   professionnels.
+     __________________________________________________________
+
+1.3. Fonctionnalits principales
+
+   Claws Mail dispose d' peu prs tout ce dont un client de
+   courriel parfait a besoin. Rcupration de messages via POP3,
+   IMAP4, "spool MBOX" local, avec ou sans SSL; gestion de
+   multiples formats d'authentification. Il gre les comptes et les
+   botes multiples, possde des systmes de filtrage et de recherche
+   puissants, un certain nombre de formats d'import/export, les
+   signatures numriques avec GnuPG. Claws Mail a aussi un systme
+   de modules, des barres d'outils personnalisables, la
+   vrification orthographique, des prfrences spcifiques par
+   dossier, et encore beaucoup plus. La liste complte des
+   fonctionnalits est disponible l'adresse
+   http://www.claws-mail.org/features.php.
+     __________________________________________________________
+
+1.4. L'histoire de Claws Mail
+
+   Claws Mail existe depuis avril 2001. Son but premier tait d'tre
+   le centre d'essais de fonctionnalits potentielles de Sylpheed
+   (http://sylpheed.sraoss.jp/en/), de manire pouvoir les tester
+   intensivement sans compromettre la stabilit de Sylpheed. Les
+   dveloppeurs de Claws Mail synchronisaient rgulirement leur code
+   avec celui de Sylpheed, et l'auteur de Sylpheed, Hiroyuki
+   Yamamoto, a rcupr quelques nouvelles fonctionnalits qui
+   l'intressaient, une fois stabilises.
+
+   l'origine, Sylpheed et Claws Mail taient bass sur GTK1. Le
+   travail sur les version GTK2 a dmarr dbut 2003, et la premire
+   version moderne (base sur GTK2) de Claws Mail est sortie en
+   mars 2005. Depuis ce temps, les buts de Sylpheed et Claws Mail
+   ont diverg de plus en plus, et Claws Mail est devenu une entit
+   indpendante.
+     __________________________________________________________
+
+1.5. Adresses utiles
+
+   Site web: http://www.claws-mail.org/
+
+   Dernires nouvelles: http://www.claws-mail.org/news.php
+
+   Modules externes: http://www.claws-mail.org/plugins.php
+
+   Thmes: http://www.claws-mail.org/themes.php
+
+   Outils: http://www.claws-mail.org/tools.php
+
+   Listes de diffusion: http://www.claws-mail.org/MLs.php
+
+   Suivi de bogues:
+   http://www.thewildbeast.co.uk/claws-mail/bugzilla/
+
+   Code: http://git.claws-mail.org/
+
+   Projet: http://sourceforge.net/projects/claws-mail/
+     __________________________________________________________
+
+2. Commencer avec Claws Mail
+
+2.1. L'assistant de configuration
+
+   La premire fois que vous allez lancer Claws Mail, il vous
+   posera quelques questions afin de mettre en place votre premier
+   compte. Ces questions sont simples et groupes en quelques
+   pages.
+
+   Tout d'abord Claws Mail vous demandera votre nom (en gnral il
+   le trouvera tout seul), votre adresse email, et le nom de votre
+   socit (optionnel).
+
+   La page suivante vous permettra de remplir les dtails
+   concernant la rception de vos messages. Les champs prsents dans
+   la page diffreront en fonction du "Type de serveur":
+
+   POP3
+          Si vous choisissez POP3, il vous faudra entrer l'adresse
+          du serveur, votre nom d'utilisateur, et votre mot de
+          passe. Le mot de passe est optionnel, si vous le laissez
+          vide, Claws Mail vous le demandera la premire connexion
+          chaque fois que vous le lancerez.
+
+   IMAP
+          Si vous choisissez IMAP, il vous faudra entrer l'adresse
+          du serveur, votre nom d'utilisateur, votre mot de passe,
+          et le rpertoire IMAP4. Le mot de passe est optionnel, si
+          vous le laissez vide, Claws Mail vous le demandera quand
+          ce sera ncessaire. Le rpertoire IMAP4 est aussi
+          optionnel, ce rglage est rarement utile et vous pouvez
+          probablement le laisser vide.
+
+   Fichier MBOX local
+          Si vous choisissez Fichier MBOX local, vous n'aurez qu'
+          entrer le chemin vers votre bote aux lettres MBOX.
+
+   Sur la page suivante, vous seront demands les dtails concernant
+   votre serveur SMTP (parfois appel "serveur d'envoi"). Vous
+   pourrez spcifier si vous devez vous authentifier pour envoyer
+   des messages. C'est rarement le cas lorsque vous vous connectez
+   Internet avec un fournisseur d'accs, plus souvent lorsque vous
+   configurez un compte professionnel.
+
+   Si vous avez choisi POP3 ou Fichier MBOX local, la page
+   suivante vous demandera o enregistrer vos messages sur le
+   disque. La valeur par dfaut, "Mail", est en gnrale convenable,
+   et enregistrera vos messages dans un rpertoire "Mail" la racine
+   de votre rpertoire utilisateur.
+
+   Si votre version de Claws Mail gre OpenSSL, vous verrez ensuite
+   la page "Scurit", o vous serez mme de choisir ou non de
+   chiffrer les connexions vers vos serveurs d'envoi et de
+   rception. La plupart des fournisseurs d'accs ne permettent pas
+   cela, mais la plupart des entreprises le font. Si vous n'tes
+   pas sr, vous pouvez laisser ces rglages comme ils sont par
+   dfaut.
+
+   Vous pouvez maintenant cliquer sur le bouton Enregistrer, et
+   commencer apprcier pleinement Claws Mail.
+     __________________________________________________________
+
+2.2. Recevoir vos messages
+
+   Vous pouvez dclencher la rception de vos messages soit via le
+   bouton de la barre d'outils nomm "Relever le courrier", soit
+   par le menu "Message/Recevoir".
+
+   Si vous dsirez que Claws Mail relve vos messages
+   automatiquement intervalles rguliers, vous pouvez le configurer
+   en ce sens dans la page de prfrences "Traitement des messages:
+   Rception". Cliquez sur "Relever automatiquement le courrier
+   toutes les [...] minutes", et choisissez l'intervalle souhait.
+     __________________________________________________________
+
+2.3. Lire vos messages
+
+   Une fois que vous aurez reu vos messages, ils seront rangs dans
+   votre Bote de Rception. Le nombre total de messages dans un
+   dossier est affich droite du nom du dossier, avec le nombre de
+   messages nouveaux et non lus. Pour les voir, cliquez sur le
+   dossier, afin d'afficher la liste de messages qu'il contient
+   dans la liste de droite. Vous pourrez ensuite cliquer sur
+   chaque message avec la souris, ou avec le clavier,
+   principalement en utilisant les touches Haut, Bas, et Espace.
+   Vous pouvez aussi utiliser d'autres touches pour naviguer dans
+   la liste, comme P ou N (prcdent et suivant).
+     __________________________________________________________
+
+2.4. crire votre premier message
+
+   Une fentre de composition de message s'ouvrira en cliquant sur
+   le bouton "Composition". Cette fentre contient diffrents champs
+   que vous devriez reconnatre sans difficult: si vous avez de
+   multiples comptes, le champ De pourra tre utilis pour choisir
+   quel compte utiliser pour ce message. Le champ contiendra le
+   destinataire de votre message; lorsque vous le remplirez, un
+   second champ apparatra, vous permettant d'envoyer le message
+   plusieurs destinataires. Vous pouvez aussi changer ce champ en
+   champ Cc, en choisissant dans la liste droulante
+   correspondante. Vous pourrez ensuite remplir le champ Sujet du
+   message, puis taper son contenu.
+
+   Petite note propos du sujet d'un message: Claws Mail vous
+   demandera confirmation avant d'envoyer un message avec un Sujet
+   vide. C'est parce qu'il peut tre ennuyeux pour le destinataire
+   de recevoir un message sans sujet, tant donn que cela complique
+   la lecture et la gestion du message.
+     __________________________________________________________
+
+2.5. Envoyer votre premier message
+
+   Lorsque vous aurez fini d'crire votre premier message, vous
+   pourrez cliquer sur le bouton "Envoi" afin de l'envoyer
+   immdiatement, ou bien sur le bouton "Envoyer plus tard" pour
+   mettre le message dans la File d'attente. Lorsque vous utilisez
+   "Envoyer", la fentre de composition se fermera ds que le
+   message sera parti, et restera ouverte en cas de problme.
+   "Envoyer plus tard", par contre, fermera la fentre
+   immdiatement, et vous trouverez votre message dans le dossier
+   "File d'attente". Dans ce dernier cas, votre message partira
+   effectivement lorsque vous cliquerez sur le bouton "Envoyer" de
+   la barre d'outils dans la fentre principale.
+
+   Les messages que vous envoyez sont enregistrs dans le dossier
+   "Envoys", afin que vous puissiez retrouver les messages que
+   vous avez envoys diverses personnes, ou encore pour rutiliser
+   un message dj envoy comme brouillon pour un nouveau.
+     __________________________________________________________
+
+3. Gestion basique des messages
+
+3.1. Dossiers
+
+   Si vous recevez beaucoup de messages, vous allez rapidement
+   trouver que votre Bote de Rception grossit jusqu' devenir
+   difficile utiliser. Vous n'arriverez mme plus retrouver un
+   message reu les jours prcdents. C'est pourquoi Claws Mail,
+   comme tous les bons clients de courriel, vous fournira
+   plusieurs solutions pour mieux organiser vos courriels.
+
+   Vous pouvez crer autant de dossiers et sous-dossiers que
+   ncessaire. Par exemple un dossier pour votre famille, un
+   dossiers 'Amis', des dossiers pour les listes de diffusion, des
+   dossiers pour archiver les courriels des annes passes, etc.
+   Pour crer un nouveau dossier, faites un clic droit sur le
+   dossier parent et choisissez "Nouveau dossier..." dans le menu
+   droulant. Par exemple pour crer un dossier 'Amis' dans votre
+   dossier 'Bote de Rception', faites un clic droit sur la Bote de
+   Rception, choisissez "Nouveau dossier...", tapez 'Amis' dans le
+   dialogue qui apparat, et validez.
+     __________________________________________________________
+
+3.2. Organisation des dossiers
+
+   Maintenant que vous avez cr de multiples dossiers, vous pouvez
+   les manipuler, ainsi que les messages qu'ils contiennent, grce
+   diffrents menus et par glisser-dposer. Pour dplacer un dossier
+   dans un autre, vous pouvez choisir le sous menu "Dplacer le
+   dossier...", slectionner le nouveau dossier parent, et valider.
+   Ceci dplacera le dossier et les messages qu'il contient dans le
+   nouveau dossier parent. Vous pouvez aussi tirer ce dossier avec
+   la souris, et le "lcher" sur le dossier de destination.
+
+   Si vous dsirez supprimer un dossier et tous les messages qu'il
+   contient, choisissez "Supprimer le dossier...". Comme cette
+   opration est potentiellement dangereuse pour vos donnes, une
+   confirmation vous sera demande. Les dossiers supprims ne
+   peuvent pas tre rcuprs, ni les messages qu'ils contenaient.
+
+   De la mme manire que vous pouvez dplacer vos dossiers les uns
+   par rapport aux autres, vous pouvez dplacer vos messages d'un
+   dossier un autre. Les mmes mthodes sont utilises: soit un
+   glisser-dposer, soit par le menu contextuel "Dplacer..." des
+   messages. Vous pouvez dplacer plusieurs messages la fois en en
+   slectionnant plusieurs avec la touche Maj (Shift) ou Control.
+   Vous pouvez aussi copier les messages au lieu de les dplacer,
+   en gardant la touche Control appuye au moment de lcher le
+   glisser-dposer, ou avec le menu contextuel "Copier...".
+     __________________________________________________________
+
+3.3. Filtrage
+
+   Une fois votre arborescence de dossiers faite, vous prfrerez
+   certainement que Claws Mail trie vos messages automatiquement,
+   plutt que de le faire vous-mme lorsque vous recevez des
+   messages. Pour cela, vous pouvez utiliser la fonctionnalit de
+   filtrage.
+
+   Vous trouverez les prfrences et rglages de filtrage dans le
+   menu "Configuration". Dans ce dialogue, vous pourrez dfinir de
+   nouvelles rgles, en modifier, en effacer, changer leur ordre et
+   les activer/dsactiver. Les rgles de filtrage sont dfinies en
+   cinq parties: un tat (activ/dsactiv), un nom, un nom de compte,
+   une condition, et une action. Toute rgle dsactive est tout
+   bonnement ignore. Le nom est optionnel, il est l pour vous
+   aider vous souvenir de quelle rgle fait quoi. La condition est
+   une expression dfinissant ce que Claws Mail doit vrifier lors
+   du tri des messages, comme par exemple 'to matchcase
+   claws-mail-users', qui signifie "Message envoy une adresse
+   contenant claws-mail-users". Vous pouvez facilement dfinir des
+   conditions sans vous souvenir de la syntaxe, en cliquant sur le
+   bouton "Dfinir..." droite du champ. La dernire partie d'une
+   rgle est l'action, qui dit Claws Mail ce qu'il doit faire
+   lorsque des messages correspondant la condition ont t trouvs.
+   Par exemple, 'mark_as_read' marque le message comme lu ds qu'il
+   arrive, ou 'move #mh/Mailbox/Amis' dplace le message dans votre
+   sous-dossier 'Amis'. Ici aussi, un bouton "Dfinir..." vous
+   aidera crire l'action.
+
+   Rgles de filtrage spcifiques un compte: il est possible de
+   faire en sorte qu'une rgle de filtrage soit associe
+   spcifiquement un compte. Il faut pour cela slectionner la rgle,
+   choisir un nom compte dans la liste des comptes juste en
+   dessous du "Nom" de la rgle puis cliquer sur le bouton
+   "Remplacer" pour mettre jour la rgle existante (ou le bouton
+   "Ajouter" si vous crez une nouvelle rgle). Si vous assignez une
+   rgle de filtrage un compte au lieu de la laisser assigne
+   "Tous"(c'est le cas par dfault), cette rgle ne sera prise en
+   compte que lors de la rception de messages pour ce compte
+   spcifiquement. Assignez l "Tous" et elle sera utilise pour
+   filtrer tous les comptes. L'assignation d'une rgle un compte
+   spcifique n'est possible que pour le filtrage (pour la rception
+   ou l'application manuelle). Cette fonctionnalit n'est pas
+   disponible pour le traitement des dossiers et le
+   pr/post-traitement. Lors du filtrage manuel, si une ou
+   plusieurs rgles sont associes des comptes spcifiques, il vous
+   sera au pralable demand quoi faire de ces rgles. Les choix
+   possibles sont: "ignorer ces rgles" (elles ne seront pas
+   appliques), "appliquer ces rgles sans se soucier des comptes
+   auxquels elles sont rattaches" ou "utiliser le compte courant
+   pour ces rgles". Attention: le choix retenu sera utilis
+   automatiquement lors de la prochaine application manuelle des
+   filtres si vous dcochez la case "Afficher ce message la
+   prochaine fois" et procdez au filtrage.
+
+   Une fois la rgle de filtrage dfinie, vous devez l'ajouter la
+   liste de rgles existantes avec le bouton "Ajouter". N'oubliez
+   pas, l'ordre des rgles est important: si Claws Mail trouve une
+   rgle qui correspond un message et qui le dplace ou l'efface, la
+   suite des rgles n'est pas teste ni excute. C'est pourquoi vous
+   pouvez r-ordonner vos rgles grce aux boutons disponibles droite
+   de la liste (ou par glisser-dposer).
+
+   Il existe aussi une mthode rapide de cration de rgles de
+   filtrage en se basant sur le message actuellement slectionn.
+   Aprs avoir slectionn un message pour lequel vous voulez crer
+   une rgle, choisissez "Crer une rgle de filtrage..." dans le
+   menu "Outils", puis choisissez dans le sous-menu:
+   "Automatiquement" est utilis pour les messages de liste de
+   diffusion, "avec De" cre un filtre bas sur l'expditeur, "avec "
+   cre un filtre bas sur le(s) destinataire(s), et "avec Sujet"
+   cre un filtre bas sur le sujet du message. Chacun de ses types
+   de filtrages a ses avantages, vous de dcider lequel sera le
+   mieux adapt. En gnral, "avec De" est utile pour vos contacts
+   rguliers et personnels, et "avec " est utile pour sparer les
+   messages que vous recevez sur diffrents comptes.
+     __________________________________________________________
+
+3.4. Recherche
+
+   Il existe plusieurs mthodes pour rechercher dans vos messages.
+
+   L'une d'entre elles est assez rpandue, vous pouvez la trouver
+   dans le menu "Edition/Chercher dans le dossier...". Ceci ouvre
+   une fentre de recherche o vous pouvez spcifier un ou plusieurs
+   champs o chercher, comme De, , Sujet, et Message. Aprs avoir
+   choisi vos critres, utilisez les boutons "Revenir" et "Avancer"
+   pour naviguer dans les messages correspondants, ou utilisez
+   "Chercher tous" pour slectionner tous les messages
+   correspondants en une fois. Soyez conscients, toutefois, que la
+   recherche dans le message entier est plus lente que la
+   recherche dans les en-ttes, car les corps de messages ne sont
+   pas dans les caches de Claws Mail. Il est aussi possible
+   d'utilise la "Recherche avance", qui vous permet d'utiliser des
+   expressions du type de celles utilises dans les rgles de
+   filtrage.
+
+   Si vous cherchez une partie spcifique dans un long message,
+   vous pourrez utiliser le menu "Edition/Recherche dans le
+   message...". Cela fonctionne comme la recherche dans un
+   document texte.
+
+   La dernire mthode pour rechercher est la "Recherche rapide",
+   que vous pouvez afficher ou cacher en cliquant sur la petite
+   loupe sous la liste de messages. Elle est aussi accessible par
+   le menu "Edition/Recherche rapide". La "recherche rapide" est
+   plus puissante que la recherche normale, car elle peut, en plus
+   de chercher dans les en-ttes normaux, rechercher avec une
+   pseudo-condition de filtrage lorsqu'elle est en mode "Avanc".
+   Dans ce mode, le bouton "Syntaxe avance..." vous permettra de
+   voir quelle syntaxe vous pouvez utiliser, et le bouton "..."
+   vous permettra de crer une rgle avec l'interface usuelle.
+   Enfin, la "recherche rapide" peut chercher de manire rcursive,
+   dans les sous-dossiers du dossier courant.
+
+   Lorsque vous appuyez sur Entre aprs avoir spcifi la chane de
+   recherche, la liste de messages affiche va tre rduite pour ne
+   plus vous prsenter que les messages correspondants. Si la
+   recherche tait rcursive, les sous-dossiers contenant un ou des
+   messages correspondants prendront une icne de loupe. Ceci vous
+   permettra de rechercher dans tous vos messages, d'un seul coup.
+   Enfin, le rglage "Permanent" de la "recherche rapide" permet
+   d'avoir une recherche qui reste active lorsque vous changez de
+   dossier, ou non. Cela peut permettre de chercher la mme chose
+   dans plusieurs dossiers sans pour autant chercher rcursivement
+   dans leur premier parent commun.
+     __________________________________________________________
+
+4. Configuration du compte
+
+4.1. Prfrences gnrales
+
+   Le premier onglet des prfrences du compte, nomm "Gnral",
+   comporte des informations de base sur le compte. Dans cet
+   onglet vous pouvez indiquer votre nom, votre adresse de
+   messagerie, votre socit et des informations basiques de
+   connexion. Le nom du compte est seulement utilis par Claws Mail
+   en interne, comme par exemple, dans le bouton de changement
+   d'identit en bas droite de la fentre principale. Le panneau
+   Configuration des serveurs vous permet d'indiquer le protocole
+   utilis pour la rception (information qui n'est plus modifiable
+   par la suite), le(s) serveur(s) utilis(s) pour envoyer vos
+   courriels (habituellement pop.fai.com et smtp.fai.com o "fai"
+   veux dire Fournisseur d'Accs Internet) ainsi que votre login et
+   votre mot de passe sur le serveur de rception.
+
+   Dans l'onglet "Rception" vous pouvez changer le comportement
+   par dfaut de Claws Mail. Par exemple, laisser les messages sur
+   le serveur pour un temps, ne pas tlcharger les courriels trop
+   gros ou spcifier si vous souhaitez que les rgles de filtrage
+   s'appliquent ce compte de messagerie. Le paramtre "taille
+   maximale pour la rception" est utilis pour viter de tlcharger
+   des courriels trop gros. Quand vous recevez un courriel dont la
+   taille est plus importante que cette limite, il sera
+   partiellement tlcharg et vous aurez par la suite le choix de le
+   tlcharger compltement ou de le dtruire du serveur. Ce choix
+   vous sera prsent lorsque vous lirez le message.
+
+   L'onglet "Envoyer" contient les prfrences que vous voulez
+   ajouter aux courriels que vous envoyez, par exemple en-tte
+   X-Face ou Face, ainsi que les informations d'authentification
+   sur le serveur d'envoi. La plupart du temps les FAI autorisent
+   leurs clients envoyer des courriels via leur propre serveur
+   SMTP sans authentification, mais dans certains cas il peut-tre
+   ncessaire de vous authentifier avant d'envoyer un courriel. Il
+   y a plusieurs possibilits pour faire cela. La meilleure est
+   sans doute SMTP AUTH. Lorsque ce n'est pas possible, on utilise
+   gnralement "S'authentifier sur le POP3 avant l'envoi" qui se
+   connecte d'abord au serveur POP (qui requiert une
+   authentification), se dconnecte et envoie le courriel.
+
+   L'onglet "Composition" comporte les options permettant de
+   changer le comportement de la fentre de composition d'un
+   message avec ce compte. Il est possible de spcifier une
+   signature insrer automatiquement et de renseigner les valeurs
+   par dfaut des adresses Cc, Cci et "Rpondre ".
+
+   Vous pouvez choisir dans l'onglet "Confidentialit" le niveau de
+   "paranoa" pour votre compte. Vous voudrez certainement que tous
+   vos messages envoys soient signs et/ou crypts. Signer tous vos
+   messages et pas seulement ceux importants vous protgera, par
+   exemple, des faux courriels envoys dans votre dos vos
+   collaborateurs. Ceci peut aider sauver des situations
+   potentiellement problmatiques.
+
+   L'onglet SSL est aussi li la scurit mais cette fois les
+   paramtres qu'il contient s'appliquent au transport du message
+   et non pas leur contenu. SSL chiffre la connexion entre le
+   serveur et vous afin d'viter que d'autres personnes ne puissent
+   lire vos courriel et mots de passe lorsqu'ils transitent. SSL
+   devrait tre utilis chaque fois que c'est possible.
+
+   Finalement l'onglet "Avanc" vous permet de spcifier les ports
+   et les domaines si ceux par dfaut ne doivent pas tre utiliss.
+   Normalement, vous pouvez laisser ces champs vides. Vous pouvez
+   aussi spcifier les dossiers pour les messages envoys, dans la
+   file d'attente, dtruits et les brouillons.
+     __________________________________________________________
+
+4.2. Les types de comptes
+
+   Nous venons de voir que lorsqu'un compte est cr il n'est plus
+   possible de changer son type (le protocole) par la suite. Cela
+   tient au fait que ces protocoles ne sont pas exactement
+   identiques. En effet, la plus grande partie des options POP3
+   sont sans signification pour l'IMAP par exemple.
+     __________________________________________________________
+
+4.2.1. POP3
+
+   POP3 est l'un des deux protocoles les plus utiliss et est
+   disponible chez pratiquement tous les FAI de la Terre. Son
+   principal avantage est qu'il permet de tlcharger les courriels
+   sur son ordinateur. Ceci implique que l'accs vos messages sera
+   trs rapide une fois que le tlchargement sera termin.
+   L'inconvnient de POP3 est qu'il est plus difficile de
+   synchroniser vos botes aux lettres lectroniques sur plusieurs
+   ordinateurs (cela vous obligeant garder vos messages sur le
+   serveur pour quelques jours) notamment il sera trs difficile de
+   garder une trace des courriels que vous avez lus, auxquels vous
+   avez rpondus, etc., d'un ordinateur l'autre.
+
+   Les courriels reus d'un compte POP3 seront stocks dans une bote
+   MH dans votre arbre de dossiers.
+     __________________________________________________________
+
+4.2.2. IMAP
+
+   IMAP est le second protocole le plus utilis. Son but est de
+   pallier aux inconvnients de POP3. Lorsque vous utilisez IMAP,
+   la liste de vos dossiers et vos messages sont tous gards sur un
+   serveur central. Ceci ralentit les accs aux courriels car ils
+   sont tlchargs la demande. Toutefois, lorsque vous utilisez un
+   autre ordinateur ou un autre client de messagerie vos courriels
+   seront dans l'tat dans lequel vous les avez laisss, y compris
+   leur statut (lu, non lu, rpondu, etc.).
+
+   Quand vous crez un compte IMAP, une bote aux lettres
+   lectronique est cre pour ce compte dans l'arbre des dossiers.
+     __________________________________________________________
+
+4.2.3. Nouvelles
+
+   Le protocole News (NNTP) est utilis pour envoyer et recevoir
+   des articles USENET. Les messages sont stocks sur un serveur
+   central et tlchargs la demande. Ils ne peuvent pas tre dtruits
+   ou supprims par l'utilisateur.
+
+   Lorsque vous crez un compte News une bote aux lettres
+   lectronique est cre pour ce compte dans l'arbre des dossiers.
+     __________________________________________________________
+
+4.2.4. Local
+
+   Le protocole "Fichier local MBOX" peut tre utilis si vous
+   faites fonctionner un serveur SMTP sur votre ordinateur et/ou
+   que vous voulez recevoir vos logs systme simplement.
+
+   Les messages reus d'un compte local sont stocks dans une bote
+   aux lettre lectronique au format MH dans l'arbre des dossiers.
+     __________________________________________________________
+
+4.2.5. SMTP seulement
+
+   Le protocole "Aucun (SMTP seulement)" ne permet pas la rception
+   des courriels. Il permet en revanche de crer diffrentes
+   identits que vous pourrez utiliser pour envoyer vos messages
+   avec diffrents alias par exemple.
+     __________________________________________________________
+
+4.3. Comptes multiples
+
+   Il est possible de crer plusieurs comptes dans Claws Mail. Pour
+   les comptes POP vous pouvez choisir d'enregistrer vos courriels
+   de vos diffrents comptes dans le mme dossier en utilisant
+   l'onglet "Rception" des prfrences gnrales. Les comptes IMAP et
+   News ont chacun leur propre bote aux lettres lectroniques dans
+   l'arbre des dossiers.
+
+   Vous pouvez choisir quels comptes seront vrifis lorsque vous
+   utilisez la commande "Relever le courrier de tous les comptes"
+   (ou "Tous" dans la barre d'outils) en les slectionnant dans
+   l'onglet "Rception" des prfrences gnrales ou dans la colonne
+   "G" de la liste des comptes.
+     __________________________________________________________
+
+4.4. Plus de filtrage
+
+   Par dfaut, les rgles de filtrages sont globales. Cela veut dire
+   que les courriels des diffrents comptes peuvent tre filtrs dans
+   le dossier d'un autre compte. Par exemple un message reu par un
+   compte POP3 pourra tre filtr dans un dossier d'un compte IMAP
+   et vice-versa. En fonction de ce que vous voulez faire cela
+   peut-tre vous tre trs utile ou trs embtant. Si vous voulez
+   viter cela mais souhaitez toujours trier automatiquement votre
+   courriel entrant, la meilleure chose faire est de dsactiver le
+   Filtrage sur les comptes et utiliser des rgles de traitement
+   dans les diffrentes botes de rception des comptes. Les rgles de
+   traitement sont excutes lorsque vous entrerez dans le dossier
+   ou en les excutant manuellement partir du menu contextuel du
+   dossier. Il est aussi possible de dfinir des rgles de filtrages
+   spciques un compte particulier, pour une utilisation plus fine
+   lors de la relve du courrier ou le filtrage manuel de messages.
+     __________________________________________________________
+
+5. Carnet d'adresses
+
+5.1. Utilisation de base
+
+   Le carnet d'adresse est accessible au travers du menu
+   "Outils/Carnet d'adresses". Il est organis en plusieurs
+   sections: le "Carnet d'adresses" et ses sous-parties qui
+   contiennent les contacts que vous avez ajouts localement; la
+   section des vCards qui contiennent les vCards importes; et, si
+   le support a t compil avec Claws Mail, les sections LDAP et
+   jPilot qui contiennent les contacts issus de serveurs LDAP ou
+   de vos organiseurs de poche.
+
+   Dans la section du "carnet d'adresses" il est possible de crer
+   de nombreux carnets d'adresses; chacun peut contenir des
+   adresses et/ou des dossiers. Ceci peut vous aider dans
+   l'organisation de vos contacts en catgories. De plus, il est
+   galement possible de crer des groupes d'adresses qui pourront
+   tre utiliss dans la fentre de composition pour envoyer un mme
+   courriel plusieurs personnes en une fois. Les menus dans la
+   fentre du carnet d'adresses permettent de faire tout ceci. Par
+   exemple, vous pouvez crer un dossier Famille l'intrieur de
+   votre carnet d'adresses "Adresses Personnelles" en utilisant le
+   menu "Carnet/Nouveau dossier" alors que "Adresses Personnelles"
+   est slectionn, ou en utilisant un clic droit sur ce dernier. De
+   la mme manire vous pouvez ajouter des contacts un carnet
+   d'adresses en utilisant le menu "Adresse" ou en faisant un clic
+   droit sur un item de la liste dans la partie droite de la
+   fentre. L'ajout d'un contact fait apparatre une nouvelle fentre
+   dans laquelle vous pourrez renseigner les dtails concernant le
+   contact dans le premier onglet (Nom affich, Nom, ...), et une
+   liste d'adresses de messagerie lectronique dans l'onglet
+   suivant.
+
+   Une faon plus simple de sauvegarder ses contacts dans le carnet
+   d'adresse est de les sauvegarder au fur et mesure que vous
+   lisez l'un de leurs messages en utilisant le menu
+   "Outils/Ajouter l'expditeur au carnet d'adresse" ou en faisant
+   un clic droit sur une adresse lectronique dans la vue du
+   message.
+     __________________________________________________________
+
+5.2. Exporter et importer des adresses
+
+   Claws Mail peut importer des carnets d'adresses de la majorit
+   des programmes de courrier lectronique facilement. Depuis le
+   menu "Outils" du carnet d'adresses vous pouvez importer les
+   carnets d'adresses de Pine ou de Mutt. Comme ces formats ne
+   sont pas trs courants, vous pouvez aussi importer des fichiers
+   au format LDIF. LDIF est un format trs utilis, ainsi les autres
+   programmes de messagerie peuvent probablement exporter leurs
+   carnets d'adresses dans ce format. L'import d'un fichier LDIF
+   se fait via le menu "Outils/Importer un fichier LDIF" et
+   consiste en trois tapes: slectionnez le fichier importer et un
+   nom de carnet d'adresses. Vrifiez et modifiez la liste des
+   champs que vous voulez importer si ceux par dfaut ne vous
+   conviennent pas, puis utilisez le bouton "Sauvegarder".
+     __________________________________________________________
+
+5.3. Filtrage des messages l'aide du carnet d'adressse
+
+   Il est possible de filtrer les messages par correspondance des
+   adresses trouves dans les en-ttes avec le carnet d'adresses.
+   Pour cela, utilisez le type "Dans le carnet d'adresses" quand
+   vous dfinissez la condition de filtrage d'une rgle. Choisissez
+   alors l'en-tte (From, To, Cc, Reply-to, Sender) dont la ou les
+   adresses seront compares avec le contenu du carnet d'adresses
+   (si une adresse au moins correspond, la rgle est applique).
+   L'emploi de "Quelconque" permet de requrir la correspondance
+   d'au moins une adresse dans au moins un de ces en-ttes.
+   Utilisez "Tous" pour requrir la correspondance de toutes les
+   adresses contenues dans tous ces en-ttes. Enfin, choisissez la
+   partie du carnet d'adresse qui servira pour la vrification de
+   la correspondance des adresses: slectionnez "Quelconque" pour
+   utiliser le carnet d'adresse entier ou cliquez sur
+   "Parcourir..." pour choisir un carnet d'adresse en particulier
+   ou un de ses sous-dossiers.
+     __________________________________________________________
+
+5.4. Caractristiques avances
+
+5.4.1. Utilisation de serveurs LDAP
+
+   Les serveurs LDAP sont utiliss pour partager les carnet
+   d'adresses travers les rseaux. Ils sont souvent disponibles
+   dans les entreprises. Accder un serveur LDAP avec Claws Mail
+   est facile. Choisissez le menu "Carnet/Nouveau serveur LDAP" et
+   indiquez un nom pour ce serveur LDAP. Entrez le nom de la
+   machine du serveur (hostname, par exemple "ldap.sylpheed.org"),
+   son port si ncessaire (le port standard est 389). Vous pouvez
+   soit remplir vous mme la "Base de recherche" si vous savez quoi
+   utiliser, ou cliquer sur "Test serveur" afin de laisser Claws
+   Mail essayer de le deviner tout seul. Si le serveur requiert
+   une authentification vous pouvez la spcifier dans l'onglet
+   "Avanc". Lorsque vous fermez cette fentre en cliquant sur "OK",
+   le serveur apparat dans la liste des sources du carnet
+   d'adresses sur le ct gauche. Lorsque vous slectionnerez le
+   serveur vous verrez, sur la droite, une liste de contacts vide
+   ce qui peut tre surprenant dans un premier temps. Il en est
+   ainsi pour viter des recherches compltes sur le serveur sans
+   que vous l'ayez spcifiquement demand. Vous pouvez, ds lors,
+   rechercher des noms en utilisant le formulaire de "Recherche"
+   en bas de la liste. Si vous voulez la liste complte des
+   contacts, recherchez simplement "*".
+     __________________________________________________________
+
+5.4.2. Intgration avec jPilot
+
+   Claws Mail peut utiliser les adresses sauvegardes dans votre
+   organiseur de poche.
+     __________________________________________________________
+
+5.4.3. Support vCard
+
+   Claws Mail peut importer les vCards de vos contacts au travers
+   du menu "Carnet/Nouvelle vCard".
+     __________________________________________________________
+
+6. Utilisation avance
+
+6.1. Actions
+
+   Les actions permettent l'utilisation de toute la puissance de
+   la ligne de commande Unix avec vos messages. Vous pouvez dfinir
+   de nombreuses commandes, prenant des paramtres, comme par
+   exemple le fichier courriel courant, le texte actuellement
+   slectionn et ainsi de suite. De cette faon vous serez mme
+   d'excuter des tches varies comme diter un courriel brut dans un
+   diteur de texte, "cacher" ce que vous voulez dire en utilisant
+   ROT-13, utiliser les patches contenus dans vos messages
+   directement. La seule limitation est votre propre imagination.
+   Vous pouvez configurer les actions via le menu "Outils".
+
+   D'autre part, il est possible d'ajouter des actions sur la
+   barre d'outils. Pour cela, allez dans le menu
+   "Configuration/Prfrences" et slectionnez "Barres d'outils/Vue
+   principale". Slectionnez "Action" dans le menu droulant "Type
+   d'lment", puis slectionnez l'action dans le menu droulant
+   "Fonction excuter" ; enfin, cliquez sur le bouton "Icne" pour
+   choisir l'icne utiliser.
+
+   Example 1. Un "Ouvrir Avec..." simple
+
+   Menu nom: Ouvrir avec/kate Ligne de Commande: kate%p
+          Ouvre le fichier de la partie MIME dcode slectionne (%p)
+          avec l'diteur de texte kate.
+
+   Example 2. Gestion des pourriels en utilisant Bogofilter
+
+   Menu nom: Bogofilter/Marquer comme courriels lgitimes Ligne de
+          Commande: bogofilter -n -v -B "%f"
+          Marque les courriels slectionns (%f) comme n'tant pas
+          des pourriels en utilisant Bogofilter.
+
+   Menu nom: Bogofilter/Marquer comme pourriels Ligne de Commande:
+          bogofilter -s -v -B "%f"
+          Marque les courriels slectionns (%f) comme tant des
+          pourriels en utilisant Bogofilter.
+
+   Example 3. Recherche Google en utilisant un script externe
+
+   Menu nom: Recherche/Google Ligne de Commande:
+          |/path/to/google_search.pl
+          Effectue une recherche sur google pour le texte
+          slectionn (|) en utilisant le script externe
+          google_search.pl.
+     __________________________________________________________
+
+6.2. Modles
+
+   Les modles sont utiliss dans la fentre de composition et jouent
+   le rle de modles pour la rdaction des courriels. Les modles
+   peut contenir des parties de textes statiques et d'autres
+   dynamiques tels que le nom de l'auteur original (Bonjour %N,
+   ...), la date, etc. Lorsque vous appliquez un modle, les champs
+   dynamiques sont remplacs par leurs valeurs. Vous pouvez
+   configurer les modles via le menu "Outils".
+
+   L'utilisation d'un modle se fait soit par insertion, soit par
+   remplacement. La diffrence se situe au niveau du corps de
+   message. "Remplacer" substituera le corps de message dfini dans
+   le modle celui du message en cours de composition, l'effaant si
+   ce premier est vide. "Insrer" insrera le corps de message du
+   modle, s'il est dfini, la position actuelle du curseur dans la
+   fentre de composition.
+
+   Que vous choisissiez d'"Insrer" ou de "Remplacer", tout champs
+   , Cc ou Cci dfini dans le modle sera ajout ceux existant dans
+   la fentre de composition. Si le sujet est dfini dans le modle,
+   il remplacera celui de la fentre de composition.
+
+   Les symboles peuvent tre utiliss partout dans les modles, ils
+   seront remplacs par leur valeur dynamique respective du moment
+   o cela est possible, sinon, aucune valeur ne sera insre.
+   L'utilisation de symboles est plus souvent pertinente dans le
+   cas d'une rponse ou d'un transfert, le cas chant, la plupart
+   des valeurs de symboles seront non dfinies. Il n'y a toutefois
+   pas de restriction dans l'emploi des symboles dans les modles,
+   mme s'il peut sembler gnralement peu pertinent d'insrer le
+   corps de texte du message d'origine (%M ou %Q) dans un en-tte.
+
+   Quand un modle est utilis, le corps de message est trait en
+   premier, viennent ensuite les champs , Cc, Cci puis Sujet.
+
+   Plus d'informations et des exemples d'utilisation sont
+   disponibles dans la FAQ du site de Claws Mail
+   http://www.claws-mail.org/faq/.
+     __________________________________________________________
+
+6.3. Traitements
+
+   Les rgles de traitement sont identiques aux rgles de filtrage
+   l'exception qu'elles sont appliques lorsque vous entrez dans un
+   dossier ou lorsque vous les excutez manuellement partir du menu
+   contextuel du dossier. Vous pouvez les utiliser pour dplacer
+   vos anciens messages dans un dossier d'archives ou pour
+   distribuer vos messages. Vous pouvez attribuer chaque dossier
+   ses rgles de traitement en faisant un clic droit dessus.
+
+   Les rgles de traitement sont accompagnes de rgles de
+   Pr-traitement et de Post-traitement. Comme les rgles de
+   traitement elles ne s'appliquent qu' l'ouverture d'un dossier
+   ou lors de l'excution manuelle partir du menu contextuel du
+   dossier, mais comme les rgles de filtrage elles sont communes
+   tous les dossiers. Vous pouvez les configurer partir du menu
+   "Outils". Les rgles de Pr-traitement sont excutes avant les
+   rgles de traitement spcifiques des dossiers alors que les rgles
+   de Post-traitement le sont aprs.
+     __________________________________________________________
+
+6.4. Couleurs
+
+   Les couleurs peuvent tre utilises pour des messages
+   particuliers. Pour assigner une couleur un message,
+   cliquez-droit sur le message dans la liste, et utilisez le menu
+   Colorier. Il est aussi accessible via le menu Message
+   principal.
+
+   Les couleurs sont configurables, la fois les couleurs et leurs
+   noms peuvent tre spcifis par l'utilisateur. Elles se trouvent
+   dans "Configuration/Prfrences/Affichage/Couleurs".
+     __________________________________________________________
+
+6.5. Labels
+
+   Les labels sont de courtes "notes" qui peuvent tre adjointes
+   des messages. Ils sont utiles pour classer les messages avec
+   vos propres mots. Ces labels peuvent tre utiliss plus tard pour
+   rechercher des courriels avec la recherche rapide, ou bien pour
+   les grer avec des rgles de filtrage ou traitement, par exemple.
+
+   Les messages avec labels ont leurs labels affichs sur fond
+   jaune clair dans la vue du message. Cette ligne montre tous les
+   labels associs au message. Vous pouvez aussi ajouter la colonne
+   Labels dans la liste de messages, de manire les voir sans avoir
+   ouvrir le message.
+
+   Les labels peuvent tre mis et enlevs par le menu contextuel
+   dans la liste des messages, ou bien dans le menu Message
+   principal. Une fentre avec les labels existants apparat pour
+   vous permettre de choisir les labels appliquer ou enlever (et
+   en crer).
+
+   Une fois que des labels existent, vous pouvez utiliser le menu
+   pour (d)cocher directement le(s) tags ajouter ou enlever. Une
+   slection de plusieurs messages est possible, mme si leurs
+   labels diffrent.
+     __________________________________________________________
+
+6.6. Support des listes de diffusion
+
+   Claws Mail propose l'utilisation de fonctions fournies par les
+   listes de diffusion via le menu "Message/Liste de diffusion/".
+   Quand un message en provenance d'une liste de diffusion est
+   slectionn, ce menu vous permet d'envoyer un message la liste,
+   de contacter l'administrateur de la liste afin de s'inscrire,
+   s'en dsinscrire, obtenir de l'aide mais aussi consulter les
+   archives; soit en ouvrant une nouvelle fentre de composition,
+   soit en ouvrant un lien avec votre navigateur Internet.
+     __________________________________________________________
+
+6.7. Modules
+
+   Les modules permettent l'extension des capacits de Claws Mail.
+   Par exemple, imaginez que vous voulez stocker vos messages dans
+   une base de donnes SQL distante. Dans la plupart des programmes
+   de messagerie ceci est tout simplement impossible sans un
+   travail de rcriture interne de ces programmes. Avec Claws Mail
+   vous pouvez simplement crire votre module qui effectuera cette
+   tche.
+
+   Il s'agit juste d'un exemple des possibilits offertes. Un grand
+   nombre de modules dvelopps pour Claws Mail existent dj et
+   d'autres sont venir. Le chapitre tendre Claws Mail donne des
+   dtails sur ces derniers.
+     __________________________________________________________
+
+6.8. Dployer Claws Mail
+
+   L'assistant de configuration initial essaye de deviner les
+   diffrents champs en rcuprant des informations du systme, telles
+   que le nom de l'utilisateur, le nom de domaine, et d'autres.
+   Comme il orient vers un usage gnrique, il peut se tromper, et
+   les valeurs par dfaut doivent tre corriges. Toutefois, cet
+   assistant est configurable, dans le sens o vous pouvez lui
+   fournir des indications pour aider le dploiement sur un grand
+   nombre d'utilisateurs et/ou de machines grce un outil de
+   rplication.
+
+   La premire partie consiste crer un modle de configuration de
+   l'assistant, et de rgler les divers paramtres d'une nouvelle
+   installation.
+
+     * Commencez avec un utilisateur qui n'a pas de rpertoire
+       ~/.claws-mail, dans l'idal un nouvel utilisateur.
+     * Dmarrez Claws Mail et passez l'assistant de configuration.
+       Les valeurs que vous fournissez ne seront pas utiles, donc
+       vous pouvez cliquer sur Suivant-Suivant-Enregistrer.
+     * Une fois que l'assistant a termin, la fentre principale
+       s'ouvre. Vous pouvez maintenant configurer les diffrentes
+       options comme dsir. Vous pouvez charger des modules,
+       ajouter des contacts ou des serveurs LDAP au carnet
+       d'adresses, crer des rgles de filtrage, etc.
+     * Si ncessaire, et si Claws Mail sera utilis avec une bote
+       aux lettres MH, vous pouvez crer des sous-dossiers.
+     * Maintenant, quittez Claws Mail.
+     * prsent, ditez le fichier modle de l'assistant, cr dans
+       ~/.claws-mail/accountrc.tmpl. Dans ce fichier, vous verrez
+       diffrentes variables, correspondant aux champs de
+       l'assistant. Vous pouvez en laisser commentes, auquel cas
+       la valeur par dfaut sera utilise, ou spcifier des valeurs
+       ou variables. Tous les champs ne peuvent pas contenir une
+       variable; par exemple, smtpauth, smtpssl et recvssl sont
+       des boolens, soit 0 ou 1, et recvtype est une valeur de
+       type entier. Les autres champs, comme name, email, ou
+       recvuser, sont parss par l'assistant et les variables
+       qu'ils contiennent seront remplacs par des valeurs. Cela
+       vous permettra de spcifier tout ce qui sera ncessaire sur
+       votre site, mme si vos serveurs ou logins ne sont pas
+       courants.
+     * Enregistrez ce fichier, et effacez ~/.claws-mail/accountrc,
+       (qui contient le faux compte que vous avez cr avec
+       l'assistant lors de la premire phase) et
+       ~/.claws-mail/folderlist.xml, (de manire ce que l'arbre de
+       bote aux lettres soit correctement relu). Copiez
+       rcursivement le rpertoire .claws-mail dans /etc/skel/; si
+       les Claws Mail dploys utiliseront des dossiers MH, copiez
+       aussi le rpertoire Mail dans /etc/skel. chown-isez tout
+       /etc/skel/.claws-mail et /etc/skel/Mail root:root.
+     * Testez! Crez un nouvel utilisateur, connectez-vous avec cet
+       utilisateur, et lancez Claws Mail. Si tout est bien rempli
+       dans accountrc.tmpl comme dsir, tout ce que cet utilisateur
+       aura remplir sont ses mots de passe.
+     * Si vous configuriez une machine master pour un dploiement
+       multi-machines, vous pouvez continuer ce processus. C'est
+       termin pour Claws Mail!
+
+   Voici les diffrentes variables du fichier accountrc.tmpl:
+
+   domain
+          Votre nom de domaine (example.com). Par dfaut, ce sera
+          dduit du hostname.
+
+   name
+          Le nom de l'utilisateur. Par dfaut, ce sera dduit de
+          /etc/passwd, ce qui est souvent correct.
+
+   email
+          L'adresse email de l'utilisateur. Par dfaut, ce sera
+          dduit de $name et $domain.
+
+   organization
+          Votre socit. Par dfaut, ce sera vide.
+
+   smtpserver
+          Le serveur SMTP utiliser. Par dfaut, ce sera
+          smtp.$domain.
+
+   smtpauth
+          0 or 1. S'il faut s'authentifier sur le serveur SMTP.
+          Par dfaut, ce sera 0.
+
+   smtpuser
+          Le login sur le serveur SMTP. Par dfaut, ce sera vide
+          (mme login que pour recevoir).
+
+   smtppass
+          Le mot de passe sur le serveur SMTP. Par dfaut, ce sera
+          vide (si smtppass est vide mais pas smtpuser, le mot de
+          passe sera demand).
+
+   recvtype
+          Le type de serveur de rception. 0 pour POP3, 3 pour
+          IMAP4, 5 pour un fichier MBOX local. Par dfaut, ce sera
+          0 (POP3).
+
+   recvserver
+          Le serveur de rception. Par dfaut, ce sera pop.$domain
+          ou imap.$domain, selon $recvtype.
+
+   recvuser
+          Le login sur le serveur de rception. Par dfaut, ce sera
+          dduit de /etc/passwd.
+
+   recvpass
+          Le mot de passe sur le serveur de rception. Par dfaut,
+          ce sera vide (il sera demand l'utilisateur une fois par
+          session).
+
+   imapdir
+          Le rpertoire IMAP. Par dfaut, ce sera vide, ce qui est
+          souvent correct.
+
+   mboxfile
+          Le fichier MBOX de rception, si $recvtype est 5. Par
+          dfaut, /var/mail/$LOGIN.
+
+   mailbox
+          La bote aux lettres MH o les messages seront enregistrs
+          (si $recvtype est 0 ou 5). Par dfaut, ce sera "Mail".
+
+   smtpssl
+          0 or 1. S'il faut utiliser SSL pour envoyer les
+          messages. Par dfaut, ce sera 0.
+
+   recvssl
+          0 or 1. S'il faut utiliser SSL pour recevoir les
+          messages. Par dfaut, ce sera 0.
+
+   Voici les diffrentes variables que vous pouvez utiliser dans
+   les champs domain, name, email, organization, smtpserver,
+   smtpuser, smtppass, recvserver, recvuser, recvpass, imapdir,
+   mboxfile and mailbox:
+
+   $DEFAULTDOMAIN
+          Le nom de domaine dduit du hostname de la machine.
+          Souvent incorrect.
+
+   $DOMAIN
+          Le nom de domaine tel que spcifi dans la variable
+          domain, la premire du fichier.
+
+   $USERNAME
+          Le vrai nom de l'utilisateur.
+
+   $LOGIN
+          Le login Unix de l'utilisateur.
+
+   $NAME_MAIL
+          Le nom de l'utilisateur tel que spcifi dans la variable
+          name, en minuscules et avec les espaces remplaces par
+          des points. "Colin Leroy" devient "colin.leroy".
+
+   $EMAIL
+          L'adresse email telle que spcifie dans la variable
+          email.
+
+   Faites attention ne pas utiliser une variable avant de l'avoir
+   dfinie.
+     __________________________________________________________
+
+6.9. Prfrences caches
+
+   Il existe un certain nombre de prfrences caches dans Claws Mail
+   dont certains utilisateurs, auxquels nous voulions faire
+   plaisir, ne pouvaient pas se passer mais qui n'avaient pas leur
+   place, selon nous, dans l'interface graphique. Vous pouvez
+   changer les options suivantes pendant que Claws Mail ne
+   s'excute pas dans le fichier ~/.claws-mail/sylpheedrc.
+
+   Un petit outil nomm Clawsker, crit en Perl-GTK, permet d'diter
+   les options caches de Claws Mail en passant par une interface
+   utilisateur classique au lieu d'avoir diter manuellement le
+   fichier clawsrc. Pour en savoir plus, consulter la page ddie
+   Clawsker.
+
+   address_search_wildcard
+          La compltion par TAB des adresses dans la fentre de
+          composition fonctionnera avec n'importe quelle partie
+          des adresses connues (1) ou seulement partir du dbut
+          (0).
+
+   addressbook_use_editaddress_dialog
+          Utilise un dialogue pour l'dition des coordonnes des
+          contacts. '0': utilise un formulaire intgr la fentre
+          principale du carnet d'adresses. '1' (par defaut):
+          utilise un dialogue spar.
+
+   bold_unread
+          Montre les messages non lus en gras dans la liste de
+          messages.
+
+   cache_max_mem_usage
+          Indique le maximum de mmoire utiliser pour mettre en
+          cache les messages (en Ko).
+
+   cache_min_keep_time
+          Le temps minimum pour garder un cache en mmoire, en
+          minutes. Les caches plus rcents que ce temps ne seront
+          pas librs, mme si l'utilisation de la mmoire est trop
+          leve.
+
+   compose_no_markup
+          Ne pas utiliser de gras ni d'italique dans le slecteur
+          de compte de la fentre de composition.
+
+   diff_added_color, diff_deleted_color, diff_hunk_color
+          Couleurs utiliser pour afficher des pices jointes au
+          format diff unifi.
+
+   emphasis_color
+          Couleur utilise pour mettre en vidence l'en-tte X-Mailer
+          quand sa valeur est Claws Mail.
+
+   enable_avatars
+          Permet de rgler la capture et le rendu des avatars
+          (enttes Face et X-Face, si son support est compil). '0'
+          dsactive tout, '1' n'active que la capture, '2' que le
+          rendu et '3' active les deux.
+
+          Notez que des modules externes peuvent dsactiver tout ou
+          partie de ce rglage.
+
+   enable_hscrollbar
+          Active la barre de dfilement horizontale dans la liste
+          de messages.
+
+   enable_swap_from
+          Affiche l'adresse lectronique de l'expditeur dans la
+          colonne "De" dans le dossier "Envoys" au lieu des
+          destinataires.
+
+   folder_search_wildcard
+          La recherche de dossier dans la fentre de slection de
+          dossiers fonctionnera avec n'importe quelle partie de
+          leurs noms (1) ou seulement partir du dbut (0).
+
+   folderview_vscrollbar_policy
+          Spcifie la politique de la barre de dfilement verticale
+          de la vue des dossiers.
+
+   hover_timeout
+          Temps en millisecondes pendant lequel la souris doit
+          rester sur l'arbre des dossiers afin qu'ils se dplient
+          durant un glisser-dposer.
+
+   live_dangerously
+          Ne pas demander confirmation avant suppression dfinitive
+          de messages
+
+   log_error_color, log_in_color, log_msg_color, log_out_color,
+          log_warn_color, log_status_ok_color,
+          log_status_nok_color, log_status_skip_color
+          Couleurs utilises dans la fentre de traces
+
+   msgview_date_format
+          0 or 1. Utilise le mme format dfini par l'utilisateur
+          pour la liste des messages dans la vue du message
+          courant. La valeur par dfaut est 0, option dsactive.
+
+   outgoing_fallback_to_ascii
+          0 ou 1. Les messages envoys seront encods en 7bit
+          US-ASCII si le contenu le permet, ignorant l'option
+          "Jeux de caractres" pour l'envoi, uniquement si c'est si
+          possible. Si l'option est mise 0, l'encodage dfini par
+          l'utilisateur sera utilis, quel que soit le contenu du
+          message. La valeur par dfaut est 1, option active.
+
+   primary_paste_unselects
+          0 ou 1. Vide la slection primaire et repositionne le
+          curseur lors d'un collage par clic du milieu. La valeur
+          par dfaut est 0, option dsactive.
+
+   respect_flowed_format
+          0 ou 1. Tient compte du format=flowed des parties de
+          type text/plain d'un message. Par consquence, ce type de
+          contenu pourra comporter de longues lignes l'affichage
+          mais liens (URLs) ne seront pas coups sur plusieurs
+          lignes. La valeur par dfaut est 0, option dsactive.
+
+   show_compose_margin
+          0 or 1. Ajoute des marges lors de l'dition de message La
+          valeur par dfaut est 0, option dsactive.
+
+   save_parts_readwrite
+          Les fichiers temporaires ncessaires afin d'ouvrir les
+          pices jointes sont enregistrs avec la permission
+          d'criture active.
+
+   show_inline_attachments
+          0 or 1. Montrer les pices jointes "inline" dans la liste
+          des pices jointes. La valeur par dfaut est 1, option
+          active.
+
+   skip_ssl_cert_check
+          Permet de ne pas faire la vrification des certificats
+          SSL
+
+   statusbar_update_step
+          tapes de progression lors de la mise jour dans les
+          barres de progression.
+
+   stripes_color_offset
+          Valeur de contraste utilis pour alterner les couleurs
+          entre chaque ligne dans les composants de type
+          GtkTreeView. Une valeur faible indique un contraste
+          faible et donc peu de diffrence de couleur entre les
+          lignes.
+
+   summary_from_show
+          Choisit ce qui est affich dans la colonne De de la liste
+          de messages : 0 affiche le nom, 1 affiche l'adresse et 2
+          affiche les deux.
+
+   textview_cursor_visible
+          Affiche un curseur dans la vue du message.
+
+   thread_by_subject_max_age
+          Nombre de jours maximal pour l'inclusion d'un message
+          dans un fil de discussion lorsque cette option est
+          utilise.
+
+   toolbar_detachable
+          Cache les poignes des barres d'outils dtachables, qui ne
+          le sont plus par la suite.
+
+   two_line_vertical
+          Chaque message occupe deux lignes (au lieu d'un message
+          par ligne) quand le mode trois-colonnes est utilis.
+
+   unsafe_ssl_certs
+          Fait en sorte que Claws Mail accepte de se souvenir de
+          plusieurs certificats scuriss (SSL) pour un server/port
+          donn. Cette option est dsactive par dfaut.
+
+   use_networkmanager
+          Prend en compte le NetworkManager (Gestionnaire Rseau)
+          afin de passer en mode dconnect (hors ligne)
+          automatiquement. Cette option est active par dfaut.
+
+   use_stripes_everywhere
+          Active les lignes alternes dans les GtkTreeViews
+          (dialogues de filtrage, des traitements, etc.).
+
+   use_stripes_in_summaries
+          Active les lignes alternes dans les GtkTreeViews de la
+          fentre principale (liste des dossiers et liste des
+          messages). L'emploi de cette option (valeur 0) n'a de
+          sens que lorsque l'option cache use_stripes_everywhere
+          est active (valeur 1).
+
+   utf8_instead_of_locale_for_broken_mail
+          Utilise l'encodage UTF-8 encoding pour les courriels
+          casss la place de la localisation courante.
+
+   warn_dnd
+          Affiche une bote de dialogue de confirmation lors d'un
+          gliss-dpos d'un dossier sur un autre.
+
+   zero_replacement_char
+          Caractre afficher dans la liste des dossiers quand un
+          dossier ne contient pas de message. Par dfault, 0.
+     __________________________________________________________
+
+6.10. Autofaces
+
+   Il est possible de crer des en-ttes Face et X-Face directement
+   partir de fichiers, soit avec un fichier par en-tte de faon
+   globale, soit un pour chaque compte. Ces fichiers doivent tre
+   placs dans le rpertoire ~/.claws-mail/autofaces/.
+
+   Les fichiers ventuels contenant les valeurs pour les en-ttes
+   Face ou X-Face doivent tre nomms ainsi: face et/ou xface pour
+   qu'ils soient pris en compte de faon globale, ou
+   face.nomducompte et/ou xface.nomducompte pour qu'ils soient
+   spcifiques un compte en particulier (nomducompte).
+
+   Si le nom du compte contient des espaces ou des caractres non
+   supports par le systme de fichier o il est stock, il doivent
+   tre remplacs par un "_". Par exemple, si votre compte est nomm
+   "<Mon Compte>", le nom d'un ventuel fichier X-Face associ ce
+   compte sera ~/.claws-mail/autofaces/xface._mon_compte_.
+   Attention, cette fonctionnalit ncessite que le contenu des
+   fichier face ou xface soit correct. Assurez-vous aussi que les
+   en-ttes Face et X-Face ne sont pas dfinis plusieurs fois dans
+   les options des comptes et les fichiers AutoFaces (la plupart
+   des clients de messagerie, Claws Mail y compris, ignorent les
+   en-ttes redondants et n'affichent que le dernier trouv).
+     __________________________________________________________
+
+7. Etendre les possibilits de Claws Mail
+
+7.1. Modules
+
+   Les fonctionnalits de Claws Mail peuvent tre augmentes grce
+   divers modules. Claws Mail est livr avec les modules suivants,
+   tous installs par dfaut tant que les dpendances ncessaires sont
+   prsentes sur votre systme.
+
+   Les modules sont installs dans le rpertoire
+   $PREFIX/lib/claws-mail/plugins/ et leur extension est ".so".
+   Pour charger un module en mmoire, allez dans le menu
+   "Configuration/Modules" et cliquez sur le bouton "Charger un
+   module". Choisissez le module dsir, et validez.
+
+   Si vous ne trouvez pas le module que vous cherchez, il est
+   possible que votre distribution GNU/Linux le fournisse dans un
+   paquet spar. Dans ce cas, recherchez-le dans votre gestionnaire
+   de paquets.
+
+   Certains modules fournissent les mmes fonctionnalits que
+   d'autres (par exemple, les trois modules anti-spam). Dans ce
+   cas, vous aurez choisir lequel charger, car Claws Mail refuse
+   de charger plus d'un module du mme type.
+
+   La liste de tous les modules existants est disponible
+   http://www.claws-mail.org/plugins.php.
+
+   ACPI Notifier
+          Permet l'indication de nouveaux messages avec la diode
+          Email de certains ordinateurs portables, comme ceux de
+          marque Acer, Asus, Fujitsu ou IBM. Plus d'informations :
+          www.claws-mail.org/plugin.php?plugin=acpinotifier
+
+   AddressKeeper
+          Lors de l'envoi d'un message, enregistre tous les
+          adresses des destinataires ("To", "Cc" and/or "Bcc")
+          dans le carnet d'adresses.
+
+   AttachWarner
+          Vous prvient de pices jointes potentiellement oublies,
+          en vrifiant dans votre message s'il est fait mention de
+          pices jointes, et vous demandant confirmation s'il
+          semble qu'il manque des fichiers attachs. Plus
+          d'informations :
+          www.claws-mail.org/plugin.php?plugin=attachwarner
+
+   AttRemover
+          Ce module vous permet d'effacer les pices jointes dans
+          les messages.
+
+   Bogofilter
+          Le module Bogofilter fournit deux fonctionnalits
+          principales :
+
+          La possibilit de vrifier si les messages reus (via POP3,
+          IMAP4 ou comptes locaux) sont des pourriels (spams).
+          Optionnellement, les spams reprs peuvent tre mis la
+          corbeille ou dans un dossier spcifi. La vrification des
+          messages peut tre dsactive.
+
+          La possibilit d'apprendre Bogofilter reconnatre les
+          spams et les "hams" (courriels lgitimes). Vous pouvez
+          l'entraner en marquant vous-mme des messages comme
+          pourriels ou lgitimes, via le menu Message, le menu
+          contextuel ou le bouton appropri de la barre d'outils.
+          (voir "Configuration/Prfrences/Barres d'outils"). Les
+          messages que vous marquez comme pourriels peuvent
+          optionnellement tre dplacs dans un dossier spcifi.
+
+          Les prfrences de Bogofilter sont dans le menu
+          "Configuration/Prfrences/Modules/Bogofilter".
+
+          L'avantage principal de Bogofilter sur Spamassassin est
+          sa vitesse.
+
+          Bogofilter ne commence pouvoir trier les pourriels
+          qu'aprs un apprentissage (marquer plusieurs spams comme
+          pourriels, et plusieurs courriels lgitimes comme tels).
+
+          Bogofilter est disponible sur
+          http://bogofilter.sourceforge.net/.
+
+   BSFilter
+          BSFilter est un module extrmement similaire Bogofilter,
+          mais utilise le filtre baysien bsfilter
+          (bsfilter.org/index-e.html) comme moteur de filtrage.
+
+          Comme Bogofilter, il faut commencer par lui apprendre
+          trier avec quelques pourriels et emails lgitimes.
+
+          Ses prfrences sont disponibles dans le menu
+          "Configuration/Prfrences/Modules/BSFilter".
+
+   Clamd
+          Permet de vrifier si les messages reus (via POP3, IMAP4
+          ou comptes locaux) contiennent des virus, en passant via
+          le daemon clamd de l'antivirus ClamAV
+          (http://www.clamav.net/).
+
+   Fancy
+          Permet de visualiser les messages en HTML grce au moteur
+          WebKit. Par dfaut, aucun contenu distant n'est charg.
+
+          Ses prfrences sont disponibles dans le menu
+          "Configuration/Prfrences/Modules/Fancy".
+
+   Fetchinfo
+          Insre des en-ttes avec certaines informations
+          supplmentaires, telles que UIDL, nom du compte, serveur
+          POP, utilisateur et heure de rception.
+
+   GData
+          Fournit une interface vers les services Google via la
+          bibliothque gdata. Pour l'instant, la seule
+          fonctionnalit implmente est d'inclure les contacts
+          Google dans la compltion d'adresses.
+
+   GeoLocation
+          Fournit une go-localisation base sur les adresses IP
+          contenues dans le message.
+
+   Libravatar
+          Permet l'affichage d'images ("Avatars") associes des
+          comptes utilisateurs chez libravatar.org ou sur les
+          domaines des utilisateurs. Plus d'informations :
+          www.claws-mail.org/plugin.php?plugin=libravatar
+
+   Mail Archiver
+          Permet d'archiver des dossiers et sous-dossiers dans
+          diffrents formats.
+
+   mailMBOX
+          Fournit le support des botes aux lettres au format MBOX.
+
+   NewMail
+          Ecrit un rsum des enttes d'un message arrivant dans un
+          fichier de log (par dfaut : ~/Mail/NewLog), aprs
+          filtrage.
+
+   Notification
+          Fournit diffrents moyens de notifier l'utilisateur de
+          nouveaux messages (icne dans la barre systme, popups de
+          notification, ...). Plus d'informations :
+          www.claws-mail.org/plugin.php?plugin=notification
+
+   PDF Viewer
+          Permet d'afficher et d'imprimer les fichiers PDF et PS
+          avec la bibliothque Poppler. Plus d'informations :
+          www.claws-mail.org/plugin.php?plugin=pdf_viewer
+
+   Perl
+          Etend les possibilits de filtrage de Claws Mail. Il
+          fournit une interface Perl au filtrage de Claws Mail, ce
+          qui permet l'utilisation de toute la puissance de Perl.
+
+   PGP/Core, PGP/Inline and PGP/MIME
+          Grent les messages signs et/ou chiffrs avec PGP. Vous
+          pourrez dchiffrer les messages, en vrifier les
+          signatures, ou bien signer et chiffrer les messages que
+          vous envoyez. Ils utilisent GnuPG et GPGME,
+          ftp://ftp.gnupg.org/gcrypt/gpgme/. Plus d'informations :
+          www.claws-mail.org/plugin.php?plugin=gpg
+
+   Python
+          Ce module permet l'interfaage de Claws Mail avec des
+          scripts Python. Plus d'informations :
+          www.claws-mail.org/plugin.php?plugin=python
+
+   RSSyl
+          Aggrgateur de flux RSS, sous la forme d'une bote aux
+          lettres virtuelle. Gre les flux au format RSS 1.0, 2.0
+          et Atom. Plus d'informations :
+          www.claws-mail.org/plugin.php?plugin=rssyl
+
+   S/MIME
+          Gre les messages signs et/ou chiffrs avec S/MIME. Vous
+          pourrez dchiffrer les messages, en vrifier les
+          signatures, ou bien signer et chiffrer les messages que
+          vous envoyez. Il utilise GnuPG/GPGME et GpgSM,
+          ftp://ftp.gnupg.org/gcrypt/gpgme/.
+
+   SpamAssassin
+          Le modules SpamAssassin possde deux fonctionnalits
+          principales :
+
+          La possibilit de vrifier les messages reus pour y
+          dtecter les pourriels. Vous pourrez choisir d'effacer
+          directement les pourriels, ou les enregistrer dans un
+          dossier spcifique. Cette fonctionnalit peut tre dsactive
+          si, par exemple, votre courrier est dj vrifi par votre
+          serveur.
+
+          La possibilit d'apprendre SpamAssassin mieux distinguer
+          les pourriels des messages normaux. Vous pouvez entraner
+          votre SpamAssassin en marquant les messages comme
+          "indsirable" ou "acceptable" dans le menu contextuel de
+          la liste de messages, ou avec le bouton de barre d'outil
+          correspondant (Voir "Configuration/Prfrences/Barres
+          d'outils"). Optionnellement, les messages que vous
+          marquez comme indsirables peuvent tre dplacs dans votre
+          dossier pourriels.
+
+          Ses prfrences sont disponibles dans
+          "Configuration/Preferences/Plugins/SpamAssassin".
+
+          L'avantage de SpamAssassin sur Bogofilter est qu'il est
+          non seulement un filtre baysien, mais teste (localement
+          et via rseau) aussi d'autres aspects pour dterminer s'il
+          est en prsence de pourriels.
+
+          SpamAssassin est disponible sur
+          http://spamassassin.apache.org/. La version 3.1.x ou
+          plus rcente est ncessaire plus utiliser l'apprentissage
+          distant (TCP).
+
+   SpamReport
+          Ce module permet de signaler un pourriel diffrents
+          endroits. Pour l'instant, les sites spam-signal.fr et
+          spamcop.net sont grs, ainsi que le systme de nomination
+          de spam des listes Debian (lists.debian.org)
+
+   TNEF parse
+          Ce module permet de voir les pices jointes au format
+          application/ms-tnef. Plus d'informations :
+          www.claws-mail.org/plugin.php?plugin=tnef_parser
+
+   vCalendar
+          Gre les messages vCalendar de runion, tels que ceux
+          envoys par Outlook ou Evolution. Gre aussi les
+          abonnement aux flux Webcal. Plus d'informations :
+          www.claws-mail.org/plugin.php?plugin=vcalendar
+
+   Si vous tes dveloppeur, l'criture d'un module Claws Mail est
+   certainement la meilleure solution pour tendre les
+   fonctionnalits de Claws Mail. Nous pourrons hberger votre code,
+   et serons ravis de rpondr vos questions sur la liste de
+   diffusion ou le canal IRC, #claws sur Freenode.
+     __________________________________________________________
+
+7.2. Accs rseau pour les modules
+
+   Certains modules externes, comme RSSyl, vCalendar, Libravatar
+   ou Fancy, ont besoin d'un accs Internet pour fonctionner
+   normalement (pour rcuprer les abonnements dans le cas de RSSyl
+   ou vCalendar, pour rcuprer les images dans le cas de Fancy ou
+   Libravatar). Ces modules utilisent la librairie Curl. C'est
+   pourquoi, si votre accs Internet est restreint via un proxy
+   (serveur mandataire), il faudra spcifier la libCurl de
+   l'utiliser. Ceci se fait en mettant en place une variable
+   d'environnement, http_proxy. Par exemple,
+   http_proxy=http://user:passwd@myproxy.example.com:8080
+   indiquera la libCurl de se connecter au port 8080 de la machine
+   myproxy.example.com, en tant qu'utilisateur "user" dont le mot
+   de passe est "passwd" pour tout accs HTTP Internet.
+
+   Vous pouvez mettre en place cette variable d'environnement
+   avant de dmarrer Claws Mail, par exemple en utilisant la
+   commande
+   http_proxy=http://user:passwd@monproxy.example.com:8080
+   claws-mail, ou bien le mettre en place une fois pour toutes
+   dans votre fichier ~/.bashrc, avec la ligne suivante: export
+   http_proxy=http://user:passwd@monproxy.example.com:8080 (vous
+   devrez vous reconnecter pour qu'elle soit prise en compte).
+     __________________________________________________________
+
+A. La FAQ Claws Mail
+
+A.1. Quelles sont les diffrences entre Claws Mail et Sylpheed?
+
+   Claws Mail est la version tendue de Sylpheed. C'est pourquoi
+   vous y trouverez toutes les fonctionnalits de Sylpheed, et
+   encore beaucoup d'autres. Vous pourrez trouver plus
+   d'informations ce sujet sur
+   http://www.claws-mail.org/features.php.
+     __________________________________________________________
+
+A.2. Puis-je crire des courriels en HTML avec Claws Mail?
+
+   Non. Une discussion a eu lieu sur ce sujet, et il est apparu
+   que les courriels en HTML n'taient pas dsirs par la majorit de
+   nos utilisateurs. Si vous avez vraiment besoin de cette
+   fonctionnalit, il est toujours possible de joindre des pages
+   HTML vos courriels.
+     __________________________________________________________
+
+A.3. Comment puis-je soumettre des patches, signaler des bogues, et
+discuter avec d'autres utilisateurs de Claws Mail?
+
+   Les patches peuvent tre soumis via le Patch Tracker de
+   Sourceforge,
+   http://sourceforge.net/tracker/?group_id=25528&atid=384600.
+   Merci de suivre les conseils disponibles sur
+   http://www.claws-mail.org/devel.php.
+
+   Les rapports de bogues peuvent tre soumis sur notre Bugzilla,
+   http://www.thewildbeast.co.uk/sylpheed-claws/bugzilla/, en
+   anglais.
+
+   Pour discuter et poser des questions, vous tes les bienvenus
+   sur les listes de diffusion prsentes
+   http://www.claws-mail.org/MLs.php.
+     __________________________________________________________
+
+A.4. Y a-t-il un filtre anti-pourriel dans Claws Mail?
+
+   Oui, il existe un module Spamassassin, sur lequel vous
+   trouverez tous les dtails dans ce manuel, au chapitre tendre
+   les possibilits de Claws Mail.
+
+   Vous pouvez aussi utiliser d'autres filtres anti-pourriels en
+   utilisant le "Filtrage" et les "Actions", par exemple
+   Bogofilter. Des instructions pour configurer Claws Mail avec
+   Bogofilter sont disponibles sur la FAQ Bogofilter.
+     __________________________________________________________
+
+A.5. Est-ce que Claws Mail gre les accuss de rception?
+
+   Oui. Vous pouvez demander un accus de rception vos courriels
+   dans le menu "Options/Demander un accus de rception" de la
+   fentre de composition. Lorsque vous recevez un message qui
+   demande un accus de rception, Claws Mail vous proposera de
+   l'envoyer, via une zone de notification au dessus du message.
+   Vous pouvez soit envoyer l'accus, soit ne rien faire - l'accus
+   n'est jamais envoy automatiquement.
+     __________________________________________________________
+
+A.6. Comment Claws Mail peut-il me prvenir lorsque j'ai de nouveaux
+messages?
+
+   Dans les prfrences "Traitement des messages/Rception",
+   accessibles via le menu "Configuration/Prfrences", et utilisez
+   la prfrence "Excuter une commande si de nouveaux messages
+   arrivent".
+     __________________________________________________________
+
+A.7. Pourquoi certains caractres spciaux (accents, ...) sont-ils
+affichs bizarrement?
+
+   Dans la plupart des cas, il s'agit de courriels dont l'encodage
+   est mal spcifi. Vous pouvez forcer un autre jeu de caractres
+   via le menu "Vue/Jeu de caractres...".
+     __________________________________________________________
+
+A.8. Puis-je ne citer qu'une partie du message auquel je rponds?
+
+   Oui. Slectionnez avec la souris la section du message citer et
+   choisissez "Rpondre".
+     __________________________________________________________
+
+A.9. O puis-je trouver des rponses d'autres questions frquemment
+poses sur Claws Mail?
+
+   Une FAQ plus labore, maintenue par les utilisateurs de Claws
+   Mail, est disponible sur notre site, l'adresse
+   http://www.claws-mail.org/faq/.
+     __________________________________________________________
+
+B. Raccourcis claviers
+
+B.1. Motivations et conventions gnrales
+
+   Bien que Claws Mail soit une application graphique utilisable
+   presque intgralement la souris, vous aurez tout de mme besoin
+   du clavier de temps en temps - par exemple pour taper un
+   courriel. Pour les utilisateurs qui crivent beaucoup de
+   courriels et ceux qui sont habitus tout faire au clavier, Claws
+   Mail propose un grand nombre de raccourcis pour vous permettre
+   de ne (presque) jamais dplacer les mains du clavier vers la
+   souris.
+
+   Non seulement cela bnficie aux utilisateurs avancs, mais cela
+   est aussi trs utile aux personnes mobilit rduite (qui ne
+   peuvent pas forcment utiliser une souris).
+
+   La convention la plus courante est la touche chap (Esc). La
+   plupart des dialogues et fentres peuvent tre ferms par cette
+   touche.
+
+   Il y a beaucoup de raccourcis clavier assigns par dfaut aux
+   diffrents lments des menus. Nous ne les listerons pas ici, tant
+   donn qu'ils sont affichs sur la droite de ces lments, et seront
+   plus facilement retenus par la pratique. Si ces raccourcis ne
+   vous conviennent pas, sachez qu'il est possible de les modifier
+   la vole: laissez simplement la souris sur l'lment de menu dont
+   vous voulez changer le raccourci, puis appuyez sur la
+   combinaison de touches souhaite. Cette combinaison doit
+   toutefois inclure au moins l'une des touches suivantes: Alt,
+   Ctrl et/ou Maj (Shift); il n'est pas possible d'assigner des
+   touches seules. C'est ainsi que fonctionne l'attribution de
+   raccourcis clavier dans les menus des applications bases sur la
+   library GTK2 comme Claws Mail, mais notez bien que cette
+   possibilit peut tre dsactive par dfaut sur certains systmes.
+
+   En plus de ces raccourcis, il en existe d'autres, qui varient
+   selon les fentres, et qui sont rsums ci-dessous.
+     __________________________________________________________
+
+B.2. Fentre principale
+
+   Raccourci
+   Ctrl+p     Imprimer...
+   Ctrl+w     Travailler hors-ligne
+   Maj+Ctrl+s Synchroniser les dossiers distants
+   Ctrl+s     Enregistrer sous...
+   Ctrl+q     Quitter
+   Ctrl+c     Copier
+   Ctrl+a     Tout slectionner
+   Ctrl+f     Chercher dans le message...
+   Maj+Ctrl+f Chercher dans le dossier...
+   Ctrl+t     Vue par fil de discussion
+   n          Aller au message suivant
+   p          Aller au message prcdent
+   Maj+n      Aller au message non lu suivant
+   Maj+p      Aller au message non lu prcdent
+   g          Aller au dossier...
+   Ctrl+u     Voir le source du message
+   Ctrl+h     Voir les en-ttes du message
+   v          Affiche ou non le message courant; permet de voir plus de
+              messages dans la liste
+   /          Positionne le curseur sur la recherche rapide
+   Ctrl+Alt+u Mettre jour (la liste de message)
+   Ctrl+i     Recevoir sur le compte courant
+   Maj+Ctrl+i Recevoir sur tous les comptes
+   Ctrl+m     Composer un nouveau message
+   Ctrl+r     Rpondre
+   Maj+Ctrl+r Rpondre tous
+   Ctrl+l     Rpondre la liste
+   Ctrl+Alt+f Transfrer
+   Ctrl+o     Dplacer...
+   Maj+Ctrl+o Copier...
+   Ctrl+d     Dplacer dans la corbeille
+   Maj+d      Vider les corbeilles
+   Maj+*      Marquer le message
+   u          D-marquer le message
+   Maj+!      Marquer comme non lu
+   Maj+Ctrl+a Ouvrir le carnet d'adresses
+   x          Excuter
+   Maj+Ctrl+l Ouvrir la fentre de traces
+     __________________________________________________________
+
+B.3. Fentre de composition
+
+    Raccourci
+   Ctrl+Return Envoyer
+   Maj+Ctrl+s  Envoyer plus tard
+   Ctrl+m      Joindre un fichier
+   Ctrl+i      Insrer un fichier
+   Ctrl+g      Insrer la signature
+   Ctrl+s      Enregistrer
+   Ctrl+w      Fermer
+   Ctrl+z      Annuler
+   Ctrl+y      Refaire
+   Ctrl+x      Couper
+   Ctrl+c      Copier
+   Ctrl+v      Coller
+   Ctrl+a      Tout slectionner
+   Ctrl+b      Un caractre avant
+   Ctrl+f      Un caractre aprs
+   Ctrl+e      Fin de ligne
+   Ctrl+p      Ligne prcdente
+   Ctrl+n      Ligne suivante
+   Ctrl+h      Effacer un caractre avant
+   Ctrl+d      Effacer un caractre aprs
+   Ctrl+u      Effacer la ligne
+   Ctrl+k      Effacer la fin de ligne
+   Ctrl+l      Justifier le paragraphe
+   Ctrl+Alt+l  Justifier les longues lignes
+   Maj+Ctrl+l  (Ds)activer la justification automatique
+   Maj+Ctrl+x  Editer avec l'diteur externe
+   Maj+Ctrl+a  Ouvrir le carnet d'adresses
+     __________________________________________________________
+
+C. Remerciements
+
+   Le manuel de Claws Mail a t crit par:
+
+     * Colin Leroy
+     * Paul Mangan
+     * Ricardo Mones
+     * Tristan Chabredier
+     * Traduit en franais par: Olivier Delhomme, Colin Leroy
+
+   Merci :
+
+     * Hiroyuki Yamamoto pour avoir commenc Sylpheed et tous les
+       contributeurs passs et actuels.
+     * Caroline, Clo et Silvia pour leur patience durant ces
+       longues heures de hacking!
+     * Norman Walsh, pour sa prcieuse collaboration technique
+       concernant la version PDF de ce manuel
+     * ...
+     __________________________________________________________
+
+D. Glossaire
+
+   A
+
+   Action (rgles de filtrage et de traitement)
+          Une action est ce qui est fait sur un message lorsqu'il
+          correspond aux conditions de la rgle. Typiquement,
+          dplacer le message vers un dossier particulier. Voir
+          aussi Condition (rgles de filtrage et de traitement) .
+
+   Actions
+          Les Actions sont des commandes dfinies par
+          l'utilisateur, qui peuvent tre appliques tout ou partie
+          d'un message (ou de plusieurs messages, en utilisant une
+          syntaxe spciale). Elles sont prsentes l'utilisateur dans
+          un menu configurable.
+
+   ASCII
+          American Standard Code for Information Interchange. Un
+          standard d' Encodage qui utilise 7 bits. Il est dfini en
+          tant que RFC 20.
+
+   B
+
+   Bote aux lettres
+          Le dossier la racine d'un arbre de dossiers.
+
+   Barres d'outils
+          Jeux de boutons qui fournissent l'accs aux fonctions les
+          plus courantes. Elles peuvent tre personnalises.
+
+   C
+
+   Carnet d'adresses
+          L'endroit o sont enregistrs les noms et adresses de vos
+          contacts. Fournit aussi l'accs aux serveurs LDAP et aux
+          fichiers vCard .
+
+   Compte
+          Un compte reprsente une identit dans Claws Mail. Une
+          seule adresse email peut tre associe un compte, et vous
+          pouvez configurer autant de comptes que ncessaire.
+
+   Composition
+          Cre un nouveau message.
+
+   Certificat SSL
+          Un certificat install sur un serveur scuris pour pouvoir
+          l'identifier et chiffrer les donnes changes avec.
+
+   Chiffrement (GPG)
+          Transformation d'un message avec une cl cryptographique,
+          de telle manire que seul le destinataire propritaire de
+          la cl de dchiffrement puisse le lire.
+
+   Citation
+          Partie de message laquelle on rpond, souvent prfixe d'un
+          caractre comme '>'.
+
+   Condition (rgles de filtrage et de traitement)
+          Les prrequis qu'un message doit remplir pour que
+          l'action de la rgle s'excute. Voir aussi Action (rgles
+          de filtrage et de traitement) .
+
+   D
+
+   Dossier
+          Les dossiers contiennent des messages et/ou d'autres
+          dossiers. Ils peuvent tre locaux ou distants, mais sont
+          prsents de la mme manire par Claws Mail.
+
+   E
+
+   Encodage
+          Une correspondance entre les caractres (lettres,
+          chiffres et autres), et leur reprsentation interne dans
+          l'ordinateur. Le plus connu est sans doute l' ASCII ,
+          qui a t tendu par d'autres, comme l' UTF-8 .
+
+   En-ttes
+          Lignes formant la premire partie d'un message. Ils
+          contiennent par exemple des informations sur l'expditeur
+          et le destinataire. Certains en-ttes sont optionnels et
+          apportent des informations supplmentaires, comme X-Face
+          ou Face .
+
+   F
+
+   Face
+          Implmentation moderne du X-Face , c'est une image en
+          couleur de 48x48 pixels encode pour tenir dans les
+          en-ttes de messages.
+
+   Fil de discussion (messages)
+          Un jeu de messages rpondant les uns aux autres.
+
+   File d'attente
+          Stockage temporaire pour les messages en instance
+          d'envoi.
+
+   Fichier MBOX local
+          Une bote aux lettres locale au format MBOX .
+
+   Fentre de traces
+          Une fentre spciale pour afficher les commandes rseau
+          excutes par Claws Mail. C'est un outil utile pour
+          trouver la cause de certains problmes.
+
+   G
+
+   Groupes de discussions
+          Le protocole NNTP permet de s'abonner diffrents groupes
+          de discussion, lesquels contiennent des messages ou
+          articles comme un dossier pourrait le faire.
+
+   H
+
+   HTML
+          Hyper-Text Markup Language est le language de
+          description standard sur Internet et le WWW . Certains
+          clients de courriel l'utilisent pour appliquer des
+          effets dans le texte des courriels au dtriment de la
+          taille du message. Les messages en HTML sont aussi
+          utiliss massivement pour envoyer du Pourriel .
+
+   I
+
+   IMAP4
+          Internet Messaging Access Protocol (version 4). Un
+          protocole pour accder son courrier sur le serveur
+          distant, en l'y laissant stock.
+
+   J
+
+   Justification
+          Structuration du texte du message pour aligner les
+          paragraphes sur la marge gauche et droite. La marge de
+          droite est dfinie par l'utilisateur comme tant le nombre
+          maximal de caractre par ligne.
+
+   L
+
+   LDAP
+          Lightweight Directory Access Protocol. Un protocole pour
+          accder des carnets d'adresses via le rseau.
+
+   LDIF
+          LDAP Data Interchange Format. Un format de fichier
+          utilis pour transmettre des donnes entre serveurs LDAP
+          et/ou entre logiciels.
+
+   Liste de diffusion
+          Une liste de diffusion (mailing list en anglais) est une
+          utilisation spcifique du courrier lectronique qui permet
+          la diffusion d'informations un grand nombre
+          d'utilisateurs de l'Internet. Les listes de diffusion
+          sont le plus souvent le lieu de discussions sur un sujet
+          particulier (c'est le cas de la liste de diffusion des
+          utilisateurs de Claws Mail). Un utilisateur contacte
+          tous les autres en envoyant un courriel la liste de
+          diffusion, ces derniers pouvant alors lui rpondre par le
+          mme biais.
+
+   M
+
+   Maildir
+          Un format de bote aux lettre o chaque message est un
+          fichier. Maildir++ est une extension du format maildir.
+
+   Marquer (message)
+          Une coche qui peut tre mise sur un message pour, par
+          exemple, ne pas l'oublier. Les marques sont affiches
+          dans la liste des messages et sur l'icne des dossiers
+          qui ont un ou plusieurs messages marqus.
+
+   MBOX
+          Un format de bote aux lettre o les messages sont
+          concatns dans un seul fichier. Claws Mail supporte les
+          mbox au format mboxrd.
+
+   Message
+          Un message est la pice d'information la plus basique gre
+          par Claws Mail. Les messages sont en gnral des
+          courriels, stocks au format MH sur disque. D'autres
+          sortes de messages peuvent tre gres via les Modules .
+
+   MH
+          Un format de bote aux lettre o chaque message est un
+          fichier. C'est le format par dfaut pour Claws Mail.
+
+   MIME
+          Multipurpose Internet Mail Extensions. Standard Internet
+          pour reprsenter les donnes binaires sous forme de texte
+          ASCII , pour encoder les En-ttes et Pices jointes .
+
+   Modules
+          Ajoutent des fonctionnalits Claws Mail lorsqu'ils sont
+          chargs.
+
+   N
+
+   NNTP
+          Network News Transfer Protocol. Le protocole utilis pour
+          poster, distribuer et recevoir les articles USENET .
+
+   P
+
+   Pices jointes
+          Fichiers inclus dans un message. Certains peuvent tre
+          affichs par Claws Mail, d'autres doivent tre ouverts
+          avec d'autres logiciels. Les Modules peuvent grer
+          certains types de pices jointes.
+
+   PGP Inline
+          Mthode de signature numrique o la signature est dans le
+          corps du message.
+
+   PGP MIME
+          Mthode de signature numrique o la signature est dans une
+          pice jointe MIME (voir Pices jointes ).
+
+   POP3
+          Post Office Protocol (version 3). Un protocole pour
+          rcuprer ses messages partir d'un serveur. Les messages
+          sont souvent effacs du serveur, et stocks localement,
+          ensuite.
+
+   Pourriel
+          Courriels commerciaux non sollicits.
+
+   Permanent (Recherche rapide)
+          Quand l'option "Permanent" est active dans la Recherche
+          rapide , la recherche est conserve mme aprs un
+          changement de dossier.
+
+   R
+
+   Recherche rapide
+          Une mthode de recherche trs efficace et configurable.
+
+   Rgles de traitement
+          Une Rgle ou jeu de rgles spcifique un dossier, o elles
+          sont excutes lorsque l'utilisateur ouvre le dossier.
+
+   Rgle de filtrage
+          Une Rgle applique aux messages arrivant. Il est possible
+          d'appliquer les rgles de filtrage manuellement dans les
+          dossiers.
+
+   Rcursif (Recherche rapide)
+          Une Recherche rapide rcursive cherchera dans le dossier
+          courant et tous ses sous-dossiers.
+
+   Rediriger
+          Envoyer un message, sans modification, un autre
+          destinataire.
+
+   Rgle
+          Structure logique comprenant une ou plusieurs conditions
+          (voir Condition (rgles de filtrage et de traitement) )
+          et une ou plusieurs actions (voir Action (rgles de
+          filtrage et de traitement) ). Les rgles sont utilises
+          pour filtrer les messages.
+
+   S
+
+   Serveur de News
+          Serveur qui donne accs aux groupes de discussion USENET
+          .
+
+   Signature numrique (GPG)
+          Donnes obtenues en "mlangeant" un message et une cl
+          cryptographique, qui permet d'tre certain de l'auteur du
+          message. Cette signature est envoye dans le message,
+          afin que le destinataire puisse en vrifier la
+          provenance.
+
+   SMTP
+          Simple Mail Transfer Protocol. Un protocole pour envoyer
+          un courriel un serveur.
+
+   SMTP server.
+          Un serveur qui reoit les messages et les redistribue.
+
+   Source (message)
+          Le texte complet du message tel qu'il est transmis sur
+          le rseau. Ceci comprend les en-ttes, le corps du message
+          et optionnellement, les pices jointes.
+
+   SSL
+          Secure Sockets Layer. Un protocole utilis pour chiffrer
+          les donnes reues et envoyes sur le rseau.
+
+   STARTTLS
+          STARTTLS (Start Transport Layer Security) est une
+          commande utilise pour initier le chiffrement avec un
+          serveur distant en utilisant SSL , aprs un dbut de
+          connexion non chiffre.
+
+   Synchronisation (folder)
+          Mettre jour le contenu des caches locaux pour qu'ils
+          correspondent aux dossiers distants.
+
+   T
+
+   Transfrer
+          Envoi d'une copie d'un message un autre destinataire.
+
+   Thmes
+          Jeux d'icnes pour changer l'apparence des boutons,
+          dossiers et autres lments graphiques de Claws Mail.
+
+   U
+
+   USENET
+          User's Network. Les groupes de discussion d'Internet,
+          souvent appels Groupes de discussions .
+
+   UTF-8
+          8-bit Unicode Transformation Format. Un encodage
+          permettant de reprsenter n'importe quel caractre
+          universel. Standard Internet dfini dans la RFC 3629.
+
+   V
+
+   vCard
+          Format de fichier pour changer des donnes sur un contact
+          (adresse, numro de tlphone, ...). On les trouve souvent
+          en pices jointes de messages.
+
+   W
+
+   WWW
+          World Wide Web, le rseau de pages HTML lies les unes aux
+          autres sur Internet.
+
+   X
+
+   X-Face
+          Image noir et blanc de 48x48 pixels, encode pour tenir
+          dans les en-ttes de messages. Les bons clients de
+          courriel les affichent dans les messages. Elles ne
+          servent qu' personnaliser un peu les courriels que l'on
+          envoie. Voir aussi Face .
+     __________________________________________________________
+
+E. Gnu General Public License
+
+   See http://www.gnu.org/licenses/gpl.html.

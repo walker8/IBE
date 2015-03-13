@@ -1,0 +1,5 @@
+spell_entry.lo: spell_entry.c ../../config.h ../../claws-features.h
+
+../../config.h:
+
+../../claws-features.h:

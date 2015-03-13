@@ -1,0 +1,14 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+pkglibdir=${libdir}/claws-mail
+pkgincludedir=${includedir}/claws-mail
+plugindir=${pkglibdir}/plugins
+
+Name: Claws Mail
+Description: Claws Mail
+Version: 3.11.1.0
+
+Cflags: -I${pkgincludedir}/common -I${pkgincludedir}/gtk  -I/usr/local/include -I${pkgincludedir}

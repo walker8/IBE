@@ -1,0 +1,5 @@
+gtkaspell.lo: gtkaspell.c ../../config.h ../../claws-features.h
+
+../../config.h:
+
+../../claws-features.h:

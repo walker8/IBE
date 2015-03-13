@@ -1,0 +1,303 @@
+/* A Bison parser, made by GNU Bison 3.0.2.  */
+
+/* Bison interface for Yacc-like parsers in C
+
+   Copyright (C) 1984, 1989-1990, 2000-2013 Free Software Foundation, Inc.
+
+   This program is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+
+/* As a special exception, you may create a larger work that contains
+   part or all of the Bison parser skeleton and distribute that work
+   under terms of your choice, so long as that work isn't itself a
+   parser generator using the skeleton or a modified version thereof
+   as a parser skeleton.  Alternatively, if you modify or redistribute
+   the parser skeleton itself, you may (at your option) remove this
+   special exception, which will cause the skeleton and the resulting
+   Bison output files to be licensed under the GNU General Public
+   License without this special exception.
+
+   This special exception was added by the Free Software Foundation in
+   version 2.2 of Bison.  */
+
+#ifndef YY_YY_MATCHER_PARSER_PARSE_H_INCLUDED
+# define YY_YY_MATCHER_PARSER_PARSE_H_INCLUDED
+/* Debug traces.  */
+#ifndef YYDEBUG
+# define YYDEBUG 0
+#endif
+#if YYDEBUG
+extern int yydebug;
+#endif
+
+/* Token type.  */
+#ifndef YYTOKENTYPE
+# define YYTOKENTYPE
+  enum yytokentype
+  {
+    MATCHER_ALL = 258,
+    MATCHER_UNREAD = 259,
+    MATCHER_NOT_UNREAD = 260,
+    MATCHER_NEW = 261,
+    MATCHER_NOT_NEW = 262,
+    MATCHER_MARKED = 263,
+    MATCHER_NOT_MARKED = 264,
+    MATCHER_DELETED = 265,
+    MATCHER_NOT_DELETED = 266,
+    MATCHER_REPLIED = 267,
+    MATCHER_NOT_REPLIED = 268,
+    MATCHER_FORWARDED = 269,
+    MATCHER_NOT_FORWARDED = 270,
+    MATCHER_SUBJECT = 271,
+    MATCHER_NOT_SUBJECT = 272,
+    MATCHER_FROM = 273,
+    MATCHER_NOT_FROM = 274,
+    MATCHER_TO = 275,
+    MATCHER_NOT_TO = 276,
+    MATCHER_CC = 277,
+    MATCHER_NOT_CC = 278,
+    MATCHER_TO_OR_CC = 279,
+    MATCHER_NOT_TO_AND_NOT_CC = 280,
+    MATCHER_AGE_GREATER = 281,
+    MATCHER_AGE_LOWER = 282,
+    MATCHER_NEWSGROUPS = 283,
+    MATCHER_AGE_GREATER_HOURS = 284,
+    MATCHER_AGE_LOWER_HOURS = 285,
+    MATCHER_NOT_NEWSGROUPS = 286,
+    MATCHER_INREPLYTO = 287,
+    MATCHER_NOT_INREPLYTO = 288,
+    MATCHER_REFERENCES = 289,
+    MATCHER_NOT_REFERENCES = 290,
+    MATCHER_SCORE_GREATER = 291,
+    MATCHER_SCORE_LOWER = 292,
+    MATCHER_HEADER = 293,
+    MATCHER_NOT_HEADER = 294,
+    MATCHER_HEADERS_PART = 295,
+    MATCHER_NOT_HEADERS_PART = 296,
+    MATCHER_MESSAGE = 297,
+    MATCHER_HEADERS_CONT = 298,
+    MATCHER_NOT_HEADERS_CONT = 299,
+    MATCHER_NOT_MESSAGE = 300,
+    MATCHER_BODY_PART = 301,
+    MATCHER_NOT_BODY_PART = 302,
+    MATCHER_TEST = 303,
+    MATCHER_NOT_TEST = 304,
+    MATCHER_MATCHCASE = 305,
+    MATCHER_MATCH = 306,
+    MATCHER_REGEXPCASE = 307,
+    MATCHER_REGEXP = 308,
+    MATCHER_SCORE = 309,
+    MATCHER_MOVE = 310,
+    MATCHER_FOUND_IN_ADDRESSBOOK = 311,
+    MATCHER_NOT_FOUND_IN_ADDRESSBOOK = 312,
+    MATCHER_IN = 313,
+    MATCHER_COPY = 314,
+    MATCHER_DELETE = 315,
+    MATCHER_MARK = 316,
+    MATCHER_UNMARK = 317,
+    MATCHER_LOCK = 318,
+    MATCHER_UNLOCK = 319,
+    MATCHER_EXECUTE = 320,
+    MATCHER_MARK_AS_READ = 321,
+    MATCHER_MARK_AS_UNREAD = 322,
+    MATCHER_FORWARD = 323,
+    MATCHER_MARK_AS_SPAM = 324,
+    MATCHER_MARK_AS_HAM = 325,
+    MATCHER_FORWARD_AS_ATTACHMENT = 326,
+    MATCHER_EOL = 327,
+    MATCHER_OR = 328,
+    MATCHER_AND = 329,
+    MATCHER_COLOR = 330,
+    MATCHER_SCORE_EQUAL = 331,
+    MATCHER_REDIRECT = 332,
+    MATCHER_SIZE_GREATER = 333,
+    MATCHER_SIZE_SMALLER = 334,
+    MATCHER_SIZE_EQUAL = 335,
+    MATCHER_LOCKED = 336,
+    MATCHER_NOT_LOCKED = 337,
+    MATCHER_PARTIAL = 338,
+    MATCHER_NOT_PARTIAL = 339,
+    MATCHER_COLORLABEL = 340,
+    MATCHER_NOT_COLORLABEL = 341,
+    MATCHER_IGNORE_THREAD = 342,
+    MATCHER_NOT_IGNORE_THREAD = 343,
+    MATCHER_WATCH_THREAD = 344,
+    MATCHER_NOT_WATCH_THREAD = 345,
+    MATCHER_CHANGE_SCORE = 346,
+    MATCHER_SET_SCORE = 347,
+    MATCHER_ADD_TO_ADDRESSBOOK = 348,
+    MATCHER_STOP = 349,
+    MATCHER_HIDE = 350,
+    MATCHER_IGNORE = 351,
+    MATCHER_WATCH = 352,
+    MATCHER_SPAM = 353,
+    MATCHER_NOT_SPAM = 354,
+    MATCHER_HAS_ATTACHMENT = 355,
+    MATCHER_HAS_NO_ATTACHMENT = 356,
+    MATCHER_SIGNED = 357,
+    MATCHER_NOT_SIGNED = 358,
+    MATCHER_TAG = 359,
+    MATCHER_NOT_TAG = 360,
+    MATCHER_SET_TAG = 361,
+    MATCHER_UNSET_TAG = 362,
+    MATCHER_TAGGED = 363,
+    MATCHER_NOT_TAGGED = 364,
+    MATCHER_CLEAR_TAGS = 365,
+    MATCHER_ENABLED = 366,
+    MATCHER_DISABLED = 367,
+    MATCHER_RULENAME = 368,
+    MATCHER_ACCOUNT = 369,
+    MATCHER_STRING = 370,
+    MATCHER_SECTION = 371,
+    MATCHER_INTEGER = 372
+  };
+#endif
+/* Tokens.  */
+#define MATCHER_ALL 258
+#define MATCHER_UNREAD 259
+#define MATCHER_NOT_UNREAD 260
+#define MATCHER_NEW 261
+#define MATCHER_NOT_NEW 262
+#define MATCHER_MARKED 263
+#define MATCHER_NOT_MARKED 264
+#define MATCHER_DELETED 265
+#define MATCHER_NOT_DELETED 266
+#define MATCHER_REPLIED 267
+#define MATCHER_NOT_REPLIED 268
+#define MATCHER_FORWARDED 269
+#define MATCHER_NOT_FORWARDED 270
+#define MATCHER_SUBJECT 271
+#define MATCHER_NOT_SUBJECT 272
+#define MATCHER_FROM 273
+#define MATCHER_NOT_FROM 274
+#define MATCHER_TO 275
+#define MATCHER_NOT_TO 276
+#define MATCHER_CC 277
+#define MATCHER_NOT_CC 278
+#define MATCHER_TO_OR_CC 279
+#define MATCHER_NOT_TO_AND_NOT_CC 280
+#define MATCHER_AGE_GREATER 281
+#define MATCHER_AGE_LOWER 282
+#define MATCHER_NEWSGROUPS 283
+#define MATCHER_AGE_GREATER_HOURS 284
+#define MATCHER_AGE_LOWER_HOURS 285
+#define MATCHER_NOT_NEWSGROUPS 286
+#define MATCHER_INREPLYTO 287
+#define MATCHER_NOT_INREPLYTO 288
+#define MATCHER_REFERENCES 289
+#define MATCHER_NOT_REFERENCES 290
+#define MATCHER_SCORE_GREATER 291
+#define MATCHER_SCORE_LOWER 292
+#define MATCHER_HEADER 293
+#define MATCHER_NOT_HEADER 294
+#define MATCHER_HEADERS_PART 295
+#define MATCHER_NOT_HEADERS_PART 296
+#define MATCHER_MESSAGE 297
+#define MATCHER_HEADERS_CONT 298
+#define MATCHER_NOT_HEADERS_CONT 299
+#define MATCHER_NOT_MESSAGE 300
+#define MATCHER_BODY_PART 301
+#define MATCHER_NOT_BODY_PART 302
+#define MATCHER_TEST 303
+#define MATCHER_NOT_TEST 304
+#define MATCHER_MATCHCASE 305
+#define MATCHER_MATCH 306
+#define MATCHER_REGEXPCASE 307
+#define MATCHER_REGEXP 308
+#define MATCHER_SCORE 309
+#define MATCHER_MOVE 310
+#define MATCHER_FOUND_IN_ADDRESSBOOK 311
+#define MATCHER_NOT_FOUND_IN_ADDRESSBOOK 312
+#define MATCHER_IN 313
+#define MATCHER_COPY 314
+#define MATCHER_DELETE 315
+#define MATCHER_MARK 316
+#define MATCHER_UNMARK 317
+#define MATCHER_LOCK 318
+#define MATCHER_UNLOCK 319
+#define MATCHER_EXECUTE 320
+#define MATCHER_MARK_AS_READ 321
+#define MATCHER_MARK_AS_UNREAD 322
+#define MATCHER_FORWARD 323
+#define MATCHER_MARK_AS_SPAM 324
+#define MATCHER_MARK_AS_HAM 325
+#define MATCHER_FORWARD_AS_ATTACHMENT 326
+#define MATCHER_EOL 327
+#define MATCHER_OR 328
+#define MATCHER_AND 329
+#define MATCHER_COLOR 330
+#define MATCHER_SCORE_EQUAL 331
+#define MATCHER_REDIRECT 332
+#define MATCHER_SIZE_GREATER 333
+#define MATCHER_SIZE_SMALLER 334
+#define MATCHER_SIZE_EQUAL 335
+#define MATCHER_LOCKED 336
+#define MATCHER_NOT_LOCKED 337
+#define MATCHER_PARTIAL 338
+#define MATCHER_NOT_PARTIAL 339
+#define MATCHER_COLORLABEL 340
+#define MATCHER_NOT_COLORLABEL 341
+#define MATCHER_IGNORE_THREAD 342
+#define MATCHER_NOT_IGNORE_THREAD 343
+#define MATCHER_WATCH_THREAD 344
+#define MATCHER_NOT_WATCH_THREAD 345
+#define MATCHER_CHANGE_SCORE 346
+#define MATCHER_SET_SCORE 347
+#define MATCHER_ADD_TO_ADDRESSBOOK 348
+#define MATCHER_STOP 349
+#define MATCHER_HIDE 350
+#define MATCHER_IGNORE 351
+#define MATCHER_WATCH 352
+#define MATCHER_SPAM 353
+#define MATCHER_NOT_SPAM 354
+#define MATCHER_HAS_ATTACHMENT 355
+#define MATCHER_HAS_NO_ATTACHMENT 356
+#define MATCHER_SIGNED 357
+#define MATCHER_NOT_SIGNED 358
+#define MATCHER_TAG 359
+#define MATCHER_NOT_TAG 360
+#define MATCHER_SET_TAG 361
+#define MATCHER_UNSET_TAG 362
+#define MATCHER_TAGGED 363
+#define MATCHER_NOT_TAGGED 364
+#define MATCHER_CLEAR_TAGS 365
+#define MATCHER_ENABLED 366
+#define MATCHER_DISABLED 367
+#define MATCHER_RULENAME 368
+#define MATCHER_ACCOUNT 369
+#define MATCHER_STRING 370
+#define MATCHER_SECTION 371
+#define MATCHER_INTEGER 372
+
+/* Value type.  */
+#if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
+typedef union YYSTYPE YYSTYPE;
+union YYSTYPE
+{
+#line 310 "matcher_parser_parse.y" /* yacc.c:1909  */
+
+	char *str;
+	int value;
+
+#line 293 "matcher_parser_parse.h" /* yacc.c:1909  */
+};
+# define YYSTYPE_IS_TRIVIAL 1
+# define YYSTYPE_IS_DECLARED 1
+#endif
+
+
+extern YYSTYPE yylval;
+
+int yyparse (void);
+
+#endif /* !YY_YY_MATCHER_PARSER_PARSE_H_INCLUDED  */

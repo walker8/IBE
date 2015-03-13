@@ -1,0 +1,1 @@
+libical_la-vsnprintf.lo: vsnprintf.c
