@@ -79,6 +79,7 @@ void encryption(char* shamessage,char* ID, element_t P,element_t Ppub,element_t 
   strcat(msigma, shamessage);
   element_from_hash(r, msigma, strlen(msigma));
   element_mul_zn(U, P, r);
+  element_printf("\nr = %B", r);
   element_printf("\nU = %B", U);
   get_public_key(ID, pairing, Qid);
   element_pairing(gid, Qid, Ppub);
