@@ -1,0 +1,8 @@
+Program: Identity-Based Encryption - Plugin for Claws Mail
+Author:  Zhang Lin <zhanglin9833@gmail.com>
+License: GPL Version 3
+Depends: Claws Mail, GMP, PBC
+
+This plugin encrypt/decrypt the email using IBE, Identity-Based Encryption
+from the Weil Pairing.
+
