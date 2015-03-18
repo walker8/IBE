@@ -1,8 +1,8 @@
 #!/bin/sh
 
 aclocal \
-  && libtoolize --force --copy \
-  && autoheader \
-  && automake --add-missing --foreign --copy \
-  && autoconf \
-  && ./configure --enable-maintainer-mode $@
+    && libtoolize --force --copy \
+    && autoheader \
+    && autoconf \
+    && automake --add-missing --foreign --copy \
+    && ./configure --enable-maintainer-mode $@ 

@@ -1,10 +1,12 @@
-INCLUDES = -I /usr/local/include -I /usr/local/include/pbc
+INCLUDES = -I /usr/local/include \
+		   -I /usr/local/include/pbc
 
 plugindir = $(CLAWS_MAIL_PLUGINDIR)
 
-plugin_LTLIBRARIES = ibe.la
+plugin_LTLIBRARIES = myibe.la
 
-ibe_la_SOURCES = \
+myibe_la_SOURCES = \
+				 ibe.c \
 				 ibe_full_ident.c \
 				 ibe_full_ident.h \
 				 sha1.c \
@@ -12,13 +14,17 @@ ibe_la_SOURCES = \
 				 utils.c \
 				 utils.h
 
-ibe_la_LDFLAGS = \
+myibe_la_LDFLAGS = \
+				 -Wl,-rpath /usr/local/lib \
 				 -avoid-version -module \
 				 $(GTK_LIBS)
 
-AM_CPPFLAGS = \
+myibe_la_LIBADD = \
+			   -L/usr/local/lib \
+			   -lgmp \
+			   -lpbc
+
+myibe_la_CPPFLAGS = \
 			$(CLAWS_MAIL_CFLAGS) \
 			$(GLIB_CFLAGS) \
 			$(GTK_CFLAGS)
-
-EXTRA_DIST=
