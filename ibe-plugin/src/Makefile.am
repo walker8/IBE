@@ -15,7 +15,6 @@ myibe_la_SOURCES = \
 				 utils.h
 
 myibe_la_LDFLAGS = \
-				 -Wl,-rpath /usr/local/lib \
 				 -avoid-version -module \
 				 $(GTK_LIBS)
 
