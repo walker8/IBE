@@ -26,7 +26,8 @@ gboolean ibe_decrypt_hook(gpointer source, gpointer data)
     MailReceiveData *mail_receive_data = (MailReceiveData *)source;
 
     gchar *mail_data = mail_receive_data->data;
-    g_warning("$$$ %s\n", mail_data);
+    g_warning("%s", mail_data);
+    g_warning("$%s", data);
 	return FALSE;
 }
 
