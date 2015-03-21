@@ -37,7 +37,7 @@ void get_private_key(char* ID, pairing_t pairing,element_t s,element_t Sid)
 
   FILE *fp;
   char tmp[SIZE];
-  fp = fopen("Sid.txt", "r");
+  fp = fopen("ibe_parameters/Sid.txt", "r");
   fgets(tmp, SIZE, fp);
   element_set_str(Sid, tmp, ELE_BASE); 
   fclose(fp);
@@ -163,12 +163,12 @@ void setup_sys(int rbits,int qbits,element_t P,element_t Ppub,pairing_t pairing,
   /*pbc_param_init_a_gen(par, rbits, qbits); //Initial the parameter for the pairing
   pairing_init_pbc_param(pairing, par);   //Initial the pairing
   
-  FILE *pbc_param_file = fopen("pbc_param.txt", "w");
+  FILE *pbc_param_file = fopen("ibe_parameters/pbc_param.txt", "w");
   pbc_param_out_str(pbc_param_file, par);
   fclose(pbc_param_file);*/
 
   char params[SIZE] = {'\0'};
-  FILE *pbc_param_file = fopen("pbc_param.txt", "r");
+  FILE *pbc_param_file = fopen("ibe_parameters/pbc_param.txt", "r");
   fread(params, 1, SIZE, pbc_param_file);
   fclose(pbc_param_file);
   pbc_param_init_set_str(par, params);
@@ -188,7 +188,7 @@ void setup_sys(int rbits,int qbits,element_t P,element_t Ppub,pairing_t pairing,
 
   FILE *fp;
   char tmp[SIZE] = {'\0'};
-  fp = fopen("P.txt", "r");  
+  fp = fopen("ibe_parameters/P.txt", "r");  
   fgets(tmp, SIZE, fp);
   /*printf("\n^^%s\n", tmp);*/
   int cnt = element_set_str(P, tmp, ELE_BASE);
@@ -196,12 +196,12 @@ void setup_sys(int rbits,int qbits,element_t P,element_t Ppub,pairing_t pairing,
   fclose(fp);
   /*printf("\ncnt = %d\n", cnt);*/
 
-  fp = fopen("Ppub.txt", "r");
+  fp = fopen("ibe_parameters/Ppub.txt", "r");
   fgets(tmp, SIZE, fp);
   element_set_str(Ppub, tmp, ELE_BASE);
   fclose(fp);
 
-  fp = fopen("s.txt", "r");
+  fp = fopen("ibe_parameters/s.txt", "r");
   fgets(tmp, SIZE, fp);
   element_set_str(s, tmp, ELE_BASE);
   fclose(fp);
@@ -247,15 +247,15 @@ int main(int argc, char **argv)
   element_printf("Ppub = %B\n", Ppub);
     
   /*FILE *fp;
-  fp = fopen("P.txt", "w");
+  fp = fopen("ibe_parameters/P.txt", "w");
   element_out_str(fp, ELE_BASE, P);
   fclose(fp);
 
-  fp = fopen("Ppub.txt", "w");
+  fp = fopen("ibe_parameters/Ppub.txt", "w");
   element_out_str(fp, ELE_BASE, Ppub);
   fclose(fp);
 
-  fp = fopen("s.txt", "w");
+  fp = fopen("ibe_parameters/s.txt", "w");
   element_out_str(fp, ELE_BASE, s);
   fclose(fp);*/
 
@@ -269,7 +269,7 @@ int main(int argc, char **argv)
   get_private_key(ID,pairing,s,Sid);
   get_public_key(ID,pairing,Qid);
   
-  /*fp = fopen("Sid.txt", "w");
+  /*fp = fopen("ibe_parameters/Sid.txt", "w");
   element_out_str(fp, ELE_BASE, Sid);
   fclose(fp);*/
  
