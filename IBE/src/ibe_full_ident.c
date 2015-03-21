@@ -22,17 +22,25 @@
 
 #include "ibe_full_ident.h"
 
-#define SIZE 100
+#define SIZE 1000
 #define RBITS 160
 #define QBITS 512
-
+#define ELE_BASE 10 
 
 void get_private_key(char* ID, pairing_t pairing,element_t s,element_t Sid)
 {
   element_t PublicKey,PrivateKey;
   element_init_G1(PublicKey, pairing);
   element_from_hash(PublicKey, ID, strlen(ID));   //Compute user public key
-  element_mul_zn(Sid, PublicKey, s);
+  /*element_mul_zn(Sid, PublicKey, s);
+  element_printf("Private key Sid = %B\n", Sid);*/
+
+  FILE *fp;
+  char tmp[SIZE];
+  fp = fopen("Sid.txt", "r");
+  fgets(tmp, SIZE, fp);
+  element_set_str(Sid, tmp, ELE_BASE); 
+  fclose(fp);
   element_printf("Private key Sid = %B\n", Sid);
 }
 
@@ -152,9 +160,20 @@ void setup_sys(int rbits,int qbits,element_t P,element_t Ppub,pairing_t pairing,
 {
   
   pbc_param_t par;   //Parameter to generate the pairing
-  pbc_param_init_a_gen(par, rbits, qbits); //Initial the parameter for the pairing
+  /*pbc_param_init_a_gen(par, rbits, qbits); //Initial the parameter for the pairing
   pairing_init_pbc_param(pairing, par);   //Initial the pairing
   
+  FILE *pbc_param_file = fopen("pbc_param.txt", "w");
+  pbc_param_out_str(pbc_param_file, par);
+  fclose(pbc_param_file);*/
+
+  char params[SIZE] = {'\0'};
+  FILE *pbc_param_file = fopen("pbc_param.txt", "r");
+  fread(params, 1, SIZE, pbc_param_file);
+  fclose(pbc_param_file);
+  pbc_param_init_set_str(par, params);
+  pairing_init_pbc_param(pairing, par); //Initial the pairing
+
   
   //In our case, the pairing must be symmetric
   if (!pairing_is_symmetric(pairing))
@@ -163,10 +182,29 @@ void setup_sys(int rbits,int qbits,element_t P,element_t Ppub,pairing_t pairing,
   element_init_G1(P, pairing);
   element_init_G1(Ppub, pairing);
   element_init_Zr(s, pairing);
-  element_random(P);
+  /*element_random(P);
   element_random(s);
-  element_mul_zn(Ppub, P, s);
-  
+  element_mul_zn(Ppub, P, s);*/
+
+  FILE *fp;
+  char tmp[SIZE] = {'\0'};
+  fp = fopen("P.txt", "r");  
+  fgets(tmp, SIZE, fp);
+  /*printf("\n^^%s\n", tmp);*/
+  int cnt = element_set_str(P, tmp, ELE_BASE);
+  /*element_printf("\n$$%B\n", P);*/
+  fclose(fp);
+  /*printf("\ncnt = %d\n", cnt);*/
+
+  fp = fopen("Ppub.txt", "r");
+  fgets(tmp, SIZE, fp);
+  element_set_str(Ppub, tmp, ELE_BASE);
+  fclose(fp);
+
+  fp = fopen("s.txt", "r");
+  fgets(tmp, SIZE, fp);
+  element_set_str(s, tmp, ELE_BASE);
+  fclose(fp);
 }
 
 
@@ -207,7 +245,20 @@ int main(int argc, char **argv)
   printf("System parameters have been set!\n");
   element_printf("P = %B\n", P);
   element_printf("Ppub = %B\n", Ppub);
-  
+    
+  /*FILE *fp;
+  fp = fopen("P.txt", "w");
+  element_out_str(fp, ELE_BASE, P);
+  fclose(fp);
+
+  fp = fopen("Ppub.txt", "w");
+  element_out_str(fp, ELE_BASE, Ppub);
+  fclose(fp);
+
+  fp = fopen("s.txt", "w");
+  element_out_str(fp, ELE_BASE, s);
+  fclose(fp);*/
+
   printf("###########EXTRACT###########\n");
   element_init_G1(Qid, pairing);
   element_init_G1(Sid, pairing);
@@ -218,6 +269,10 @@ int main(int argc, char **argv)
   get_private_key(ID,pairing,s,Sid);
   get_public_key(ID,pairing,Qid);
   
+  /*fp = fopen("Sid.txt", "w");
+  element_out_str(fp, ELE_BASE, Sid);
+  fclose(fp);*/
+ 
   
   printf("##########ENCRPTION##########\n");
   printf("Plase enter the message to encrypt:");

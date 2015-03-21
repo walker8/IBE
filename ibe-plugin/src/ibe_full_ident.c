@@ -21,8 +21,9 @@
 
 
 #include "ibe_full_ident.h"
+#include <glib.h>
 
-#define SIZE 100
+#define SIZE 1000
 #define RBITS 160
 #define QBITS 512
 
@@ -148,62 +149,24 @@ void decryption(element_t Sid,pairing_t pairing,element_t P,element_t U,char* V,
   
 }
 
-void setup_sys(int rbits,int qbits,element_t P,element_t Ppub,pairing_t pairing,element_t s )
+void setup_sys(int rbits, int qbits, pairing_t pairing)
 {
-  
   pbc_param_t par;   //Parameter to generate the pairing
   pbc_param_init_a_gen(par, rbits, qbits); //Initial the parameter for the pairing
   pairing_init_pbc_param(pairing, par);   //Initial the pairing
   
-  
   //In our case, the pairing must be symmetric
   if (!pairing_is_symmetric(pairing))
   pbc_die("pairing must be symmetric");
-  
-  element_init_G1(P, pairing);
-  element_init_G1(Ppub, pairing);
-  element_init_Zr(s, pairing);
-  element_random(P);
-  element_random(s);
-  element_mul_zn(Ppub, P, s);
-  
 }
 
-
-
-int main(int argc, char **argv)
+char* cal(char *mail_msg, char *ID)
 {
-  int i;
-  char qbits[5];
-  char rbits[5];
-  char ID[SIZE];
-  char message[SIZE];//User message
-  char shamessage[SIZE]; //The input message digest(sha1 result)
-  
-  char V[SIZE];
-  char W[SIZE];
-  memset(V, 0, sizeof(char)*SIZE);//Clear the memory of V
-  memset(W, 0, sizeof(char)*SIZE);//Clear the memory of W
-  char shamessage_receiver[SIZE]; //Receiver compute the message
-  
   pairing_t pairing;   //The pair of bilinear map
-  
-  element_t P, Ppub, s, U, U_receiver, Qid, Sid;
-  mpz_t messagehash;
-  mpz_init(messagehash);
-  
-  
+  element_t P, Ppub, s, U, Qid, Sid;
   
   printf("\n############SETUP############\n");
-  /*printf("Please enter rbits:");
-  scanf("%[0-9]", rbits);
-  getchar();
-  printf("\nPlease enter qbits:");
-  scanf("%[0-9]", qbits);
-  getchar();
-  
-  setup_sys(atoi(rbits), atoi(qbits), P, Ppub, pairing, s);*/
-  setup_sys(RBITS, QBITS, P, Ppub, pairing, s);
+  setup_sys(RBITS, QBITSb, pairing);
   printf("System parameters have been set!\n");
   element_printf("P = %B\n", P);
   element_printf("Ppub = %B\n", Ppub);
