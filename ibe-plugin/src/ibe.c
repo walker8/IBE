@@ -18,8 +18,10 @@
 #include "utils.h"
 #include "hooks.h"
 #include "pop.h"
+#include "ibe_full_ident.h"
 
 #define PLUGIN_NAME (_("Identity-Based Encryption"))
+#define SIZE 1000
 
 gboolean ibe_decrypt_hook(gpointer source, gpointer data)
 {
@@ -36,6 +38,10 @@ gboolean ibe_decrypt_hook(gpointer source, gpointer data)
     {
         mail_msg = headend + 4;
         g_warning("\n%s", mail_msg);
+        gchar ID[100] = "CS11Battitude@163.com";
+       
+        gchar *encrypted_mail_msg = encrypt_mail_msg(mail_msg, ID);
+        printf("\n\n^^^encrypt_mail_msg: \n%s\n\n", encrypt_mail_msg);
     }
 	return FALSE;
 }

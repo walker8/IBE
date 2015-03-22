@@ -21,28 +21,35 @@
 
 
 #include "ibe_full_ident.h"
-#include <glib.h>
 
 #define SIZE 1000
 #define RBITS 160
 #define QBITS 512
+#define ELE_BASE 10 
+#define PATH_PBC_PARAM "/home/dell/github/GraduationProject/ibe-plugin/src/ibe_parameters/pbc_param.txt"
+#define PATH_P "/home/dell/github/GraduationProject/ibe-plugin/src/ibe_parameters/P.txt"
+#define PATH_Ppub "/home/dell/github/GraduationProject/ibe-plugin/src/ibe_parameters/Ppub.txt"
+#define PATH_s "/home/dell/github/GraduationProject/ibe-plugin/src/ibe_parameters/s.txt"
+#define PATH_Sid "/home/dell/github/GraduationProject/ibe-plugin/src/ibe_parameters/Sid.txt"
 
 
-void get_private_key(char* ID, pairing_t pairing,element_t s,element_t Sid)
+void get_private_key(element_t Sid)
 {
-  element_t PublicKey,PrivateKey;
-  element_init_G1(PublicKey, pairing);
-  element_from_hash(PublicKey, ID, strlen(ID));   //Compute user public key
-  element_mul_zn(Sid, PublicKey, s);
+  FILE *fp;
+  char tmp[SIZE] = {'\0'};
+  fp = fopen("PATH_Sid", "r");
+  fgets(tmp, SIZE, fp);
+  element_set_str(Sid, tmp, ELE_BASE); 
+  fclose(fp);
+  fp = NULL;
   element_printf("Private key Sid = %B\n", Sid);
 }
 
-void get_public_key(char* ID, pairing_t pairing,element_t Qid)
+void get_public_key(char* ID, element_t Qid)
 {
   element_from_hash(Qid, ID, strlen(ID));
   element_printf("\nPublic key Qid = %B\n", Qid);
 }
-
 
 void rand_n(char* sigma)
 {
@@ -56,12 +63,10 @@ void rand_n(char* sigma)
   unit = rand() % 16;
   sprintf(tempr, "%X", unit);
   strcat(sigma, tempr);
-  
   }
-  
 }
 
-void encryption(char* shamessage,char* ID, element_t P,element_t Ppub,element_t U,char* V,char* W, pairing_t pairing)
+void encryption(char* shamessage, char* ID, element_t P, element_t Ppub, element_t U, char *V, char *W, pairing_t pairing)
 {
   int i;
   char sgid[SIZE];   //Sender gid string representation
@@ -82,7 +87,7 @@ void encryption(char* shamessage,char* ID, element_t P,element_t Ppub,element_t 
   element_mul_zn(U, P, r);
   element_printf("\nr = %B", r);
   element_printf("\nU = %B", U);
-  get_public_key(ID, pairing, Qid);
+  get_public_key(ID, Qid);
   element_pairing(gid, Qid, Ppub);
   element_pow_zn(gid, gid, r);
   element_printf("\ngid = %B\n", gid);
@@ -144,58 +149,138 @@ void decryption(element_t Sid,pairing_t pairing,element_t P,element_t U,char* V,
   strcat(msigma_receiver, shamessage_receiver);
   element_from_hash(r_receiver, msigma_receiver, strlen(msigma_receiver));
   element_mul_zn(U_receiver, P, r_receiver);
-  
-  
-  
 }
 
-void setup_sys(int rbits, int qbits, pairing_t pairing)
+void setup_sys(element_t P, element_t Ppub, pairing_t pairing, element_t s)
 {
   pbc_param_t par;   //Parameter to generate the pairing
-  pbc_param_init_a_gen(par, rbits, qbits); //Initial the parameter for the pairing
-  pairing_init_pbc_param(pairing, par);   //Initial the pairing
-  
+  char params[SIZE] = {'\0'};
+  FILE *pbc_param_file = fopen(PATH_PBC_PARAM, "r");
+  if (pbc_param_file == NULL)
+      printf("\n******************\n");
+  fread(params, 1, SIZE, pbc_param_file);
+  fclose(pbc_param_file);
+  pbc_param_file = NULL;
+  pbc_param_init_set_str(par, params);
+  pairing_init_pbc_param(pairing, par); //Initial the pairing
+
+  printf("\ninit pbc param finished\n");
+
   //In our case, the pairing must be symmetric
   if (!pairing_is_symmetric(pairing))
   pbc_die("pairing must be symmetric");
+  
+  element_init_G1(P, pairing);
+  element_init_G1(Ppub, pairing);
+  element_init_Zr(s, pairing);
+  FILE *fp;
+  char tmp[SIZE] = {'\0'};
+  fp = fopen(PATH_P, "r");  
+  fgets(tmp, SIZE, fp);
+  /*printf("\n^^%s\n", tmp);*/
+  element_set_str(P, tmp, ELE_BASE);
+  fclose(fp);
+  /*printf("\ncnt = %d\n", cnt);*/
+
+  fp = fopen(PATH_Ppub, "r");
+  fgets(tmp, SIZE, fp);
+  element_set_str(Ppub, tmp, ELE_BASE);
+  fclose(fp);
+
+  fp = fopen(PATH_s, "r");
+  fgets(tmp, SIZE, fp);
+  element_set_str(s, tmp, ELE_BASE);
+  fclose(fp);
+  fp = NULL;
 }
 
-char* cal(char *mail_msg, char *ID)
+char* encrypt_mail_msg(char *mail_msg, char *ID)
 {
+  char encrypted_mail_msg[100*SIZE] = {'\0'};
+  
   pairing_t pairing;   //The pair of bilinear map
-  element_t P, Ppub, s, U, Qid, Sid;
+  element_t P, Ppub, s, U, Qid;
+  
+  printf("\nID = %s\n", ID);
+  printf("\nmail_msg:\n%s\n", mail_msg);
   
   printf("\n############SETUP############\n");
-  setup_sys(RBITS, QBITSb, pairing);
+
+  setup_sys(P, Ppub, pairing, s);
   printf("System parameters have been set!\n");
   element_printf("P = %B\n", P);
   element_printf("Ppub = %B\n", Ppub);
-  
+
   printf("###########EXTRACT###########\n");
-  element_init_G1(Qid, pairing);
-  element_init_G1(Sid, pairing);
-  printf("Plase enter your ID:");
-  scanf("%[ a-zA-Z0-9+*-!.,&*@{}$#]",ID);
-  printf("\nID=%s\n",ID);
-  getchar();
-  get_private_key(ID,pairing,s,Sid);
-  get_public_key(ID,pairing,Qid);
   
+  element_init_G1(Qid, pairing);
+  get_public_key(ID, Qid);
   
   printf("##########ENCRPTION##########\n");
-  printf("Plase enter the message to encrypt:");
-  scanf("%[] a-zA-Z0-9+*-!.,&*@{}$#~`%^()[_=<>?/|\\:;\"']",message);//
-  getchar();
-  printf("\nThe original message=%s",message);//
-  //Get the hash of the message
-  sha_fun(message, shamessage);
   
-  element_init_G1(U, pairing);
-  encryption(shamessage,ID,P,Ppub,U,V,W,pairing);
-  
+  printf("\nThe original message = %s\n", mail_msg);//
+  int mail_msg_len = strlen(mail_msg);
+  /*the encryption function dealt with 40 characters everytime*/
+  int cnt = mail_msg_len / 40; 
+  int re = mail_msg_len % 40;
+  char tmp_msg[40];
+  char V[SIZE];
+  char W[SIZE];
+  char tmp_U[SIZE];
+  memset(encrypted_mail_msg, 0, sizeof(encrypted_mail_msg));
+  int i, j, k;
+  for (i = 0; i < cnt; ++i)
+  {
+    element_init_G1(U, pairing);
+    memset(tmp_msg, 0, sizeof(tmp_msg));
+    memset(V, 0, sizeof(V));
+    memset(W, 0, sizeof(W));
+    memset(tmp_U, 0, sizeof(tmp_U));
+
+    for (j = i*40, k = 0; j < (i+1)*40; ++j, ++k)
+    {
+        tmp_msg[k] = mail_msg[j];
+    }
+    encryption(tmp_msg, ID, P, Ppub, U, V, W, pairing);
+    element_snprint(tmp_U, SIZE, U);
+    printf("\n\ntmp_U = %s\n", tmp_U);
+    printf("\nV = %s\n", V);
+    printf("\nW = %s\n", W);
+    strcat(encrypted_mail_msg, tmp_U);
+    strcat(encrypted_mail_msg, "&");
+    strcat(encrypted_mail_msg, V);
+    strcat(encrypted_mail_msg, "&");
+    strcat(encrypted_mail_msg, W);
+    strcat(encrypted_mail_msg, "&"); 
+  }  
+  if (re != 0)
+  {
+    element_init_G1(U, pairing);
+    memset(tmp_msg, 0, sizeof(tmp_msg));
+    memset(V, 0, sizeof(V));
+    memset(W, 0, sizeof(W));
+    memset(tmp_U, 0, sizeof(tmp_U));
+
+    for (j = 40 * cnt, k = 40 - re; j < mail_msg_len; ++j)
+    {
+        tmp_msg[k] = mail_msg[j];
+    }
+    encryption(tmp_msg, ID, P, Ppub, U, V, W, pairing);
+    element_snprint(tmp_U, SIZE, U);
+    printf("\n\ntmp_U = %s\n", tmp_U);
+    printf("\nV = %s\n", V);
+    printf("\nW = %s\n", W);
+    strcat(encrypted_mail_msg, tmp_U);
+    strcat(encrypted_mail_msg, "&");
+    strcat(encrypted_mail_msg, V);
+    strcat(encrypted_mail_msg, "&");
+    strcat(encrypted_mail_msg, W);
+    strcat(encrypted_mail_msg, "&"); 
+  }
+      
   printf("Send (U,V,W) to the receiver!");
   
-  printf("\n##########DECRYPTION##########");
+  /*printf("\n##########DECRYPTION##########");
   element_init_G1(U_receiver, pairing);
   decryption(Sid,pairing,P,U,V,W,U_receiver,shamessage_receiver);
   if (element_cmp(U, U_receiver) == 0)
@@ -204,24 +289,23 @@ char* cal(char *mail_msg, char *ID)
   element_printf("\nU_receiver=%B", U_receiver);
   printf("\nYeah!The message is decrpted!");
   printf("\nThe Message Disgest=%s\n", shamessage_receiver);
-  }
+  }*/
   
-  else
+  /*else
   {
   element_printf("\nU=%B", U);
   element_printf("\nU_receiver=%B", U_receiver);
   printf("\nOops!The ciphertext can not be accepted!\n");
   }
-  
+  */
   element_clear(P);
   element_clear(Ppub);
   element_clear(Qid);
-  element_clear(Sid);
   element_clear(U);
   element_clear(s);
   pairing_clear(pairing);
   
-  return 0;
+  return encrypted_mail_msg;
 }
 
 
