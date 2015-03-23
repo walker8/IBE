@@ -51,106 +51,6 @@ void get_public_key(char* ID, element_t Qid)
   element_printf("\nPublic key Qid = %B\n", Qid);
 }
 
-void rand_n(char* sigma)
-{
-  int i;
-  int unit;
-  char tempr[10];
-  memset(sigma, 0, sizeof(char)*SIZE);//Clear the memory of sigma
-  
-  for (i = 0; i < 40; i++)
-  {
-  unit = rand() % 16;
-  sprintf(tempr, "%X", unit);
-  strcat(sigma, tempr);
-  }
-}
-
-void encryption(char* shamessage, char* ID, element_t P, element_t Ppub, element_t U, char *V, char *W, pairing_t pairing)
-{
-  int i;
-  char sgid[SIZE];   //Sender gid string representation
-  char shagid[SIZE]; //Sender H2 function result
-  char sigma[SIZE]; //Sender generate the sigma
-  char msigma[2*SIZE]; //Sender concatenate the sigma and message digest
-  char ssigma[SIZE]; //It is the result of H4(sigma)
-  element_t r;
-  element_t Qid;
-  element_t gid;
-  element_init_G1(Qid, pairing);
-  element_init_GT(gid, pairing);
-  element_init_Zr(r, pairing);
-  rand_n(sigma); //Sender generate a sigma
-  strcpy(msigma, sigma);
-  strcat(msigma, shamessage);
-  element_from_hash(r, msigma, strlen(msigma));
-  element_mul_zn(U, P, r);
-  element_printf("\nr = %B", r);
-  element_printf("\nU = %B", U);
-  get_public_key(ID, Qid);
-  element_pairing(gid, Qid, Ppub);
-  element_pow_zn(gid, gid, r);
-  element_printf("\ngid = %B\n", gid);
-  element_snprint(sgid, SIZE, gid);
-  sha_fun(sgid, shagid); //H2(gid^r)
-  sha_fun(sigma, ssigma); //H4(SIGMA)
-  
-  //Do the XOR operation to the sigma and shagid digest
-  for (i = 0; i < 40; i++)
-  {
-  xor_operation(sigma[i], shagid[i], V);
-  }
-  //Do the XOR operation to the ssigma and message digest
-  for (i = 0; i < 40; i++)
-  {
-  xor_operation(shamessage[i], ssigma[i], W);
-  }
-  
-  printf("\nV=%s", V);
-  printf("\nW=%s\n", W);
-}
-
-void decryption(element_t Sid,pairing_t pairing,element_t P,element_t U,char* V,char* W,element_t U_receiver,char* shamessage_receiver)
-{
-  
-  int i;
-  element_t rgid;
-  element_t r_receiver;
-  char sgid_receiver[SIZE]; //Receiver calculated gid string representation
-  char shagid_receiver[SIZE]; //Receiver H2 function result
-  char sigma_receiver[SIZE]; //Receiver compute the sigma
-  char ssigma_receiver[SIZE]; //It is the result of H4(sigma_receiver)
-  char msigma_receiver[2*SIZE]; //Receiver concatenate the sigma and message digest
-  memset(sigma_receiver, 0, sizeof(char)*SIZE);//Clear the memory of sigma_receiver
-  memset(shamessage_receiver, 0, sizeof(char)*SIZE);//Clear the memory of shamessage_receiver
-  
-  element_init_Zr(r_receiver,pairing);
-  element_init_GT(rgid, pairing);
-  element_pairing(rgid, Sid, U);
-  element_printf("\nrgid = %B\n", rgid);
-  element_snprint(sgid_receiver, SIZE, rgid);
-  sha_fun(sgid_receiver, shagid_receiver); //Generate H2(e(dID,U));
-  
-  //XOR V and H2(e(dID,U))=sigma_receiver
-  for (i = 0; i < 40; i++)
-  {
-  xor_operation(V[i], shagid_receiver[i], sigma_receiver);
-  }
-  
-  sha_fun(sigma_receiver, ssigma_receiver);
-  
-  //XOR W andH4(sigma)
-  for (i = 0; i < 40; i++)
-  {
-  xor_operation(W[i], ssigma_receiver[i], shamessage_receiver);
-  }
-  
-  strcpy(msigma_receiver, sigma_receiver);
-  strcat(msigma_receiver, shamessage_receiver);
-  element_from_hash(r_receiver, msigma_receiver, strlen(msigma_receiver));
-  element_mul_zn(U_receiver, P, r_receiver);
-}
-
 void setup_sys(element_t P, element_t Ppub, pairing_t pairing, element_t s)
 {
   pbc_param_t par;   //Parameter to generate the pairing
@@ -194,6 +94,128 @@ void setup_sys(element_t P, element_t Ppub, pairing_t pairing, element_t s)
   fp = NULL;
 }
 
+void rand_n(char* sigma)
+{
+  int i;
+  int unit;
+  char tempr[10];
+  memset(sigma, 0, sizeof(char)*SIZE);//Clear the memory of sigma
+  
+  for (i = 0; i < 40; i++)
+  {
+  unit = rand() % 16;
+  sprintf(tempr, "%X", unit);
+  strcat(sigma, tempr);
+  }
+}
+
+void decryption(element_t Sid,pairing_t pairing,element_t P,element_t U,char* V,char* W,element_t U_receiver,char* shamessage_receiver)
+{
+  
+  int i;
+  element_t rgid;
+  element_t r_receiver;
+  char sgid_receiver[SIZE]; //Receiver calculated gid string representation
+  char shagid_receiver[SIZE]; //Receiver H2 function result
+  char sigma_receiver[SIZE]; //Receiver compute the sigma
+  char ssigma_receiver[SIZE]; //It is the result of H4(sigma_receiver)
+  char msigma_receiver[2*SIZE]; //Receiver concatenate the sigma and message digest
+  memset(sigma_receiver, 0, sizeof(char)*SIZE);//Clear the memory of sigma_receiver
+  memset(shamessage_receiver, 0, sizeof(char)*SIZE);//Clear the memory of shamessage_receiver
+  
+  element_init_Zr(r_receiver,pairing);
+  element_init_GT(rgid, pairing);
+  element_pairing(rgid, Sid, U);
+  element_printf("\nrgid = %B\n", rgid);
+  element_snprint(sgid_receiver, SIZE, rgid);
+  sha_fun(sgid_receiver, shagid_receiver); //Generate H2(e(dID,U));
+  
+  //XOR V and H2(e(dID,U))=sigma_receiver
+  for (i = 0; i < 40; i++)
+  {
+  xor_operation(V[i], shagid_receiver[i], sigma_receiver);
+  }
+  
+  sha_fun(sigma_receiver, ssigma_receiver);
+  
+  //XOR W andH4(sigma)
+  for (i = 0; i < 40; i++)
+  {
+  xor_operation(W[i], ssigma_receiver[i], shamessage_receiver);
+  }
+  
+  strcpy(msigma_receiver, sigma_receiver);
+  strcat(msigma_receiver, shamessage_receiver);
+  element_from_hash(r_receiver, msigma_receiver, strlen(msigma_receiver));
+  element_mul_zn(U_receiver, P, r_receiver);
+}
+
+char* decrypt_mail_msg(char *encrypted_mail_msg)
+{
+
+}
+
+void encryption(char* shamessage, char* ID, element_t P, element_t Ppub, element_t U, char *V, char *W, pairing_t pairing)
+{
+  int i;
+  char sgid[SIZE];   //Sender gid string representation
+  char shagid[SIZE]; //Sender H2 function result
+  char sigma[SIZE]; //Sender generate the sigma
+  char msigma[2*SIZE]; //Sender concatenate the sigma and message digest
+  char ssigma[SIZE]; //It is the result of H4(sigma)
+  element_t r;
+  element_t Qid;
+  element_t gid;
+  element_init_G1(Qid, pairing);
+  element_init_GT(gid, pairing);
+  element_init_Zr(r, pairing);
+  rand_n(sigma); //Sender generate a sigma
+  strcpy(msigma, sigma);
+  strcat(msigma, shamessage);
+  element_from_hash(r, msigma, strlen(msigma));
+  element_mul_zn(U, P, r);
+  element_printf("\nr = %B", r);
+  element_printf("\nU = %B", U);
+  get_public_key(ID, Qid);
+  element_pairing(gid, Qid, Ppub);
+  element_pow_zn(gid, gid, r);
+  element_printf("\ngid = %B\n", gid);
+  element_snprint(sgid, SIZE, gid);
+  sha_fun(sgid, shagid); //H2(gid^r)
+  sha_fun(sigma, ssigma); //H4(SIGMA)
+  
+  printf("\nV = \n");
+  int tmp_value = 0;
+  char tmp_s[5];
+  //Do the XOR operation to the sigma and shagid digest
+  for (i = 0; i < 40; i++)
+  {
+      /*V[i] = (char)((int)sigma[i] ^ (int)shagid[i]);*/
+      tmp_value = (int)sigma[i] ^ (int)shagid[i];
+      memset(tmp_s, 0, sizeof(tmp_s));
+      sprintf(tmp_s, "%2X", tmp_value);
+      strcat(V, tmp_s);
+      printf("%d, %d, %d, %s, %d, %s\n", (int)sigma[i], (int)shagid[i], tmp_value, tmp_s, tmp_s[0], V);
+  /*xor_operation(sigma[i], shagid[i], V);*/
+  }
+
+  printf("\nW = \n");
+  //Do the XOR operation to the ssigma and message digest
+  for (i = 0; i < 40; i++)
+  {
+      /*W[i] = (char)((int)shamessage[i] ^ (int)shagid[i]);*/
+      tmp_value = (int)shamessage[i] ^ (int)shagid[i];
+      memset(tmp_s, 0, sizeof(tmp_s));
+      sprintf(tmp_s, "%2X", tmp_value);
+      strcat(W, tmp_s);
+      printf("%d, %d, %d, %s, %d, %s\n", (int)shamessage[i], (int)shagid[i], tmp_value, tmp_s, tmp_s[0], W);
+  /*xor_operation(shamessage[i], ssigma[i], W);*/
+  }
+  
+  printf("\nV=%s", V);
+  printf("\nW=%s\n", W);
+}
+
 char* encrypt_mail_msg(char *mail_msg, char *ID)
 {
   char encrypted_mail_msg[100*SIZE] = {'\0'};
@@ -223,6 +245,7 @@ char* encrypt_mail_msg(char *mail_msg, char *ID)
   /*the encryption function dealt with 40 characters everytime*/
   int cnt = mail_msg_len / 40; 
   int re = mail_msg_len % 40;
+  printf("\ncnt = %d, re = %d\n\n", cnt, re);
   char tmp_msg[40];
   char V[SIZE];
   char W[SIZE];
@@ -241,8 +264,10 @@ char* encrypt_mail_msg(char *mail_msg, char *ID)
     {
         tmp_msg[k] = mail_msg[j];
     }
+    printf("\ntmp_msg is: %s\n", tmp_msg);
     encryption(tmp_msg, ID, P, Ppub, U, V, W, pairing);
     element_snprint(tmp_U, SIZE, U);
+    printf("\ntmp_U = %s\n", tmp_U);
     printf("\n\ntmp_U = %s\n", tmp_U);
     printf("\nV = %s\n", V);
     printf("\nW = %s\n", W);
@@ -261,10 +286,19 @@ char* encrypt_mail_msg(char *mail_msg, char *ID)
     memset(W, 0, sizeof(W));
     memset(tmp_U, 0, sizeof(tmp_U));
 
+    printf("\n***************tmp_msg is:**********\n");
+    for (k = 0; k < 40 - re; ++k)
+    {
+        tmp_msg[k] = 1;
+        printf("%d ", tmp_msg[k]);
+
+    }
     for (j = 40 * cnt, k = 40 - re; j < mail_msg_len; ++j)
     {
         tmp_msg[k] = mail_msg[j];
+        printf("%d ", tmp_msg[k]);
     }
+    printf("\n\n");
     encryption(tmp_msg, ID, P, Ppub, U, V, W, pairing);
     element_snprint(tmp_U, SIZE, U);
     printf("\n\ntmp_U = %s\n", tmp_U);
@@ -276,6 +310,7 @@ char* encrypt_mail_msg(char *mail_msg, char *ID)
     strcat(encrypted_mail_msg, "&");
     strcat(encrypted_mail_msg, W);
     strcat(encrypted_mail_msg, "&"); 
+    
   }
       
   printf("Send (U,V,W) to the receiver!");
@@ -305,6 +340,7 @@ char* encrypt_mail_msg(char *mail_msg, char *ID)
   element_clear(s);
   pairing_clear(pairing);
   
+  printf("\nencrypted_mail_msg:\n%s\n", encrypted_mail_msg);
   return encrypted_mail_msg;
 }
 

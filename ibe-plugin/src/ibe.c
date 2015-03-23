@@ -41,7 +41,8 @@ gboolean ibe_decrypt_hook(gpointer source, gpointer data)
         gchar ID[100] = "CS11Battitude@163.com";
        
         gchar *encrypted_mail_msg = encrypt_mail_msg(mail_msg, ID);
-        printf("\n\n^^^encrypt_mail_msg: \n%s\n\n", encrypt_mail_msg);
+
+        printf("\n\n^^^encrypt_mail_msg: \n%s\n\n", encrypted_mail_msg);
     }
 	return FALSE;
 }
