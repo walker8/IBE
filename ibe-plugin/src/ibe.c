@@ -43,6 +43,10 @@ gboolean ibe_decrypt_hook(gpointer source, gpointer data)
         gchar *encrypted_mail_msg = encrypt_mail_msg(mail_msg, ID);
 
         printf("\n\n^^^encrypt_mail_msg: \n%s\n\n", encrypted_mail_msg);
+
+        gchar *decrypted_mail_msg = decrypt_mail_msg(encrypted_mail_msg);
+        
+        printf("\n\n###decrypt_mail_msg: \n%s\n\n", decrypted_mail_msg);
     }
 	return FALSE;
 }
