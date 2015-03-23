@@ -311,6 +311,8 @@ void encryption(char* shamessage, char* ID, element_t P, element_t Ppub, element
   sha_fun(sgid, shagid); //H2(gid^r)
   sha_fun(sigma, ssigma); //H4(SIGMA)
 
+  printf("\n\nH(gidr) = %s\n", shagid);
+
   printf("\n\nG1(sigma) = %s\n", ssigma);
   
   printf("\nV = \n");
@@ -422,12 +424,13 @@ char* encrypt_mail_msg(char *mail_msg, char *ID)
         printf("%d ", tmp_msg[k]);
 
     }
-    for (j = 40 * cnt, k = 40 - re; j < mail_msg_len; ++j)
+    for (j = 40 * cnt, k = 40 - re; j < mail_msg_len; ++j, ++k)
     {
         tmp_msg[k] = mail_msg[j];
         printf("%d ", tmp_msg[k]);
     }
     printf("\n\n");
+ 
     encryption(tmp_msg, ID, P, Ppub, U, V, W, pairing);
     element_snprint(tmp_U, SIZE, U);
     printf("\n\ntmp_U = %s\n", tmp_U);

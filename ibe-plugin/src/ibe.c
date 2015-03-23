@@ -45,6 +45,7 @@ gboolean ibe_decrypt_hook(gpointer source, gpointer data)
         printf("\n\n^^^encrypt_mail_msg: \n%s\n\n", encrypted_mail_msg);
 
         gchar *decrypted_mail_msg = decrypt_mail_msg(encrypted_mail_msg);
+        /*gchar *decrypted_mail_msg = decrypt_mail_msg(mail_msg);*/
         
         printf("\n\n###decrypt_mail_msg: \n%s\n\n", decrypted_mail_msg);
     }
