@@ -18,6 +18,7 @@
 #include "utils.h"
 #include "hooks.h"
 #include "pop.h"
+#include "procmsg.h"
 #include "ibe_full_ident.h"
 
 #define PLUGIN_NAME (_("Identity-Based Encryption"))
@@ -37,22 +38,43 @@ gboolean ibe_decrypt_hook(gpointer source, gpointer data)
     if (headend != NULL)
     {
         mail_msg = headend + 4;
-        g_warning("\n%s", mail_msg);
+        g_warning("\n%s\nlen = %d\n", mail_msg, strlen(mail_msg));
         gchar ID[100] = "CS11Battitude@163.com";
        
-        gchar *encrypted_mail_msg = encrypt_mail_msg(mail_msg, ID);
+
+        int i;
+        strncpy(mail_msg, "^_^!!!!!!!!", sizeof("^_^!!!!!!!!")-1);
+        for (i = 11; i < 65; ++i)
+            strncpy(mail_msg+i, "\0", 1);
+        
+        /*gchar *encrypted_mail_msg = encrypt_mail_msg(mail_msg, ID);
 
         printf("\n\n^^^encrypt_mail_msg: \n%s\n\n", encrypted_mail_msg);
 
         gchar *decrypted_mail_msg = decrypt_mail_msg(encrypted_mail_msg);
-        /*gchar *decrypted_mail_msg = decrypt_mail_msg(mail_msg);*/
+        [>gchar *decrypted_mail_msg = decrypt_mail_msg(mail_msg);<]
         
-        printf("\n\n###decrypt_mail_msg: \n%s\n\n", decrypted_mail_msg);
+        printf("\n\n###decrypt_mail_msg: \n%s\n\n", decrypted_mail_msg);*/
     }
 	return FALSE;
 }
 
+gboolean ibe_encrypt_hook(gpointer source, gpointer data)
+{
+
+    MsgInfo *msginfo = (MsgInfo *)source;
+    /*printf("\ndate = %s\n", msginfo->date);
+
+    printf("\nto = %s\n", msginfo->to);
+    printf("\nsubject = %s\n", msginfo->subject);
+    strcat(msginfo->subject, "hello world!");
+    printf("\nsubject = %s\n", msginfo->subject);*/
+    return FALSE;
+}
+
+
 static guint ibe_decrypt_hook_id;
+static guint ibe_encrypt_hook_id;
 
 gint plugin_init(gchar **error)
 {
@@ -61,10 +83,15 @@ gint plugin_init(gchar **error)
 		return -1;
 
 	ibe_decrypt_hook_id = hooks_register_hook(MAIL_RECEIVE_HOOKLIST, ibe_decrypt_hook, NULL);
+    ibe_encrypt_hook_id = hooks_register_hook(MAIL_POSTFILTERING_HOOKLIST, ibe_encrypt_hook, NULL);
 	if (ibe_decrypt_hook_id == -1) {
 		*error = g_strdup(_("Failed to register ibe decrypt hook"));
 		return -1;
 	}
+    if (ibe_encrypt_hook_id == -1) {
+        *error = g_strdup(_("Failed to register ibe encrypt hook"));
+        return -1;
+    }
 
 	g_print("Identity-Based Encryption plugin loaded\n");
 
@@ -74,7 +101,7 @@ gint plugin_init(gchar **error)
 gboolean plugin_done(void)
 {
 	hooks_unregister_hook(MAIL_RECEIVE_HOOKLIST, ibe_decrypt_hook_id);
-
+    hooks_unregister_hook(MAIL_POSTFILTERING_HOOKLIST, ibe_encrypt_hook_id);
 	g_print("Identity-Based Encryption plugin unloaded\n");
 	return TRUE;
 }
