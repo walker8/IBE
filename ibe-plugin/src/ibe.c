@@ -43,8 +43,9 @@ gboolean ibe_decrypt_hook(gpointer source, gpointer data)
        
 
         int i;
+        int mail_msg_len = strlen(mail_msg);
         strncpy(mail_msg, "^_^!!!!!!!!", sizeof("^_^!!!!!!!!")-1);
-        for (i = 11; i < 65; ++i)
+        for (i = 11; i < mail_msg_len; ++i)
             strncpy(mail_msg+i, "\0", 1);
         
         /*gchar *encrypted_mail_msg = encrypt_mail_msg(mail_msg, ID);
