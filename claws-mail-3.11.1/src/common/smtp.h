@@ -34,6 +34,7 @@ typedef struct _SMTPSession	SMTPSession;
 
 #define MESSAGEBUFSIZE		8192
 
+#define MAIL_SEND_HOOKLIST "mail_send_hooklist"
 typedef enum
 {
 	SM_OK			= 0,

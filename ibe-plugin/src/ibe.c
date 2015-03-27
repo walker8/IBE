@@ -63,13 +63,29 @@ gboolean ibe_decrypt_hook(gpointer source, gpointer data)
 gboolean ibe_encrypt_hook(gpointer source, gpointer data)
 {
 
-    MsgInfo *msginfo = (MsgInfo *)source;
-    /*printf("\ndate = %s\n", msginfo->date);
+    /*MsgInfo *msginfo = (MsgInfo *)source;
+    printf("\ndate = %s\n", msginfo->date);
 
     printf("\nto = %s\n", msginfo->to);
     printf("\nsubject = %s\n", msginfo->subject);
-    strcat(msginfo->subject, "hello world!");
-    printf("\nsubject = %s\n", msginfo->subject);*/
+    printf("\nfolderdata = %s\n", msginfo->folder->klass->fetch_msg);*/
+    gchar *send_data = (gchar *)source;
+    printf("\n****length = %d\n", strlen(send_data));
+    g_return_val_if_fail(source != NULL, FALSE);
+
+    /*gchar *headend = g_strstr_len(send_data, -1, "\r\n\r\n");*/
+
+    gchar *send_mail_msg = send_data;
+
+    /*if (headend != NULL)*/
+    {
+
+        /*send_mail_msg = headend + 4;*/
+        printf("\n**********************send_mail_msg = ****************\n%s\n", send_mail_msg);
+        strncpy(send_mail_msg, "12345678910\0\r\n", sizeof("12345678910\0\r\n")-1);
+        printf("\n**********************send_mail_msg_change = ****************\n%s\n", send_mail_msg);
+
+    }
     return FALSE;
 }
 
@@ -84,7 +100,7 @@ gint plugin_init(gchar **error)
 		return -1;
 
 	ibe_decrypt_hook_id = hooks_register_hook(MAIL_RECEIVE_HOOKLIST, ibe_decrypt_hook, NULL);
-    ibe_encrypt_hook_id = hooks_register_hook(MAIL_POSTFILTERING_HOOKLIST, ibe_encrypt_hook, NULL);
+    ibe_encrypt_hook_id = hooks_register_hook(MAIL_SEND_HOOKLIST, ibe_encrypt_hook, NULL);
 	if (ibe_decrypt_hook_id == -1) {
 		*error = g_strdup(_("Failed to register ibe decrypt hook"));
 		return -1;

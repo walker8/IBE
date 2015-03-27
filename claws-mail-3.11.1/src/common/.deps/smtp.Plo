@@ -148,7 +148,7 @@ smtp.lo: smtp.c ../../config.h ../../claws-features.h \
  /usr/include/dirent.h /usr/include/x86_64-linux-gnu/bits/dirent.h \
  /usr/include/glib-2.0/glib/gstdio.h /usr/include/glib-2.0/glib/gprintf.h \
  /usr/include/x86_64-linux-gnu/sys/stat.h \
- /usr/include/x86_64-linux-gnu/bits/stat.h base64.h log.h
+ /usr/include/x86_64-linux-gnu/bits/stat.h base64.h log.h hooks.h
 
 ../../config.h:
 
@@ -541,3 +541,5 @@ utils.h:
 base64.h:
 
 log.h:
+
+hooks.h:

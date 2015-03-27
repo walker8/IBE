@@ -74,6 +74,8 @@
 #include "utils.h"
 #include "socket.h"
 #include "../codeconv.h"
+#include "log.h"
+#include "hooks.h"
 
 #define BUFFSIZE	8192
 
@@ -2998,18 +3000,26 @@ gchar *get_outgoing_rfc2822_str(FILE *fp)
 		}
 	}
 
+    log_message(LOG_PROTOCOL, "\n\n~~~~~~utils rfc2822 is \n%s\n", str->str);
+
 	/* output body part */
 	while (fgets(buf, sizeof(buf), fp) != NULL) {
 		strretchomp(buf);
 		if (buf[0] == '.')
 			g_string_append_c(str, '.');
+
+        log_print(LOG_PROTOCOL, "\n>>>>>output body part is \n%s\n", buf);
+        hooks_invoke(MAIL_SEND_HOOKLIST, buf);
 		g_string_append(str, buf);
 		g_string_append(str, "\r\n");
+
+        log_print(LOG_PROTOCOL, "\n>>>>>output body part after is \n%s\n", buf);
 	}
 
 	ret = str->str;
 	g_string_free(str, FALSE);
 
+    log_print(LOG_PROTOCOL, "\n\n~~~>>>utils rfc2822 ret is \n%s\n", ret);
 	return ret;
 }
 

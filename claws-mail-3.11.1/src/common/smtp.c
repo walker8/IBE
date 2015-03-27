@@ -37,6 +37,7 @@
 #include "base64.h"
 #include "utils.h"
 #include "log.h"
+#include "hooks.h"
 
 static void smtp_session_destroy(Session *session);
 
@@ -71,10 +72,11 @@ Session *smtp_session_new(void *prefs_account)
 	session_init(SESSION(session), prefs_account, TRUE);
 
 	SESSION(session)->type             = SESSION_SMTP;
-
+    log_print(LOG_PROTOCOL, "smtp_session_new -> smtp_session_recv_msg\n");
 	SESSION(session)->recv_msg         = smtp_session_recv_msg;
 
 	SESSION(session)->recv_data_finished = NULL;
+    log_print(LOG_PROTOCOL, "smtp_session_new -> smtp_session_send_data_finished\n");
 	SESSION(session)->send_data_finished = smtp_session_send_data_finished;
 
 	SESSION(session)->destroy          = smtp_session_destroy;
@@ -106,6 +108,7 @@ Session *smtp_session_new(void *prefs_account)
 	session->error_val                 = SM_OK;
 	session->error_msg                 = NULL;
 
+    log_print(LOG_PROTOCOL, "smtp_session_new -> return session\n");
 	return SESSION(session);
 }
 
@@ -302,6 +305,7 @@ static gint smtp_ehlo(SMTPSession *session)
 
 static gint smtp_ehlo_recv(SMTPSession *session, const gchar *msg)
 {
+    log_print(LOG_PROTOCOL, "-->smtp_ehlo_recv %s\n", msg);
 	if (strncmp(msg, "250", 3) == 0) {
 		const gchar *p = msg;
 		p += 3;
@@ -469,11 +473,14 @@ static gint smtp_rcpt(SMTPSession *session)
 static gint smtp_data(SMTPSession *session)
 {
 	session->state = SMTP_DATA;
-
 	if (session_send_msg(SESSION(session), SESSION_MSG_NORMAL, "DATA") < 0)
 		return SM_ERROR;
 	log_print(LOG_PROTOCOL, "SMTP> DATA\n");
-
+    /*printf("\nsmtp_data data = %s\n", session->send_data);
+    printf("\nsmtp_data len_origin = %d\n\n", session->send_data_len);
+    hooks_invoke(MAIL_SEND_HOOKLIST, session->send_data);
+    session->send_data_len = strlen(session->send_data);
+    printf("\nsmtp_data len change = %d\n\n", session->send_data_len);*/
 	return SM_OK;
 }
 
@@ -481,9 +488,17 @@ static gint smtp_send_data(SMTPSession *session)
 {
 	session->state = SMTP_SEND_DATA;
 
-	session_send_data(SESSION(session), session->send_data,
-			  session->send_data_len);
-
+    /*printf("\n$send_data_len origin = %d\n", session->send_data_len);
+    [>hooks_invoke(MAIL_SEND_HOOKLIST, session->send_data);<]
+    [>session->send_data_len = strlen(session->send_data);<]
+    printf("\n$send_data_len_change = %d\n", strlen(session->send_data));
+    printf("\n$send_data_len_origin = %d\n", session->send_data_len);
+    [>session->send_data_len = (strlen(session->send_data) + 2);<]
+    printf("\n$$ len = %d\n", session->send_data_len);
+    printf("\n## max_message_size = %d\n", session->max_message_size);*/
+    session_send_data(SESSION(session), session->send_data,
+              session->send_data_len);
+    log_print(LOG_PROTOCOL, "smtp_send_data finished\n");
 	return SM_OK;
 }
 
@@ -511,12 +526,13 @@ static gint smtp_eom(SMTPSession *session)
 	if (session_send_msg(SESSION(session), SESSION_MSG_NORMAL, ".") < 0)
 		return SM_ERROR;
 	log_print(LOG_PROTOCOL, "SMTP> . (EOM)\n");
-
+    log_print(LOG_PROTOCOL, "^^\n");
 	return SM_OK;
 }
 
 static gint smtp_session_recv_msg(Session *session, const gchar *msg)
 {
+    log_message(LOG_PROTOCOL, "$%s\n", msg);
 	SMTPSession *smtp_session = SMTP_SESSION(session);
 	gboolean cont = FALSE;
 	gint ret = 0;
@@ -584,6 +600,7 @@ static gint smtp_session_recv_msg(Session *session, const gchar *msg)
 
 	switch (smtp_session->state) {
 	case SMTP_READY:
+        log_message(LOG_PROTOCOL, "!!smtp_session->state: SMTP_READY\n");
 		if (strstr(msg, "ESMTP"))
 			smtp_session->is_esmtp = TRUE;
 #ifdef USE_GNUTLS
@@ -597,9 +614,12 @@ static gint smtp_session_recv_msg(Session *session, const gchar *msg)
 			ret = smtp_helo(smtp_session);
 		break;
 	case SMTP_HELO:
+        log_message(LOG_PROTOCOL, "!!smtp_session->state: SMTP_HELO\n");
 		ret = smtp_from(smtp_session);
 		break;
 	case SMTP_EHLO:
+log_message(LOG_PROTOCOL, "!!smtp_session->state: SMTP_EHLO\n");
+
 		ret = smtp_ehlo_recv(smtp_session, msg);
 		if (cont == TRUE)
 			break;
@@ -636,6 +656,8 @@ static gint smtp_session_recv_msg(Session *session, const gchar *msg)
 			ret = smtp_from(smtp_session);
 		break;
 	case SMTP_STARTTLS:
+log_message(LOG_PROTOCOL, "!!smtp_session->state: SMTP_STARTTLS\n");
+
 #ifdef USE_GNUTLS
 		if (session_start_tls(session) < 0) {
 			log_warning(LOG_PROTOCOL, _("couldn't start TLS session\n"));
@@ -648,9 +670,13 @@ static gint smtp_session_recv_msg(Session *session, const gchar *msg)
 #endif
 		break;
 	case SMTP_AUTH:
+log_message(LOG_PROTOCOL, "!!smtp_session->state: SMTP_AUTH\n");
+
 		ret = smtp_auth_recv(smtp_session, msg);
 		break;
 	case SMTP_AUTH_LOGIN_USER:
+log_message(LOG_PROTOCOL, "!!smtp_session->state: SMTP_AUTH_LOGIN_USER\n");
+
 		ret = smtp_auth_login_user_recv(smtp_session, msg);
 		break;
 	case SMTP_AUTH_PLAIN:
@@ -659,26 +685,38 @@ static gint smtp_session_recv_msg(Session *session, const gchar *msg)
 		ret = smtp_from(smtp_session);
 		break;
 	case SMTP_FROM:
+log_message(LOG_PROTOCOL, "!!smtp_session->state: SMTP_FROM\n");
 		if (smtp_session->cur_to)
 			ret = smtp_rcpt(smtp_session);
 		break;
 	case SMTP_RCPT:
+        log_message(LOG_PROTOCOL, "!!smtp_session->state: SMTP_RCPT\n");
 		if (smtp_session->cur_to)
 			ret = smtp_rcpt(smtp_session);
 		else
 			ret = smtp_data(smtp_session);
 		break;
 	case SMTP_DATA:
+        log_message(LOG_PROTOCOL, "!!smtp_session->state: SMTP_DATA\n");
 		ret = smtp_send_data(smtp_session);
+        if (cont)
+            log_message(LOG_PROTOCOL, "cont is true");
+        if (ret == SM_OK)
+            log_message(LOG_PROTOCOL, "ret is sm_ok");
+
 		break;
 	case SMTP_EOM:
+        log_message(LOG_PROTOCOL, "!!smtp_session->state: SMTP_EoM\n");
 		smtp_make_ready(smtp_session);
 		break;
 	case SMTP_QUIT:
+        log_message(LOG_PROTOCOL, "!!smtp_session->state: SMTP_QUIT\n");
 		session_disconnect(session);
 		break;
 	case SMTP_ERROR:
 	default:
+        log_message(LOG_PROTOCOL, "!!smtp_session->state: SMTP_default\n");
+
 		log_warning(LOG_PROTOCOL, _("error occurred on SMTP session\n"));
 		smtp_session->error_val = SM_ERROR;
 		return -1;
@@ -690,10 +728,13 @@ static gint smtp_session_recv_msg(Session *session, const gchar *msg)
 	if (ret != SM_OK)
 		smtp_session->error_val = SM_ERROR;
 
+    
 	return ret == SM_OK ? 0 : -1;
 }
 
 static gint smtp_session_send_data_finished(Session *session, guint len)
 {
+
+    log_print(LOG_PROTOCOL, "smtp_session_send_data_finished return\n");
 	return smtp_eom(SMTP_SESSION(session));
 }

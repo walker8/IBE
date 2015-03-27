@@ -47,6 +47,7 @@
 #if HAVE_WCHAR_H
 #  include <wchar.h>
 #endif
+#define MAIL_SEND_HOOKLIST "mail_send_hooklist"
 
 /* The Hurd doesn't have this limit */
 #ifndef PATH_MAX
