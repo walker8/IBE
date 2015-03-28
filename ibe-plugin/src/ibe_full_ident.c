@@ -116,7 +116,7 @@ int* get_value(char *V)
     int value[40];
     memset(value, 0, sizeof(value));
     V_len = strlen(V);
-    printf("\n\nV_len = %d\n", V_len);
+    /*printf("\n\nV_len = %d\n", V_len);*/
     j = 0;
     for (i = 0; i < V_len;)
     {
@@ -127,11 +127,11 @@ int* get_value(char *V)
         }
         ++i;
         tmp_value += htoi(V[i]);
-        printf("%d ", tmp_value);
+        /*printf("%d ", tmp_value);*/
         value[j++] = tmp_value;
         ++i;
     }
-    printf("\n\n");
+    /*printf("\n\n");*/
     return value;    
 }
 
@@ -157,11 +157,11 @@ void decryption(element_t Sid,pairing_t pairing,element_t P,element_t U,char* V,
   sha_fun(sgid_receiver, shagid_receiver); //Generate H2(e(dID,U));
 
   
-  printf("\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
+  /*printf("\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");*/
 
   int *V_val = get_value(V);
   //XOR V and H2(e(dID,U))=sigma_receiver
-  for (i = 0; i < 40; i++)
+  for (i = 0; i < 40; ++i)
   {
       sigma_receiver[i] = V_val[i] ^ (int)shagid_receiver[i];
   /*xor_operation(V[i], shagid_receiver[i], sigma_receiver);*/
@@ -173,7 +173,7 @@ void decryption(element_t Sid,pairing_t pairing,element_t P,element_t U,char* V,
   
   int *W_val = get_value(W);
   //XOR W andH4(sigma)
-  for (i = 0; i < 40; i++)
+  for (i = 0; i < 40; ++i)
   {
       tmp_msg[i] = W_val[i] ^ (int)ssigma_receiver[i];
 
@@ -189,6 +189,8 @@ void decryption(element_t Sid,pairing_t pairing,element_t P,element_t U,char* V,
 
 char* decrypt_mail_msg(char *encrypted_mail_msg)
 {
+
+    printf("\n##########DECRYPTION##########\n");
     char decrypted_mail_msg[SIZE] = {'\0'};
     int encrypted_mail_msg_len = strlen(encrypted_mail_msg);
     element_t P, Ppub, s, U_receiver, U, Sid;
@@ -199,7 +201,6 @@ char* decrypt_mail_msg(char *encrypted_mail_msg)
     element_printf("\nPpub = %B\n", Ppub);
     element_printf("\n**s = %B\n", s);
 
-    /*printf("\n##########DECRYPTION##########");*/
     printf("\ninit ibe system parameters finished\n");
     element_init_G1(Sid, pairing);
     get_private_key(Sid);
@@ -207,7 +208,7 @@ char* decrypt_mail_msg(char *encrypted_mail_msg)
     char tmp_U[10*SIZE];
     char V[2*SIZE];
     char W[2*SIZE];
-    char tmp_msg[40];
+    char tmp_msg[45];
     for (i = 0; i < encrypted_mail_msg_len; ++i)
     {
         memset(tmp_U, 0, sizeof(tmp_U));
@@ -216,7 +217,7 @@ char* decrypt_mail_msg(char *encrypted_mail_msg)
         {
             tmp_U[j++] = encrypted_mail_msg[i++];
         }    
-        printf("\ntmp_U = %s\n", tmp_U);
+        /*printf("\ntmp_U = %s\n", tmp_U);*/
         element_init_G1(U, pairing);
         element_set_str(U, tmp_U, ELE_BASE);
         element_printf("\nU = %B\n", U);
@@ -228,7 +229,7 @@ char* decrypt_mail_msg(char *encrypted_mail_msg)
         {
             V[j++] = encrypted_mail_msg[i++];
         }
-        printf("\nV = %s\n", V);
+        /*printf("\nV = %s\n", V);*/
         
         ++i;
         memset(W, 0, sizeof(W));
@@ -237,15 +238,15 @@ char* decrypt_mail_msg(char *encrypted_mail_msg)
         {
             W[j++] = encrypted_mail_msg[i++];
         }
-        printf("\nW = %s\n", W);
+        /*printf("\nW = %s\n", W);*/
  
         element_init_G1(U_receiver, pairing);
         memset(tmp_msg, 0, sizeof(tmp_msg)); 
         decryption(Sid, pairing, P, U, V, W, U_receiver, tmp_msg);
-        printf("\n\ntmp_msg is: %s\n", tmp_msg);
+        /*printf("\n\ntmp_msg is: %s\n", tmp_msg);
         printf("\n\ntmp_msg is: \n");
         for (d = 0; d < 40; ++d)
-            printf("%d ", (int)tmp_msg[d]);
+            printf("%d ", (int)tmp_msg[d]);*/
         if (element_cmp(U, U_receiver) == 0)
         {
             element_printf("\nU=%B", U);
@@ -255,10 +256,10 @@ char* decrypt_mail_msg(char *encrypted_mail_msg)
             {
                 ++d;
             }
-            printf("\n\n$$$$$$$d = %d\n", d);
+            /*printf("\n\n$$$$$$$d = %d\n", d);*/
             if (d == 0)
             {
-                strcat(decrypted_mail_msg, tmp_msg+d);
+                strcat(decrypted_mail_msg, tmp_msg);
             }
             else 
             {
@@ -267,8 +268,6 @@ char* decrypt_mail_msg(char *encrypted_mail_msg)
                     tmp_msg_delhead[k] = tmp_msg[d];
                 strcat(decrypted_mail_msg, tmp_msg_delhead);
             }
-            /*printf("\nYeah!The message is decrpted!");
-              printf("\nThe Message Disgest=%s\n", shamessage_receiver);*/
         }
 
         else
@@ -279,6 +278,14 @@ char* decrypt_mail_msg(char *encrypted_mail_msg)
             return NULL;
         }
     } 
+
+    printf("\nYeah!The message is decrpted!");
+    printf("\nThe decrypted Message =\n%s\n\n", decrypted_mail_msg);
+    /*int ll;
+    int len_mail = strlen(decrypted_mail_msg);
+    for (ll = 0; ll < len_mail; ++ll)
+        printf("%d ", decrypted_mail_msg[ll]);
+    printf("\n\n\n");*/
     return decrypted_mail_msg;
 }
 

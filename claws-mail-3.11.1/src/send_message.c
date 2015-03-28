@@ -415,7 +415,7 @@ gint send_message_smtp_full(PrefsAccount *ac_prefs, GSList *to_list, FILE *fp, g
 		gtk_main_iteration();
         /*log_message(LOG_PROTOCOL, "\n*************gtk_main_iter_e****\n");*/
     }
-    log_print(LOG_PROTOCOL, "finished while^^\n");
+    /*log_print(LOG_PROTOCOL, "finished while^^\n");*/
 
 	if (SMTP_SESSION(session)->error_val == SM_AUTHFAIL) {
 		if (ac_prefs->session_smtp_passwd) {

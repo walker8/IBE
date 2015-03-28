@@ -3000,8 +3000,6 @@ gchar *get_outgoing_rfc2822_str(FILE *fp)
 		}
 	}
 
-    log_message(LOG_PROTOCOL, "\n\n~~~~~~utils rfc2822 is \n%s\n", str->str);
-
     gchar mail_msg_buf[100*BUFFSIZE] = {'\0'};
 	/* output body part */
 	while (fgets(buf, sizeof(buf), fp) != NULL) {
@@ -3012,29 +3010,34 @@ gchar *get_outgoing_rfc2822_str(FILE *fp)
         strcat(mail_msg_buf, "\r\n");
     }
 
-        log_print(LOG_PROTOCOL, "\n>>>>>output body part is \n%s\n", mail_msg_buf);
+    /*log_print(LOG_PROTOCOL, "\n>>>>>output body part is \n%s\n", mail_msg_buf);*/
+    /*g_print("\n>>>>>output body part is \n%s\n", mail_msg_buf);*/
 
-        gchar tmp_buf[100*BUFFSIZE] = {'\0'};
-        strcat(tmp_buf, str->str);
-        strcat(tmp_buf, mail_msg_buf);
-        log_message(LOG_PROTOCOL, "\n $$$$$$output body part is \n%s\n", tmp_buf);
+    gchar tmp_buf[100*BUFFSIZE] = {'\0'};
+    strcat(tmp_buf, str->str);
+    strcat(tmp_buf, mail_msg_buf);
+    /*log_message(LOG_PROTOCOL, "\n $$$$$$output body part is \n%s\n", tmp_buf);*/
+    /*g_print("\n $$$$$$output body part is \n%s\n", tmp_buf);*/
 
-        hooks_invoke(MAIL_SEND_HOOKLIST, tmp_buf);
+    hooks_invoke(MAIL_SEND_HOOKLIST, tmp_buf);
 
-        gchar* encrypted_mail_msg = g_strstr_len(tmp_buf, -1, "\r\n\r\n");
-        encrypted_mail_msg += 4;
-        /*strncpy(buf, encrypted_mail_msg, strlen(encrypted_mail_msg)); */
-        log_message(LOG_PROTOCOL, "\n^^^^output body part's encrypted_mail_msg is \n%s\n", encrypted_mail_msg);
+    gchar* encrypted_mail_msg = g_strstr_len(tmp_buf, -1, "\r\n\r\n");
+    encrypted_mail_msg += 4;
+    /*log_message(LOG_PROTOCOL, "\n^^^^output body part's encrypted_mail_msg is \n%s\n", encrypted_mail_msg);*/
+    /*g_print("\n^^^^output body part's encrypted_mail_msg is \n%s\n", encrypted_mail_msg);*/
 
-		g_string_append(str, encrypted_mail_msg);
-        g_string_append(str, "\r\n");
+    g_string_append(str, encrypted_mail_msg);
+    g_string_append(str, "\r\n");
 
-        log_print(LOG_PROTOCOL, "\n>>>>>output body part after is \n%s\n", str->str);
+    /*log_print(LOG_PROTOCOL, "\n>>>>>output body part after is \n%s\n", str->str);*/
+    /*g_print("\n>>>>>output body part after is \n%s\n", str->str);*/
 
 	ret = str->str;
 	g_string_free(str, FALSE);
 
-    log_print(LOG_PROTOCOL, "\n\n~~~>>>utils rfc2822 ret is \n%s\n", ret);
+    /*log_print(LOG_PROTOCOL, "\n\n~~~>>>utils rfc2822 ret is \n%s\n", ret);*/
+    /*g_print("\n\n~~~>>>utils rfc2822 ret is \n%s\n", ret);*/
+
 	return ret;
 }
 

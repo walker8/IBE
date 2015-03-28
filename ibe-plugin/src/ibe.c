@@ -38,24 +38,25 @@ gboolean ibe_decrypt_hook(gpointer source, gpointer data)
     if (headend != NULL)
     {
         mail_msg = headend + 4;
-        g_warning("\n%s\nlen = %d\n", mail_msg, strlen(mail_msg));
+        /*g_warning("\n%s\nlen = %d\n", mail_msg, strlen(mail_msg));*/
         
         int mail_msg_len = strlen(mail_msg);
+        /*g_print("\n>>>%d, %d<<<\n", mail_msg[mail_msg_len-2], mail_msg[mail_msg_len-1]);*/
         mail_msg[mail_msg_len-1] = '\0';
         mail_msg[mail_msg_len-2] = '\0';
         gchar *decrypted_mail_msg = decrypt_mail_msg(mail_msg);
         
-        int i;
-        int decrypted_mail_msg_len = strlen(decrypted_mail_msg);
-        /*decrypted_mail_msg[decrypted_mail_msg_len] = '\r';
-        decrypted_mail_msg[decrypted_mail_msg_len] = '\n';
-        decrypted_mail_msg_len += 2;*/
-        strncpy(mail_msg, decrypted_mail_msg, decrypted_mail_msg_len);
+        if (decrypted_mail_msg != NULL)
+        {
+            int i;
+            int decrypted_mail_msg_len = strlen(decrypted_mail_msg);
+            strncpy(mail_msg, decrypted_mail_msg, decrypted_mail_msg_len);
 
-        for (i = decrypted_mail_msg_len; i < mail_msg_len; ++i)
-            strncpy(mail_msg+i, "\0", 1);
-        
-        printf("\n\n###decrypt_mail_msg: \n%s\n\n", mail_msg);
+            for (i = decrypted_mail_msg_len; i < mail_msg_len; ++i)
+                strncpy(mail_msg+i, "\0", 1);
+
+            printf("\n\n###decrypt_mail_msg: \n%s\n\n", mail_msg);
+        }
     }
 	return FALSE;
 }
@@ -121,7 +122,7 @@ gint plugin_init(gchar **error)
 gboolean plugin_done(void)
 {
 	hooks_unregister_hook(MAIL_RECEIVE_HOOKLIST, ibe_decrypt_hook_id);
-    hooks_unregister_hook(MAIL_POSTFILTERING_HOOKLIST, ibe_encrypt_hook_id);
+    hooks_unregister_hook(MAIL_SEND_HOOKLIST, ibe_encrypt_hook_id);
 	g_print("Identity-Based Encryption plugin unloaded\n");
 	return TRUE;
 }
