@@ -211,9 +211,8 @@ gint send_message_local(const gchar *command, FILE *fp)
 gint send_message_smtp_full(PrefsAccount *ac_prefs, GSList *to_list, FILE *fp, gboolean keep_session)
 {
 	Session *session;
-    log_print(LOG_PROTOCOL, "$send_message_smtp_full -> begin new smtp_session\n");
+    /*log_print(LOG_PROTOCOL, "$send_message_smtp_full -> begin new smtp_session\n");*/
 	SMTPSession *smtp_session;
-    log_print(LOG_PROTOCOL, "$new smtp_session finished\n");
 	gushort port = 0;
 	gchar buf[BUFFSIZE];
 	gint ret = 0;
@@ -255,7 +254,7 @@ gint send_message_smtp_full(PrefsAccount *ac_prefs, GSList *to_list, FILE *fp, g
 
 	if (!ac_prefs->session) {
 		/* we can't reuse a previously initialised session */
-            log_print(LOG_PROTOCOL, "send_message_smtp_full -> begin new smtp_session\n");
+            /*log_print(LOG_PROTOCOL, "send_message_smtp_full -> begin new smtp_session\n");*/
 
 		session = smtp_session_new(ac_prefs);
 		session->ssl_cert_auto_accept = ac_prefs->ssl_certs_auto_accept;
@@ -361,7 +360,7 @@ gint send_message_smtp_full(PrefsAccount *ac_prefs, GSList *to_list, FILE *fp, g
 			GTK_EVENTS_FLUSH();
 			inc_pop_before_smtp(ac_prefs);
 		}
-    log_message(LOG_PROTOCOL, " begin connecting^^\n");
+    /*log_message(LOG_PROTOCOL, " begin connecting^^\n");*/
 
 		g_snprintf(buf, sizeof(buf), _("Account '%s': Connecting to SMTP server: %s:%d..."),
 				ac_prefs->account_name, ac_prefs->smtp_server, port);
@@ -384,15 +383,13 @@ gint send_message_smtp_full(PrefsAccount *ac_prefs, GSList *to_list, FILE *fp, g
 		send_dialog = (SendProgressDialog *)smtp_session->dialog;
 		was_inited = TRUE;
 	}
-    log_message(LOG_PROTOCOL, "\n\n>>>>smtp_session->send_data is \n%s\n\n", smtp_session->send_data);
+    /*log_message(LOG_PROTOCOL, "\n\n>>>>smtp_session->send_data is \n%s\n\n", smtp_session->send_data);*/
 	/* This has to be initialised for every mail sent */
 	smtp_session->from = g_strdup(spec_from);
 	smtp_session->to_list = to_list;
 	smtp_session->cur_to = to_list;
 	smtp_session->send_data = (guchar *)get_outgoing_rfc2822_str(fp);
 	smtp_session->send_data_len = strlen((gchar *)smtp_session->send_data);
-log_message(LOG_PROTOCOL, "%s\n", smtp_session->send_data);
-log_message(LOG_PROTOCOL, "%d\n", smtp_session->send_data_len);
 	session_set_timeout(session,
 			    prefs_common.io_timeout_secs * 1000);
 	/* connect if necessary */
@@ -407,11 +404,11 @@ log_message(LOG_PROTOCOL, "%d\n", smtp_session->send_data_len);
 
 	if (was_inited) {
 		/* as the server is quiet, start sending ourselves */
-        log_print(LOG_PROTOCOL, "begin smtp_from^^\n");
+        /*log_print(LOG_PROTOCOL, "begin smtp_from^^\n");*/
 		smtp_from(smtp_session);
 	}
 
-    log_print(LOG_PROTOCOL, "begin while^^\n");
+    /*log_print(LOG_PROTOCOL, "begin while^^\n");*/
 	while (session_is_running(session) && send_dialog->cancelled == FALSE
 		&& SMTP_SESSION(session)->state != SMTP_MAIL_SENT_OK){
         /*log_message(LOG_PROTOCOL, "\n*************gtk_main_iter_b****\n");*/

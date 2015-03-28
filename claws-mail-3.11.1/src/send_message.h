@@ -27,7 +27,6 @@
 #define SMTP_PORT	25
 #ifdef USE_GNUTLS
 #define SSMTP_PORT	465
-#define MAIL_SEND_HOOKLIST "mail_send_hooklist"
 #endif
 
 gint send_message		(const gchar	*file,

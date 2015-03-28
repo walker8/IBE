@@ -15,19 +15,19 @@
 #include "version.h"
 #include "claws.h"
 #include "plugin.h"
-#include "utils.h"
 #include "hooks.h"
 #include "pop.h"
 #include "procmsg.h"
+#include "utils.h"
 #include "ibe_full_ident.h"
 
 #define PLUGIN_NAME (_("Identity-Based Encryption"))
-#define SIZE 1000
 
 gboolean ibe_decrypt_hook(gpointer source, gpointer data)
 {
     MailReceiveData *mail_receive_data = (MailReceiveData *)source;
     gchar *mail_msg = NULL;
+
     g_return_val_if_fail(
             mail_receive_data &&
             mail_receive_data->session &&
@@ -39,52 +39,55 @@ gboolean ibe_decrypt_hook(gpointer source, gpointer data)
     {
         mail_msg = headend + 4;
         g_warning("\n%s\nlen = %d\n", mail_msg, strlen(mail_msg));
-        gchar ID[100] = "CS11Battitude@163.com";
-       
-
-        int i;
+        
         int mail_msg_len = strlen(mail_msg);
-        strncpy(mail_msg, "^_^!!!!!!!!", sizeof("^_^!!!!!!!!")-1);
-        for (i = 11; i < mail_msg_len; ++i)
+        mail_msg[mail_msg_len-1] = '\0';
+        mail_msg[mail_msg_len-2] = '\0';
+        gchar *decrypted_mail_msg = decrypt_mail_msg(mail_msg);
+        
+        int i;
+        int decrypted_mail_msg_len = strlen(decrypted_mail_msg);
+        /*decrypted_mail_msg[decrypted_mail_msg_len] = '\r';
+        decrypted_mail_msg[decrypted_mail_msg_len] = '\n';
+        decrypted_mail_msg_len += 2;*/
+        strncpy(mail_msg, decrypted_mail_msg, decrypted_mail_msg_len);
+
+        for (i = decrypted_mail_msg_len; i < mail_msg_len; ++i)
             strncpy(mail_msg+i, "\0", 1);
         
-        /*gchar *encrypted_mail_msg = encrypt_mail_msg(mail_msg, ID);
-
-        printf("\n\n^^^encrypt_mail_msg: \n%s\n\n", encrypted_mail_msg);
-
-        gchar *decrypted_mail_msg = decrypt_mail_msg(encrypted_mail_msg);
-        [>gchar *decrypted_mail_msg = decrypt_mail_msg(mail_msg);<]
-        
-        printf("\n\n###decrypt_mail_msg: \n%s\n\n", decrypted_mail_msg);*/
+        printf("\n\n###decrypt_mail_msg: \n%s\n\n", mail_msg);
     }
 	return FALSE;
 }
 
 gboolean ibe_encrypt_hook(gpointer source, gpointer data)
 {
-
-    /*MsgInfo *msginfo = (MsgInfo *)source;
-    printf("\ndate = %s\n", msginfo->date);
-
-    printf("\nto = %s\n", msginfo->to);
-    printf("\nsubject = %s\n", msginfo->subject);
-    printf("\nfolderdata = %s\n", msginfo->folder->klass->fetch_msg);*/
-    gchar *send_data = (gchar *)source;
-    printf("\n****length = %d\n", strlen(send_data));
+    gchar *mail_send_data = (gchar *)source;
     g_return_val_if_fail(source != NULL, FALSE);
 
-    /*gchar *headend = g_strstr_len(send_data, -1, "\r\n\r\n");*/
-
-    gchar *send_mail_msg = send_data;
-
-    /*if (headend != NULL)*/
+    gchar *headend = g_strstr_len(mail_send_data, -1, "\r\n\r\n");
+    gchar *send_mail_msg = NULL;
+    if (headend != NULL)
     {
-
-        /*send_mail_msg = headend + 4;*/
+        send_mail_msg = headend + 4;
         printf("\n**********************send_mail_msg = ****************\n%s\n", send_mail_msg);
-        strncpy(send_mail_msg, "12345678910\0\r\n", sizeof("12345678910\0\r\n")-1);
-        printf("\n**********************send_mail_msg_change = ****************\n%s\n", send_mail_msg);
 
+        gchar ID[100] = {'\0'};
+        gchar *mail_to = g_strstr_len(mail_send_data, -1, "To: ");
+        int i;
+        for (mail_to = mail_to + 4, i = 0; *mail_to != '\r'; ++mail_to)
+        {
+            ID[i++] = *mail_to;
+        }
+        printf("\nID is:%s\n", ID);
+
+        gchar *encrypted_mail_msg = encrypt_mail_msg(send_mail_msg, ID);
+
+        printf("\n\n^^^encrypt_mail_msg: \n%s\n\n", encrypted_mail_msg);
+
+        strncpy(send_mail_msg, encrypted_mail_msg, strlen(encrypted_mail_msg));
+
+        printf("\n**********************send_mail_msg_change = ****************\n%s\n", send_mail_msg);
     }
     return FALSE;
 }

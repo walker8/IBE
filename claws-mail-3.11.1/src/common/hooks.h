@@ -21,6 +21,7 @@
 #define HOOKS_H
 
 #include <glib.h>
+#define MAIL_SEND_HOOKLIST "mail_send_hooklist"
 
 typedef gboolean (*SylpheedHookFunction)	(gpointer source,
 						 gpointer userdata);

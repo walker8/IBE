@@ -472,17 +472,17 @@ gint session_send_data(Session *session, const guchar *data, guint size)
 	g_get_current_time(&session->tv_prev);
 
     
-    log_message(LOG_PROTOCOL,"\n\n**session_write_data_cb begin\n");
+    /*log_message(LOG_PROTOCOL,"\n\n**session_write_data_cb begin\n");
     log_print(LOG_PROTOCOL, "\n\n**session->write_data is:\n%s\n\n", session->write_data);
     log_print(LOG_PROTOCOL, "\n\n**session->write_data_p is:\n%s\n\n", session->write_data_p);
-    log_message(LOG_PROTOCOL, "\n\n**session write data len is: %d\n\n", session->write_data_len);
+    log_message(LOG_PROTOCOL, "\n\n**session write data len is: %d\n\n", session->write_data_len);*/
 	ret = session_write_data_cb(session->sock, G_IO_OUT, session);
 
 
-    log_message(LOG_PROTOCOL, "\n\n*************session_write_data_cb finished*********\n");
+    /*log_message(LOG_PROTOCOL, "\n\n*************session_write_data_cb finished*********\n");*/
 
 	if (ret == TRUE){
-        log_message(LOG_PROTOCOL, "\nret is true\n");
+        /*log_message(LOG_PROTOCOL, "\nret is true\n");*/
 		session->io_tag = sock_add_watch(session->sock, G_IO_OUT,
 						 session_write_data_cb,
 						 session);
@@ -858,7 +858,7 @@ static gboolean session_write_data_cb(SockInfo *source,
 	write_data_len = session->write_data_len;
 
 	ret = session_write_data(session);
-    log_message(LOG_PROTOCOL, "session_write_data_cb ret is %d\n", ret);
+    /*log_message(LOG_PROTOCOL, "session_write_data_cb ret is %d\n", ret);*/
 
 	if (ret < 0) {
 		session->state = SESSION_ERROR;
@@ -880,7 +880,7 @@ static gboolean session_write_data_cb(SockInfo *source,
 		}
 		return TRUE;
 	}
-    log_message(LOG_PROTOCOL, "\nsession->io_tag is %d\n\n", session->io_tag);
+    /*log_message(LOG_PROTOCOL, "\nsession->io_tag is %d\n\n", session->io_tag);*/
 
 	if (session->io_tag > 0) {
 		g_source_remove(session->io_tag);
@@ -892,7 +892,7 @@ static gboolean session_write_data_cb(SockInfo *source,
 	session->send_data_notify(session, write_data_len,
 				  session->send_data_notify_data);
 
-    log_message(LOG_PROTOCOL, "\ncall back ret is %d\n\n", ret);
+    /*log_message(LOG_PROTOCOL, "\ncall back ret is %d\n\n", ret);*/
 	return FALSE;
 }
 
